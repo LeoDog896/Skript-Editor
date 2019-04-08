@@ -2,9 +2,12 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/TextMate"); //twilight, TextMate
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python");
-editor.setValue("command /example:\n" + 
-                "    trigger:\n        message \"This is an example message" + 
-                "\"");
+editor.setValue(
+  `command /id:
+	description: Find the ID of the item you're holding
+	trigger:
+		message "You're holding a %type of tool% whose ID is %id of tool%."`
+);
 editor.clearSelection();
 $('#export').click(function(){
   create('skript.sk',editor.getValue())

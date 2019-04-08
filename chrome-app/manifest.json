@@ -4,9 +4,15 @@
   "version": "0.1",
   "manifest_version": 2,
   "app": {
-    "background": {
-      "scripts": ["background.js"]
+    "urls": [
+      "https://skript-editor.glitch.me"
+    ],
+    "launch": {
+      "web_url": "https://skript-editor.glitch.me"
     }
   },
-  "icons": { "16": "calculator-16.png", "128": "calculator-128.png" }
+  "offline_enabled": true,
+  "permissions": [
+    "unlimitedStorage"
+  ]
 }
