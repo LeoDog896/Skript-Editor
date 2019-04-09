@@ -3,6 +3,13 @@
   "description": "A app to edit Skript!",
   "version": "0.1",
   "manifest_version": 2,
+  "icons": [
+    {
+      "src":"logo.svg",
+      "sizes": "32x32",
+      "type": "image/svg"
+    }
+  ],
   "app": {
     "urls": [
       "https://skript-editor.glitch.me"
@@ -14,5 +21,8 @@
   "offline_enabled": true,
   "permissions": [
     "unlimitedStorage"
-  ]
+  ],
+  "background_color": "#000",
+  "theme_color": "#536878",
+  "display": "standalone"
 }
