@@ -25,7 +25,7 @@ ace.define('ace/mode/custom_highlight_rules', ['require', 'exports', 'ace/lib/oo
 });
 //editor.setTheme("ace/theme/twilight");
 editor.setShowPrintMargin(false);
-editor.session.setMode("ace/mode/custom");
+editor.session.setMode("ace/mode/python");
 editor.setValue(
   `command /id:
 	description: Find the ID of the item you're holding
