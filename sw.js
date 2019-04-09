@@ -1,15 +1,20 @@
-self.addEventListener('install', function(e) {
- e.waitUntil(
-   caches.open('skript-editor').then(function(cache) {
-     return cache.addAll([
-       '/',
-       '/index.html',
-       '/index.html?',
-       '/styles.css',
-       '/script.js',
-     ]);
-   })
- );
+var CACHE_NAME = 'skript-editor';
+var urlsToCache = [
+  '/',
+  '/styles.css',
+  '/script.js',
+  '/?'
+];
+
+self.addEventListener('install', function(event) {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
 });
 self.addEventListener('fetch', function(event) {
   event.respondWith(
@@ -33,7 +38,7 @@ self.addEventListener('fetch', function(event) {
             // to clone it so we have two streams.
             var responseToCache = response.clone();
 
-            caches.open("skript-editor")
+            caches.open(CACHE_NAME)
               .then(function(cache) {
                 cache.put(event.request, responseToCache);
               });
