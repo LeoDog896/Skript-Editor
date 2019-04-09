@@ -26,4 +26,3 @@ function create(filename, data) {
         elem.download = filename;        
     }
 }
-addToHomescreen();

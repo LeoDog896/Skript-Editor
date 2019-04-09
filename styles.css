@@ -25,9 +25,3 @@ body {
 .main {
   margin-left: 160px; /* Same as the width of the sidenav */
 }
-.add-button {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  z-index: 5;
-}
