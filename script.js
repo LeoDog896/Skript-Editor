@@ -1,5 +1,5 @@
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/TextMate"); //twilight, TextMate
+//editor.setTheme("ace/theme/twilight");
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python");
 editor.setValue(
