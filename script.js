@@ -48,6 +48,9 @@ $('#export').click(function(){
 $('#import').click(function(){
   
 });
+$(".files").click(function(){
+  $(".sidenav").toggle();
+})
 function create(filename, data) {
     var blob = new Blob([data], {type: 'text/csv'});
     if(window.navigator.msSaveOrOpenBlob) {

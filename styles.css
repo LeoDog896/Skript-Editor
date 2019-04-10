@@ -46,3 +46,10 @@ body {
   z-index: 20;
   font-size: 9px;
 }
+.file {
+  transition: 200ms all;
+}
+.file:hover {
+  background-color: white;
+  border-radius: 10px;
+}
