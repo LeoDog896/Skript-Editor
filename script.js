@@ -36,13 +36,18 @@ editor.setValue(
 		message "You're holding a %type of tool% whose ID is %id of tool%."`
 );
 editor.clearSelection();
+editor.getSession().on('change', function() {
+  $("#bytes").html(byteCount(editor.getValue()))
+  $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
+});
+$("#bytes").html(byteCount(editor.getValue()))
+$("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
 $('#export').click(function(){
   create('skript.sk',editor.getValue())
 });
 $('#import').click(function(){
   
 });
-$("#bytes").html(byteCount(editor.getValue()))
 function create(filename, data) {
     var blob = new Blob([data], {type: 'text/csv'});
     if(window.navigator.msSaveOrOpenBlob) {
