@@ -4,8 +4,6 @@ var urlsToCache = [
   '/styles.css',
   '/script.js',
   '/logo.svg',
-  '/swloader.js',
-  '/sw.js',
   '/?'
 ];
 

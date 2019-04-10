@@ -1,4 +1,7 @@
 /* global ace, Mode */
+function byteCount(s) {
+    return encodeURI(s).split(/%..|./).length - 1;
+}
 var editor = ace.edit("editor");
 ace.define('ace/mode/custom', ['require', 'exports', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/custom_highlight_rules'], (acequire, exports) => {
   const oop = acequire('ace/lib/oop');
@@ -39,6 +42,7 @@ $('#export').click(function(){
 $('#import').click(function(){
   
 });
+$("#bytes").html(byteCount(editor.getValue()))
 function create(filename, data) {
     var blob = new Blob([data], {type: 'text/csv'});
     if(window.navigator.msSaveOrOpenBlob) {
