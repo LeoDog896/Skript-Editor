@@ -4,6 +4,7 @@ var urlsToCache = [
   '/styles.css',
   '/script.js',
   '/logo.svg',
+  '/file.svg',
   '/?'
 ];
 
