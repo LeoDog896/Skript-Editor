@@ -1,4 +1,5 @@
 /* global ace, Mode */
+if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
     return encodeURI(s).split(/%..|./).length - 1;
 }
@@ -35,6 +36,11 @@ editor.setValue(
 	trigger:
 		message "You're holding a %type of tool% whose ID is %id of tool%."`
 );
+editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: false
+    });
 editor.clearSelection();
 editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
