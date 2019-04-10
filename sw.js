@@ -54,7 +54,7 @@ self.addEventListener('fetch', function(event) {
 });
 self.addEventListener('activate', function(event) {
 
-  var cacheWhitelist = ['skript-editor'];
+  var cacheWhitelist = ['none'];
 
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
