@@ -26,7 +26,7 @@ ace.define('ace/mode/custom_highlight_rules', ['require', 'exports', 'ace/lib/oo
 
   exports.CustomHighlightRules = CustomHighlightRules;
 });
-editor.setTheme("ace/theme/twilight");
+//editor.setTheme("ace/theme/twilight");
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python");
 editor.setValue(
