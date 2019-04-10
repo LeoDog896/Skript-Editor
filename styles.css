@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 #editor {
     margin-top: 50px;
