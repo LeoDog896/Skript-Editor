@@ -9,7 +9,6 @@ body {
     font-size: 13px;
 }
 .sidenav {
-  margin-top: 50px;
   height: 100%;
   width: 160px;
   position: fixed;
@@ -39,6 +38,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  margin-left: 160px;
   text-align: left;
   background-color: #e8e8e8;
   width: 100%;
