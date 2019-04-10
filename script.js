@@ -54,7 +54,7 @@ $('#export').click(function(){
 $('#import').click(function(){
   
 });
-$(".files").click(function(){
+$(".file").click(function(){
   $(".sidenav").toggle();
 })
 function create(filename, data) {
