@@ -12,41 +12,19 @@
     <script src="/script.js" defer></script> 
   </head>
   <body>
-    <!-- Editor -->
     <div class="sidenav">
       <span>Files</span>
     </div>
     <div class="main">
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 col-sm-12 codeSide">
-      <div class="row">
-        <div class="col-md-12 col-sm-12">
-          <div class="compile-code">
-            <pre name="code" id="editor" style="border: none;"></pre>
-          </div>
-        </div>
+      <div class="compile-code">
+        <pre name="code" id="editor" style="border: none;"></pre>
       </div>
     </div>
-    <!-- /.col-md-12 col-sm-12 codeSide -->
-  </div>
-  <!-- /.row -->
-</div>
-<!-- /.container -->
+    <div class="footer">
+      <p>
+        Bytes: 0; Lines: 0;
+      </p>
     </div>
-    <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
-}
-</script>
-
+    <script src="swloader.js"></script>
   </body>
 </html>
