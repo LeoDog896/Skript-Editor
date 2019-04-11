@@ -70,7 +70,9 @@ $('#import').click(function(){
     fileElem.click();
   }
 });
-
+$("#fileElem").change(function(){
+  
+});
 $(".file").click(function(){
   $(".sidenav").toggle();
   if ($(".sidenav").is(":visible")) {
