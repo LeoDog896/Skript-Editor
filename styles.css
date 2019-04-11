@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 body {
+  
   margin: 0;
   overflow: hidden;
 }
@@ -34,6 +36,7 @@ body {
   width: 100%;
   z-index: 20;
   font-size: 13px;
+  font-family: 'Inconsolata', monospace;
 }
 .header {
   position: fixed;
@@ -47,10 +50,10 @@ body {
   z-index: 20;
   font-size: 9px;
 }
-.file {
+.file, #import, #export {
   transition: 200ms all;
 }
-.file:hover {
+.file:hover, #import:hover, #export:hover {
   background-color: white;
   border-radius: 10px;
 }
