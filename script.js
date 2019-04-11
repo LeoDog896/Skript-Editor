@@ -69,4 +69,11 @@ $('#import').click(function(){
 });
 $(".file").click(function(){
   $(".sidenav").toggle();
+  if ($(".sidenav").is(":visible")) {
+    $("#editor").css("margin-left","160px");
+    $(".header").css("margin-left","160px");
+  } else {
+    $("#editor").css("margin-left","0px");
+    $(".header").css("margin-left","0px");
+  }
 })
