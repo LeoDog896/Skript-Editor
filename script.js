@@ -70,8 +70,9 @@ $('#import').click(function(){
     fileElem.click();
   }
 });
-$("#fileElem").change(function(){
-  
+$("#fileElem").change(function(e){
+  let tempFile = e.target.files[0];
+
 });
 $(".file").click(function(){
   $(".sidenav").toggle();
