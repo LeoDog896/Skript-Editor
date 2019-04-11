@@ -3,6 +3,19 @@ if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
     return encodeURI(s).split(/%..|./).length - 1;
 }
+function create(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
 var editor = ace.edit("editor");
 ace.define('ace/mode/custom', ['require', 'exports', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/custom_highlight_rules'], (acequire, exports) => {
   const oop = acequire('ace/lib/oop');
@@ -57,14 +70,3 @@ $('#import').click(function(){
 $(".file").click(function(){
   $(".sidenav").toggle();
 })
-function create(filename, data) {
-    var blob = new Blob([data], {type: 'text/csv'});
-    if(window.navigator.msSaveOrOpenBlob) {
-        window.navigator.msSaveBlob(blob, filename);
-    }
-    else{
-        var elem = document.getElementById('export');
-        elem.href = window.URL.createObjectURL(blob);
-        elem.download = filename;        
-    }
-}
