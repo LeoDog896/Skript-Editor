@@ -64,9 +64,13 @@ $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
 $('#export').click(function(){
   create('skript.sk',editor.getValue())
 });
+var fileElem = document.getElementById("fileElem");
 $('#import').click(function(){
-  
+  if (fileElem) {
+    fileElem.click();
+  }
 });
+
 $(".file").click(function(){
   $(".sidenav").toggle();
   if ($(".sidenav").is(":visible")) {

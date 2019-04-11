@@ -7,7 +7,9 @@ var urlsToCache = [
   '/upload.svg',
   '/download.svg',
   '/file.svg',
-  '/?'
+  'https://ajaxorg.github.io/ace-builds/src-min-noconflict/ace.js',
+  '/?',
+  'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
 ];
 
 self.addEventListener('install', function(event) {
