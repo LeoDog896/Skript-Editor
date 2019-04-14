@@ -72,17 +72,18 @@ $('#import').click(function(){
 });
 $("#fileElem").change(function(e){
   let tempFile = e.target.files[0];
-
+  
 });
 $(".file").click(function(){  
   $(".sidenav").toggle();
-  if ($(".sidenav").i     editor.setValue(reader.result)$  (".h  eader").css("margin-left"tempFile0px");
+  if ($(".sidenav").is(":visible")){
+    $(".header").css("margin-left");
   } else {
     $("#editor").css("margin-left","0px");
     $(".header").css("margin-left","0px");
   }
-})  var reader = new FileReader();
+})
+var reader = new FileReader();
 reader.addEventListener("loadend", function() {
-   // reader.result contains the contents of blob as a typed array
+   editor.setValue(reader.result)
 });
-reader.readAsArrayBuffer(blob);
