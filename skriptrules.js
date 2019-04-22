@@ -1,8 +1,8 @@
 define(function(require, exports, module){
 "use strict";
 
-var oop = require("../lib/oop");
-var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
+var oop = require("ace/lib/oop");
+var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
 
 var PythonHighlightRules = function() {
 

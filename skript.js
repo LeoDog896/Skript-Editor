@@ -9,7 +9,7 @@ var Range = require("ace/range").Range;
 
 var Mode = function() {
     this.HighlightRules = PythonHighlightRules;
-    this.foldingRules = new PythonFoldMode("/");
+    this.foldingRules = new PythonFoldMode("\\:");
     this.$behaviour = this.$defaultBehaviour;
 };
 oop.inherits(Mode, TextMode);
