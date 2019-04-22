@@ -1,11 +1,11 @@
 define(function(require, exports, module) {
 "use strict";
 
-var oop = require("../lib/oop");
+var oop = require("ace/lib/oop");
 var TextMode = require("./text").Mode;
 var PythonHighlightRules = require("/skriptrules").PythonHighlightRules;
-var PythonFoldMode = require("./folding/pythonic").FoldMode;
-var Range = require("../range").Range;
+var PythonFoldMode = require("ace/mode/folding/pythonic").FoldMode;
+var Range = require("ace/range").Range;
 
 var Mode = function() {
     this.HighlightRules = PythonHighlightRules;
@@ -77,7 +77,7 @@ oop.inherits(Mode, TextMode);
             doc.remove(new Range(row, indent.length-tab.length, row, indent.length));
     };
 
-    this.$id = "ace/mode/init";
+    this.$id = "ace/mode/skript";
 }).call(Mode.prototype);
 
 exports.Mode = Mode;

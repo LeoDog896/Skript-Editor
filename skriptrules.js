@@ -7,11 +7,11 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var PythonHighlightRules = function() {
 
     var keywords = (
-        "message|broadcast|ban|unban|set|add|wait|halt|remove|reset|subtract|clear|delete|dye|color|colour|let|make|execute"
+        "message|broadcast|ban|unban|set|add|wait|halt|remove|reset|subtract|clear|delete|dye|color|colour|let|make|execute|format"
     );
 
     var builtinConstants = (
-        "true|false|second|seconds|minecraft"
+        "true|false|second|seconds|minecraft|minute|minute|hour|hours"
     );
 
     var builtinFunctions = (
