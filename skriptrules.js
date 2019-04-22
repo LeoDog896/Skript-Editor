@@ -19,7 +19,7 @@ var PythonHighlightRules = function() {
     var builtinFunctions = (
         ""
     );
-
+			this.$id = "ace/mode/init";
     //var futureReserved = "";
     var keywordMapper = this.createKeywordMapper({
         "invalid.deprecated": "debugger",
