@@ -58,6 +58,12 @@ editor.clearSelection();
 $('#export').click(function(){
   create('skript.sk',editor.getValue())
 });
+editor.getSession().on('change', function() {
+  $("#bytes").html(byteCount(editor.getValue()))
+  $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
+});
+$("#bytes").html(byteCount(editor.getValue()))
+$("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
 var fileElem = document.getElementById("fileElem");
 $('#import').click(function(){
   if (fileElem) {
