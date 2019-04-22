@@ -1,6 +1,4 @@
-ace.define("ace/mode/init", ["require", "exports", "module",
-		"ace/lib/oop", "ace/range", "ace/mode/folding/fold_mode"
-	], function(require, exports, module){
+define(function(require, exports, module){
 "use strict";
 
 var oop = require("../lib/oop");
@@ -19,7 +17,6 @@ var PythonHighlightRules = function() {
     var builtinFunctions = (
         ""
     );
-			this.$id = "ace/mode/init";
     //var futureReserved = "";
     var keywordMapper = this.createKeywordMapper({
         "invalid.deprecated": "debugger",
