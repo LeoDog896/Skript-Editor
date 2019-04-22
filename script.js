@@ -71,7 +71,8 @@ $("#fileElem").change(function(e){
 $(".file").click(function(){  
   $(".sidenav").toggle();
   if ($(".sidenav").is(":visible")){
-    $(".header").css("margin-left");
+    $(".header").css("margin-left","160px");
+    $(".editor").css("margin-left","160px");
   } else {
     $("#editor").css("margin-left","0px");
     $(".header").css("margin-left","0px");
