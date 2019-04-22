@@ -8,8 +8,22 @@ body {
     margin-top: 50px;
     margin-left: 160px;
     width: calc(100% - 160px);
-    height: calc(100vh - 50px);
+    height: calc(100vh - 50px - 18px);
     font-size: 13px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  padding: 1px;
+  height: 18px;
+  background-color: DodgerBlue;
+  color: white;
+  width: 100%;
+  z-index: 20;
+  font-size: 13px;
+  font-family: 'Inconsolata', monospace;
 }
 .sidenav {
   height: 100%;

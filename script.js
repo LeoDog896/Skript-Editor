@@ -1,4 +1,4 @@
-/* global ace, Mode */
+/* global ace, Mode, Cookies */
 if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
     return encodeURI(s).split(/%..|./).length - 1;
@@ -61,7 +61,11 @@ $('#export').click(function(){
 editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
+  Cookies.set('data',editor.getValue());
 });
+$(function(){
+  if (Cookies.get('data')) editor.setValue(Cookies.get('data'));
+})
 $("#bytes").html(byteCount(editor.getValue()))
 $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
 var fileElem = document.getElementById("fileElem");
@@ -79,9 +83,11 @@ $(".file").click(function(){
   if ($(".sidenav").is(":visible")){
     $(".header").css("margin-left","160px");
     $(".editor").css("margin-left","160px");
+    $(".editor").css("width",document.width - 160)
   } else {
-    $("#editor").css("margin-left","0px");
+    $(".editor").css("margin-left","0px");
     $(".header").css("margin-left","0px");
+    $(".editor").css("width",document.width)
   }
 })
 var reader = new FileReader();
