@@ -44,16 +44,17 @@ ace.define('ace/mode/custom_highlight_rules', ['require', 'exports', 'ace/lib/oo
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python");
 editor.setValue(
-  `command /id:
+  `command /id: # this is a comment
 	description: Find the ID of the item you're holding
 	trigger:
 		message "You're holding a %type of tool% whose ID is %id of tool%."`
 );
 editor.setOptions({
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: false
-    });
+  tabSize: 4,
+  enableBasicAutocompletion: true,
+  enableSnippets: true,
+  enableLiveAutocompletion: true
+});
 editor.clearSelection();
 $('#export').click(function(){
   create('skript.sk',editor.getValue())
@@ -82,12 +83,12 @@ $(".file").click(function(){
   $(".sidenav").toggle();
   if ($(".sidenav").is(":visible")){
     $(".header").css("margin-left","160px");
-    $(".editor").css("margin-left","160px");
-    $(".editor").css("width",document.width - 160)
+    $("#editor").css("margin-left","160px");
+    $("#editor").css("width",document.width - 160)
   } else {
-    $(".editor").css("margin-left","0px");
+    $("#editor").css("margin-left","0px");
     $(".header").css("margin-left","0px");
-    $(".editor").css("width",document.width)
+    $("#editor").css("width",document.width)
   }
 })
 var reader = new FileReader();
