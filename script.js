@@ -68,6 +68,15 @@ $("#fileElem").change(function(e){
   let tempFile = e.target.files[0];
   
 });
+$(".file").click(function(){  
+  $(".sidenav").toggle();
+  if ($(".sidenav").is(":visible")){
+    $(".header").css("margin-left");
+  } else {
+    $("#editor").css("margin-left","0px");
+    $(".header").css("margin-left","0px");
+  }
+})
 var reader = new FileReader();
 reader.addEventListener("loadend", function() {
    editor.setValue(reader.result)
