@@ -1,84 +1,33 @@
-ace.define(function(require, exports, module) {
-"use strict";
+define('ace/mode/example', function(require, exports, module) {
 
 var oop = require("ace/lib/oop");
 var TextMode = require("ace/mode/text").Mode;
-var PythonHighlightRules = require("/skriptrules").PythonHighlightRules;
-var PythonFoldMode = require("ace/mode/folding/pythonic").FoldMode;
-var Range = require("ace/range").Range;
+var ExampleHighlightRules = require("ace/mode/example_highlight_rules").ExampleHighlightRules;
 
 var Mode = function() {
-    this.HighlightRules = PythonHighlightRules;
-    this.foldingRules = new PythonFoldMode("\\:");
-    this.$behaviour = this.$defaultBehaviour;
+    this.HighlightRules = ExampleHighlightRules;
 };
 oop.inherits(Mode, TextMode);
 
 (function() {
-
-    this.lineCommentStart = "#";
-
-    this.getNextLineIndent = function(state, line, tab) {
-        var indent = this.$getIndent(line);
-
-        var tokenizedLine = this.getTokenizer().getLineTokens(line, state);
-        var tokens = tokenizedLine.tokens;
-
-        if (tokens.length && tokens[tokens.length-1].type == "comment") {
-            return indent;
-        }
-
-        if (state == "start") {
-            var match = line.match(/^.*[\{\(\[:]\s*$/);
-            if (match) {
-                indent += tab;
-            }
-        }
-
-        return indent;
-    };
-
-    var outdents = {
-        "pass": 1,
-        "return": 1,
-        "raise": 1,
-        "break": 1,
-        "continue": 1
-    };
-    
-    this.checkOutdent = function(state, line, input) {
-        if (input !== "\r\n" && input !== "\r" && input !== "\n")
-            return false;
-
-        var tokens = this.getTokenizer().getLineTokens(line.trim(), state).tokens;
-        
-        if (!tokens)
-            return false;
-        
-        // ignore trailing comments
-        do {
-            var last = tokens.pop();
-        } while (last && (last.type == "comment" || (last.type == "text" && last.value.match(/^\s+$/))));
-        
-        if (!last)
-            return false;
-        
-        return (last.type == "keyword" && outdents[last.value]);
-    };
-
-    this.autoOutdent = function(state, doc, row) {
-        // outdenting in python is slightly different because it always applies
-        // to the next line and only of a new line is inserted
-        
-        row += 1;
-        var indent = this.$getIndent(doc.getLine(row));
-        var tab = doc.getTabString();
-        if (indent.slice(-tab.length) == tab)
-            doc.remove(new Range(row, indent.length-tab.length, row, indent.length));
-    };
-
-    this.$id = "ace/mode/skript";
+    // Extra logic goes here. (see below)
 }).call(Mode.prototype);
 
 exports.Mode = Mode;
+});
+
+define('ace/mode/example_highlight_rules', function(require, exports, module) {
+
+var oop = require("ace/lib/oop");
+var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
+
+var ExampleHighlightRules = function() {
+
+    this.$rules = new TextHighlightRules().getRules();
+    
+}
+
+oop.inherits(ExampleHighlightRules, TextHighlightRules);
+
+exports.ExampleHighlightRules = ExampleHighlightRules;
 });

@@ -1,4 +1,4 @@
-ace.define(function(require, exports, module){
+define(function(require, exports, module){
 "use strict";
 
 var oop = require("ace/lib/oop");
@@ -15,7 +15,7 @@ var PythonHighlightRules = function() {
     );
 
     var builtinFunctions = (
-        ""
+        "stop|cancel|the|event"
     );
     //var futureReserved = "";
     var keywordMapper = this.createKeywordMapper({
@@ -61,10 +61,6 @@ var PythonHighlightRules = function() {
             token : "string",           // multi line ''' string start
             regex : strPre + "'{3}",
             next : "qstring3"
-        }, {
-            token : "string",           // ' string
-            regex : strPre + "'(?=.)",
-            next : "qstring"
         }, {
             token: "string",
             regex: strRawPre + '"{3}',
@@ -130,26 +126,6 @@ var PythonHighlightRules = function() {
             regex: "\\s+"
         }, {
             include: "constants"
-        }],
-        "qqstring3": [{
-            token: "constant.language.escape",
-            regex: stringEscape
-        }, {
-            token: "string", // multi line """ string end
-            regex: '"{3}',
-            next: "start"
-        }, {
-            defaultToken: "string"
-        }],
-        "qstring3": [{
-            token: "constant.language.escape",
-            regex: stringEscape
-        }, {
-            token: "string",  // multi line ''' string end
-            regex: "'{3}",
-            next: "start"
-        }, {
-            defaultToken: "string"
         }],
         "qqstring": [{
             token: "constant.language.escape",
