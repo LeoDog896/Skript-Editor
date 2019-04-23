@@ -1,3 +1,4 @@
+/* global define */
 define('ace/mode/example', function(require, exports, module) {
 
 var oop = require("ace/lib/oop");
