@@ -396,7 +396,7 @@ function create(filename, text) {
 var editor = ace.edit("editor");
 //editor.setTheme("ace/theme/twilight");
 editor.setShowPrintMargin(false);
-editor.session.setMode("ace/mode/example"); //ace/mode/python
+editor.session.setMode("python"); //ace/mode/python
 editor.setValue(
   `command /id: # this is a comment
 	description: Find the ID of the item you're holding
