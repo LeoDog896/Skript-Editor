@@ -438,11 +438,11 @@ $(".file").click(function(){
   if ($(".sidenav").is(":visible")){
     $(".header").css("margin-left","160px");
     $("#editor").css("margin-left","160px");
-    $("#editor").css("width",document.width - 160)
+    $("#editor").css("width",document.width - 160);
   } else {
     $("#editor").css("margin-left","0px");
     $(".header").css("margin-left","0px");
-    $("#editor").css("width",document.width)
+    $("#editor").css("width",document.width);
   }
 })
 var reader = new FileReader();
