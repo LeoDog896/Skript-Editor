@@ -1,5 +1,5 @@
 /* global define */
-define(function(require, exports, module){
+define("ace/mode/python",function(require, exports, module){
 "use strict";
 
 var oop = require("ace/lib/oop");
@@ -355,5 +355,5 @@ var PythonHighlightRules = function() {
 
 oop.inherits(PythonHighlightRules, TextHighlightRules);
 
-exports.ExampleHighlightRules = PythonHighlightRules;
+exports.PythonHighlightRules = PythonHighlightRules;
 });
