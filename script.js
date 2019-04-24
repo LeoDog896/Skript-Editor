@@ -1,5 +1,5 @@
 /* global define */
-define('ace/mode/example_highlight_rules', function(require, exports, module){
+ace.define('ace/mode/example_highlight_rules', ["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"], function(require, exports, module){
 "use strict";
 
 var oop = require("ace/lib/oop");
@@ -357,7 +357,7 @@ oop.inherits(PythonHighlightRules, TextHighlightRules);
 
 exports.SkriptHighlightRules = PythonHighlightRules;
 });
-define('ace/mode/example', function(require, exports, module) {
+ace.define('ace/mode/example', ["require","exports","module","ace/lib/oop","ace/mode/python","ace/mode/example_highlight_rules"], function(require, exports, module) {
 
 var oop = require("ace/lib/oop");
 var TextMode = require("ace/mode/python").Mode;
@@ -374,7 +374,6 @@ oop.inherits(Mode, TextMode);
 
 exports.Mode = Mode;
 });
-
 
 /* global ace, Mode, Cookies */
 if (location.protocol != "https:") location.protocol = "https:";
