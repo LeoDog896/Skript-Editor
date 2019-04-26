@@ -1,5 +1,6 @@
+/*
 
-            
+*/
 /* global ace, Mode, Cookies */
 if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
