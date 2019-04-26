@@ -56,12 +56,12 @@ body {
   transition: 200ms all;
 }
 .file:hover, #import:hover, #export:hover {
-  transform: scale(1.01);
+  transform: scale(1.1);
   background-color: white;
   border-radius: 10px;
 }
-.file:active, #import:active, #export:hover{
-  transform: scale(1.1);
+.file:active, #import:active, #export:active{
+  transform: scale(1.2);
 }
 #update:hover {
   transform: rotate(90deg);
