@@ -1,5 +1,5 @@
 /* global define */
-define("ace/mode/python_highlight_rules",function(require, exports, module){
+define("ace/mode/python_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"],function(require, exports, module){
 "use strict";
 
 var oop = require("ace/lib/oop");
@@ -361,11 +361,11 @@ exports.PythonHighlightRules = PythonHighlightRules;
 define("ace/mode/python",function(require, exports, module) {
 "use strict";
 
-var oop = require("../lib/oop");
-var TextMode = require("./text").Mode;
-var PythonHighlightRules = require("./python_highlight_rules").PythonHighlightRules;
-var PythonFoldMode = require("./folding/pythonic").FoldMode;
-var Range = require("../range").Range;
+var oop = require("ace/lib/oop");
+var TextMode = require("ace/mode/text").Mode;
+var PythonHighlightRules = require("ace/mode/python_highlight_rules").PythonHighlightRules;
+var PythonFoldMode = require("ace/mode/folding/pythonic").FoldMode;
+var Range = require("ace/range").Range;
 
 var Mode = function() {
     this.HighlightRules = PythonHighlightRules;
