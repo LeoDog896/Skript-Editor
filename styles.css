@@ -55,9 +55,20 @@ body {
 .file, #import, #export, #update {
   transition: 200ms all;
 }
-.file:hover, #import:hover, #export:hover, #update:hover {
-  transform: rotate(45deg);
+.file:hover, #import:hover, #export:hover {
+  transform: scale(1.01);
   background-color: white;
   border-radius: 10px;
 }
-.file:
+.file:active, #import:active, #export:hover{
+  transform: scale(1.1);
+}
+#update:hover {
+  transform: rotate(90deg);
+  background-color: white;
+  border-radius: 10px;
+}
+#update:active {
+  transform: rotate(180deg);
+  
+}
