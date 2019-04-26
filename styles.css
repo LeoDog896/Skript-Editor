@@ -52,10 +52,10 @@ body {
   z-index: 20;
   font-size: 9px;
 }
-.file, #import, #export {
+.file, #import, #export, #update {
   transition: 200ms all;
 }
-.file:hover, #import:hover, #export:hover {
+.file:hover, #import:hover, #export:hover, #update:hover {
   background-color: white;
   border-radius: 10px;
 }

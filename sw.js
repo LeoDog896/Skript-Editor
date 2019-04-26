@@ -56,18 +56,8 @@ self.addEventListener('fetch', function(event) {
     );
 });
 self.addEventListener('activate', function(event) {
-
-  var cacheWhitelist = ['none'];
-
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.map(function(cacheName) {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
+  caches.keys().then(function(names) {
+    for (let name of names)
+        caches.delete(name);
+  });
 });
