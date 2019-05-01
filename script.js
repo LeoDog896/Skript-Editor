@@ -20,7 +20,6 @@ function create(filename, text) {
 }
 
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/nix");
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python"); //ace/mode/python
 editor.setValue(
