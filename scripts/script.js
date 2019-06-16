@@ -56,6 +56,11 @@ $('#import').click(function(){
 });
 $("#fileElem").change(function(e){
   let tempFile = e.target.files[0];
+  var reader = new FileReader();
+  reader.readAsText(tempFile, "UTF-8");
+  reader.onload = function (evt) {
+    editor.setValue(evt.target.result);
+  }
   
 });
 $(".file").click(function(){  
