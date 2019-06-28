@@ -2,39 +2,23 @@
 
 */
 /* global ace, Mode, Cookies, define */
-define('ace/mode/skript', function(require, exports, module) {
+async function hastebin(input){
 
-var oop = require("ace/lib/oop");
-var TextMode = require("ace/mode/text").Mode;
-var ExampleHighlightRules = require("ace/mode/skript_highlight_rules").ExampleHighlightRules;
+    const url = "https://hastebin.com"
+    const extension = "py";
 
-var Mode = function() {
-    this.HighlightRules = ExampleHighlightRules;
+    const res = await fetch(`${url}/documents`, {
+        method: "POST",
+        body: input,
+        headers: { "Content-Type": "text/plain", 'Access-Control-Allow-Origin': '*',}
+    });
+
+    if (!res.ok) throw new Error(res.statusText);
+
+    const { key } = await res.json();
+
+    return `${url}/${key}.${extension}`;
 };
-oop.inherits(Mode, TextMode);
-
-(function() {
-    // Extra logic goes here. (see below)
-}).call(Mode.prototype);
-
-exports.Mode = Mode;
-});
-
-define('ace/mode/skript_highlight_rules', function(require, exports, module) {
-
-var oop = require("ace/lib/oop");
-var TextHighlightRules = require("ace/mode/python_highlight_rules").TextHighlightRules;
-
-var ExampleHighlightRules = function() {
-
-    this.$rules = new TextHighlightRules().getRules();
-    
-}
-
-oop.inherits(ExampleHighlightRules, TextHighlightRules);
-
-exports.ExampleHighlightRules = ExampleHighlightRules;
-});
 if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
     return encodeURI(s).split(/%..|./).length - 1;
