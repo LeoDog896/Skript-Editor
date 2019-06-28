@@ -6,7 +6,7 @@ define('ace/mode/skript', function(require, exports, module) {
 
 var oop = require("ace/lib/oop");
 var TextMode = require("ace/mode/text").Mode;
-var ExampleHighlightRules = require("ace/mode/example_highlight_rules").ExampleHighlightRules;
+var ExampleHighlightRules = require("ace/mode/skript_highlight_rules").ExampleHighlightRules;
 
 var Mode = function() {
     this.HighlightRules = ExampleHighlightRules;
@@ -23,7 +23,7 @@ exports.Mode = Mode;
 define('ace/mode/skript_highlight_rules', function(require, exports, module) {
 
 var oop = require("ace/lib/oop");
-var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
+var TextHighlightRules = require("ace/mode/python_highlight_rules").TextHighlightRules;
 
 var ExampleHighlightRules = function() {
 
