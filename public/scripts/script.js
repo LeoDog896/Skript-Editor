@@ -59,6 +59,7 @@ editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
+  location.hash = LZString.compressToUTF16(editor.getValue())
 });
 $(function(){
   if (Cookies.get('data')) editor.setValue(Cookies.get('data'));
