@@ -1,7 +1,7 @@
 /*
 
 */
-/* global ace, Mode, Cookies, define */
+/* global ace, Mode, Cookies, define, LZString */
 async function hastebin(input){
 
     const url = "https://hastebin.com"
@@ -62,7 +62,8 @@ editor.getSession().on('change', function() {
   location.hash = LZString.compressToUTF16(editor.getValue())
 });
 $(function(){
-  if (Cookies.get('data')) editor.setValue(Cookies.get('data'));
+  if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
+  if (location.hash) editor.setValue(LZString.decompressFromUTF16(decodeURI(location.hash.substring(1))))
 })
 $("#bytes").html(byteCount(editor.getValue()))
 $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
