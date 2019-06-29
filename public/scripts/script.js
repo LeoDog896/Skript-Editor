@@ -56,11 +56,11 @@ editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
-  location.hash = LZString.compressToUTF16(editor.getValue())
+  location.hash = LZString.compressToBase64(editor.getValue())
 });
 $(function(){
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
-  if (location.hash) editor.setValue(LZString.decompressFromUTF16(decodeURI(location.hash.substring(1))))
+  if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
 })
 $("#bytes").html(byteCount(editor.getValue()))
 $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
