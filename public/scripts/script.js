@@ -47,9 +47,6 @@ editor.setValue(
 );
 editor.setOptions({
   tabSize: 4,
-  enableBasicAutocompletion: true,
-  enableSnippets: true,
-  enableLiveAutocompletion: true
 });
 editor.clearSelection();
 $('#export').click(function(){
