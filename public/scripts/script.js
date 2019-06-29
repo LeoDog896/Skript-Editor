@@ -2,23 +2,6 @@
 
 */
 /* global ace, Mode, Cookies, define, LZString */
-async function hastebin(input){
-
-    const url = "https://hastebin.com"
-    const extension = "py";
-
-    const res = await fetch(`${url}/documents`, {
-        method: "POST",
-        body: input,
-        headers: { "Content-Type": "text/plain", 'Access-Control-Allow-Origin':'*'}
-    });
-
-    if (!res.ok) throw new Error(res.statusText);
-
-    const { key } = await res.json();
-
-    return `${url}/${key}.${extension}`;
-};
 if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
     return encodeURI(s).split(/%..|./).length - 1;
