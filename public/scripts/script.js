@@ -10,7 +10,7 @@ async function hastebin(input){
     const res = await fetch(`${url}/documents`, {
         method: "POST",
         body: input,
-        headers: { "Content-Type": "text/plain", 'Access-Control-Allow-Origin': '*',}
+        headers: { "Content-Type": "text/plain", 'Access-Control-Allow-Origin':'*'}
     });
 
     if (!res.ok) throw new Error(res.statusText);
