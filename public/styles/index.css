@@ -50,8 +50,26 @@ html, body {
   width: 100vw;
   height: 30vh;
 }
-.section .left img {
-  
+.left {
+  text-align: left
+}
+.left p, .left h1 {
+  padding-left: calc(39vh + 10px);
+}
+.right p, .right h1 {
+  padding-right: calc(39vh + 10px);
+}
+.right {
+  text-align: right
+}
+.section img {
+  width: 29vw;
+}
+.left img {
+  float: left
+}
+.right img {
+  float:right
 }
 .footer {
   height: 10vh;
