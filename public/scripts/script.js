@@ -53,7 +53,7 @@ editor.getSession().on('change', function() {
         type: "warning"
       }]);
     } else {
-      editor.geValue().match(/c/)
+      editor.geValue().match(/command /)
     }
   }
 });
