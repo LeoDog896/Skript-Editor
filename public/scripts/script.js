@@ -6,6 +6,10 @@ if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
     return encodeURI(s).split(/%..|./).length - 1;
 }
+let errorRegs = [
+  {reg: /\scommand [/\w]+:/g, msg: "Declerations of commands should not have whitespaces behind them"},
+  {reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z"}
+]
 function create(filename, text) {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -46,31 +50,33 @@ editor.getSession().on('change', function() {
   if (window.parseReady) {
     editor.getSession().setAnnotations([])
     if (editor.getValue() == "") {
-      editor.getSession().setAnnotation([{
+      editor.getSession().setAnnotations([{
         row: 0,
         column: 0,
         text: "File is empty",
         type: "warning"
       }]);
     } else {
+      let annData = [];
       editor.getValue().split("\n").forEach((txt, index) => {
         if (txt.match(/\scommand [/\w]+:/g)) {
-          editor.getSession().setAnnotations([{
+          annData.push({
             row: index,
             column: 0,
             text: "Declerations of commands should not have whitespaces behind them",
             type: "error"
-          }]);
+          })
         }
         if (txt.match(/teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g)) {
-          editor.getSession().setAnnotations([{
+          annData.push({
             row: index,
             column: 0,
             text: "Use vector(x, y, z) instead of x, y, z",
             type: "error"
-          }]);
+          });
         }
       })
+      editor.getSession().setAnnotations(annData)
     }
   }
 });
