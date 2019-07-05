@@ -46,7 +46,7 @@ editor.getSession().on('change', function() {
   if (window.parseReady) {
     editor.getSession().setAnnotations([])
     if (editor.getValue() == "") {
-      editor.getSession().setAnnotations([{
+      editor.getSession().setAnnotation([{
         row: 0,
         column: 0,
         text: "File is empty",
@@ -59,6 +59,14 @@ editor.getSession().on('change', function() {
             row: index,
             column: 0,
             text: "Declerations of commands should not have whitespaces behind them",
+            type: "error"
+          }]);
+        }
+        if (txt.match(/teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g)) {
+          editor.getSession().setAnnotations([{
+            row: index,
+            column: 0,
+            text: "Use vector(x, y, z) instead of x, y, z",
             type: "error"
           }]);
         }
