@@ -43,14 +43,18 @@ editor.getSession().on('change', function() {
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
   location.hash = LZString.compressToBase64(editor.getValue())
-  editor.getSession().setAnnotations([])
-  if (editor.getValue() == "" && window.parseReady) {
-    editor.getSession().setAnnotations([{
-      row: 0,
-      column: 0,
-      text: "File is empty",
-      type: "warning"
-    }]);
+  if (window.parseReady) {
+    editor.getSession().setAnnotations([])
+    if (editor.getValue() == "") {
+      editor.getSession().setAnnotations([{
+        row: 0,
+        column: 0,
+        text: "File is empty",
+        type: "warning"
+      }]);
+    } else {
+      editor.geValue().match(/c/)
+    }
   }
 });
 $(function(){
