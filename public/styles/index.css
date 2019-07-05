@@ -54,22 +54,25 @@ html, body {
   text-align: left
 }
 .left p, .left h1 {
-  padding-left: calc(39vh + 10px);
+  padding-left: calc(39vh + 20px);
 }
 .right p, .right h1 {
-  padding-right: calc(39vh + 10px);
+  padding-right: calc(39vh + 20px);
 }
 .right {
   text-align: right
 }
 .section img {
-  width: 29vw;
+  height: 29vh;
+  border-radius: 10px;
 }
 .left img {
-  float: left
+  float: left;
+  padding-left: 10vh
 }
 .right img {
-  float:right
+  float: right;
+  padding-right: 10vh
 }
 .footer {
   height: 10vh;
