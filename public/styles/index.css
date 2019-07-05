@@ -21,7 +21,7 @@ html, body {
 }
 .wrapper {
   display: table-cell;
-  height: 100%;
+  height: 100vh;
   vertical-align: middle;
 }
 .title {
@@ -42,6 +42,20 @@ html, body {
   background-color: #c9934d;
   transition: 0.2s all;
   font-size: 20px;
+}
+.features {
+  height: 90vh;
+}
+.section {
+  width: 100vw;
+  height: 30vh;
+}
+.section .left img {
+  
+}
+.footer {
+  height: 10vh;
+  width: 100vw;
 }
 .app:hover {
   padding: 6px 24px 6px 24px;
