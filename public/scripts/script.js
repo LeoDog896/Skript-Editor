@@ -53,9 +53,16 @@ editor.getSession().on('change', function() {
         type: "warning"
       }]);
     } else {
-      if (editor.geValue().match(/command [/\w]+:/g)) {
-        
-      }
+      editor.getValue().split("\n").forEach((txt, index) => {
+        if (txt.match(/\scommand [/\w]+:/g)) {
+          editor.getSession().setAnnotations([{
+            row: index,
+            column: 0,
+            text: "Declerations of commands should not have whitespaces behind them",
+            type: "error"
+          }]);
+        }
+      })
     }
   }
 });
