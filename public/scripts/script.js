@@ -35,11 +35,22 @@ editor.clearSelection();
 $('#export').click(function(){
   create('skript.sk',editor.getValue())
 });
+setTimeout(function(){
+    window.parseReady = true;
+},2000);
 editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
   location.hash = LZString.compressToBase64(editor.getValue())
+  if (editor.getValue() == "" && window.parseReady) {
+    editor.getSession().setAnnotations([{
+      row: 0,
+      column: 0,
+      text: "File is empty",
+      type: "warning"
+    }]);
+  }
 });
 $(function(){
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
