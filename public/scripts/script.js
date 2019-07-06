@@ -109,10 +109,8 @@ $(".file").click(function(){
   }
 })
 
-$("#customize").click(function () {
-  
-})
-
+$("#customize").click(() => $(".modal")[0].classList.toggle("show-modal"))
+$(".close-button").click(() => document.querySelector(".modal").classList.toggle("show-modal"))
 var reader = new FileReader();
 reader.addEventListener("loadend", function() {
    editor.setValue(reader.result)
