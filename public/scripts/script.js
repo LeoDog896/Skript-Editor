@@ -24,6 +24,7 @@ function create(filename, text) {
 }
 
 var editor = ace.edit("editor");
+editor.setOption('blastCode', { effect: 1 });
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python"); //ace/mode/python
 editor.setValue(
