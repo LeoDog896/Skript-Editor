@@ -39,6 +39,7 @@ editor.clearSelection();
 $('#export').click(function(){
   create('skript.sk',editor.getValue())
 });
+$("#theme").change(() => editor.setTheme("ace/theme/" + $("#theme").val()))
 setTimeout(function(){
     window.parseReady = true;
 },2000);
