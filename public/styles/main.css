@@ -78,3 +78,7 @@ body {
   transform: rotate(180deg);
   
 }
+
+.files-header {
+  font-size: 20px;
+}
