@@ -1,7 +1,7 @@
 /*
 
 */
-/* global ace, Mode, Cookies, define, LZString */
+/* global ace, Mode, Cookies, define, LZString, codeBlastAce */
 if (location.protocol != "https:") location.protocol = "https:";
 function byteCount(s) {
     return encodeURI(s).split(/%..|./).length - 1;
@@ -24,7 +24,7 @@ function create(filename, text) {
 }
 
 var editor = ace.edit("editor");
-editor.setOption('blastCode', { effect: 1 });
+codeBlastAce(ace)
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python"); //ace/mode/python
 editor.setValue(
