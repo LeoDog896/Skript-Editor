@@ -108,6 +108,10 @@ $(".file").click(function(){
     $("#editor").css("width",window.innerWidth);
   }
 })
+
+$("#customize").click(function () {
+  
+})
 var reader = new FileReader();
 reader.addEventListener("loadend", function() {
    editor.setValue(reader.result)

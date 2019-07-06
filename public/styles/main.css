@@ -58,27 +58,17 @@ body {
   z-index: 20;
   font-size: 9px;
 }
-.file, #import, #export, #update {
+.file, #import, #export, #update, #customize {
   transition: 200ms all;
 }
-.file:hover, #import:hover, #export:hover {
+.file:hover, #import:hover, #export:hover, #customize:hover {
   transform: scale(1.1);
   background-color: white;
   border-radius: 10px;
 }
-.file:active, #import:active, #export:active{
+.file:active, #import:active, #export:active, #customize:active{
   transform: scale(1.2);
 }
-#update:hover {
-  transform: rotate(90deg);
-  background-color: white;
-  border-radius: 10px;
-}
-#update:active {
-  transform: rotate(180deg);
-  
-}
-
 .files-header {
   font-size: 20px;
 }
