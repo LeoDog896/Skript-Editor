@@ -59,22 +59,16 @@ editor.getSession().on('change', function() {
     } else {
       let annData = [];
       editor.getValue().split("\n").forEach((txt, index) => {
-        if (txt.match(/\scommand [/\w]+:/g)) {
-          annData.push({
-            row: index,
-            column: 0,
-            text: "Declerations of commands should not have whitespaces behind them",
-            type: "error"
-          })
-        }
-        if (txt.match(/teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g)) {
-          annData.push({
-            row: index,
-            column: 0,
-            text: "Use vector(x, y, z) instead of x, y, z",
-            type: "error"
-          });
-        }
+        errorRegs.forEach(data => {
+          if (txt.match(data.reg)) {
+            annData.push({
+              row: index,
+              column: 0,
+              text: data.msg,
+              type: data.type ? data.type : "error"
+            })
+          }
+        })
       })
       editor.getSession().setAnnotations(annData)
     }
