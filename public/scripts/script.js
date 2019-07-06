@@ -112,6 +112,7 @@ $(".file").click(function(){
 $("#customize").click(function () {
   
 })
+
 var reader = new FileReader();
 reader.addEventListener("loadend", function() {
    editor.setValue(reader.result)
