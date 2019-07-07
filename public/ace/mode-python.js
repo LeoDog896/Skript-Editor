@@ -7,7 +7,7 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var PythonHighlightRules = function() {
 
     var keywords = (
-        "and|if|else if|else"
+        "and|if|else if|else|description|command|permission|cooldown|trigger"
     );
 
     var builtinConstants = (
