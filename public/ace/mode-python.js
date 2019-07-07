@@ -15,7 +15,7 @@ var PythonHighlightRules = function() {
     );
 
     var builtinFunctions = (
-        "abs|message|send|teleport"
+        "abs|message|send|teleport|acos|asin|atan|atan2|calcExperience"
     );
 
     //var futureReserved = "";
