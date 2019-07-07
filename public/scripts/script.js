@@ -64,6 +64,7 @@ $(() => {
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
   editor.clearSelection();
+  $(`[value=${editor.getTheme().replace("ace/theme/","")}]`).prop('selected', true);
 })
 $("#bytes").html(byteCount(editor.getValue()))
 $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
