@@ -16,7 +16,7 @@ function create(filename, text) {
 }
 
 var editor = ace.edit("editor");
-// codeBlastAce(ace)
+codeBlastAce(ace)
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python");
 editor.setValue(
@@ -29,7 +29,10 @@ editor.setOptions({
   useSoftTabs: false
 });
 $('#export').click(() => create('skript.sk',editor.getValue()));
-$("#theme").change(() => editor.setTheme("ace/theme/" + $("#theme").val()))
+$("#theme").change(() => {
+  editor.setTheme("ace/theme/" + $("#theme").val())
+  Cookies.set('theme', $("#theme").val())
+})
 setTimeout(() => window.parseReady = true, 2000);
 editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
@@ -58,6 +61,7 @@ editor.getSession().on('change', function() {
 });
 $(() => {
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
+  if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
   editor.clearSelection();
 })
@@ -84,4 +88,8 @@ $("#file").click(function(){
 })
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
+$("#blast-o").change(() => {
+  if ($("#blast-o").is(':checked')) editor.setOption('blastCode', { effect: 1 });
+  else editor._codeBlast.destroy()
+})
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
