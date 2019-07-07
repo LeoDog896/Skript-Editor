@@ -19,7 +19,7 @@ function create(filename, text) {
 }
 
 var editor = ace.edit("editor");
-codeBlastAce(ace)
+// codeBlastAce(ace)
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/python");
 editor.setValue(
