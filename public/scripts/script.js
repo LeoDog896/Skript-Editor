@@ -83,4 +83,5 @@ $("#file").click(function(){
   }
 })
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
-$(".close-button").click(() => $(".themes-modal").removeClass("show-modal"))
+$("#options").click(() => $(".options-modal").addClass("show-modal"))
+$(".close-button").click(() => $(".modal").removeClass("show-modal"))

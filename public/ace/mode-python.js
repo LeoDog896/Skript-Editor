@@ -7,11 +7,11 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var PythonHighlightRules = function() {
 
     var keywords = (
-        "and|if|else if|else|description|command|permission|cooldown|trigger"
+        "and|if|else if|else|description|command|permission|cooldown|trigger|execute|console|loop|all"
     );
 
     var builtinConstants = (
-        "true|false|player|loop-player|victim|entity|attacker"
+        "true|false|player|loop-player|victim|entity|attacker|players"
     );
 
     var builtinFunctions = (
