@@ -38,7 +38,7 @@ editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
-  location.hash = LZString.compressToBase64(editor.getValue())
+  // location.hash = LZString.compressToBase64(editor.getValue())
   if (window.parseReady) {
     editor.getSession().setAnnotations([])
     if (editor.getValue() == "") {
