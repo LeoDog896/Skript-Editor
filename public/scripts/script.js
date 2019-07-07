@@ -3,30 +3,25 @@
 */
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce */
 if (location.protocol != "https:") location.protocol = "https:";
-function byteCount(s) {
-    return encodeURI(s).split(/%..|./).length - 1;
-}
+let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
   {reg: /\scommand [/\w]+:/g, msg: "Declerations of commands should not have whitespaces behind them"},
   {reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z"}
 ]
 function create(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-
-    element.style.display = 'none';
-    document.body.appendChild(element);
-
-    element.click();
-
-    document.body.removeChild(element);
+  let element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
 }
 
 var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
-editor.session.setMode("ace/mode/python"); //ace/mode/python
+editor.session.setMode("ace/mode/python");
 editor.setValue(
   `command /id: # this is a comment
 	description: Find the ID of the item you're holding
@@ -36,14 +31,9 @@ editor.setValue(
 editor.setOptions({
   useSoftTabs: false
 });
-editor.clearSelection();
-$('#export').click(function(){
-  create('skript.sk',editor.getValue())
-});
+$('#export').click(() => create('skript.sk',editor.getValue()));
 $("#theme").change(() => editor.setTheme("ace/theme/" + $("#theme").val()))
-setTimeout(function(){
-    window.parseReady = true;
-},2000);
+setTimeout(() => window.parseReady = true, 2000);
 editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
@@ -62,41 +52,26 @@ editor.getSession().on('change', function() {
       let annData = [];
       editor.getValue().split("\n").forEach((txt, index) => {
         errorRegs.forEach(data => {
-          if (txt.match(data.reg)) {
-            annData.push({
-              row: index,
-              column: 0,
-              text: data.msg,
-              type: data.type ? data.type : "error"
-            })
-          }
+          if (txt.match(data.reg)) annData.push({row: index, column: 0, text: data.msg, type: data.type ? data.type : "error"})
         })
       })
       editor.getSession().setAnnotations(annData)
     }
   }
 });
-$(function(){
+$(() => {
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
+  editor.clearSelection();
 })
 $("#bytes").html(byteCount(editor.getValue()))
 $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
-var fileElem = document.getElementById("fileElem");
-$('#import').click(function(){
-  if (fileElem) {
-    fileElem.click();
-  }
-});
-
+$('#import').click(() => document.getElementById("fileElem").click());
 $("#fileElem").change(function(e){
   let tempFile = e.target.files[0];
   var reader = new FileReader();
   reader.readAsText(tempFile, "UTF-8");
-  reader.onload = function (evt) {
-    editor.setValue(evt.target.result);
-  }
-  
+  reader.onload = evt => editor.setValue(evt.target.result);
 });
 $("#file").click(function(){  
   $(".sidenav").toggle();
@@ -110,6 +85,5 @@ $("#file").click(function(){
     $("#editor").css("width",window.innerWidth);
   }
 })
-
-$("#customize").click(() => $(".modal").addClass("show-modal"))
-$(".close-button").click(() => $(".modal").removeClass("show-modal"))
+$("#customize").click(() => $(".themes-modal").addClass("show-modal"))
+$(".close-button").click(() => $(".themes-modal").removeClass("show-modal"))
