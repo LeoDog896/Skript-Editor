@@ -58,15 +58,15 @@ body {
   z-index: 20;
   font-size: 9px;
 }
-.file, #import, #export, #update, #customize {
+.button {
   transition: 200ms all;
 }
-.file:hover, #import:hover, #export:hover, #customize:hover {
+.button:hover {
   transform: scale(1.1);
   background-color: white;
   border-radius: 10px;
 }
-.file:active, #import:active, #export:active, #customize:active{
+.button:active{
   transform: scale(1.2);
 }
 .files-header {

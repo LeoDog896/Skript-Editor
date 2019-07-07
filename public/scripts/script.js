@@ -34,7 +34,7 @@ editor.setValue(
 		message "You're holding a %type of tool% whose ID is %id of tool%."`
 );
 editor.setOptions({
-  tabSize: 4,
+  useSoftTabs: false
 });
 editor.clearSelection();
 $('#export').click(function(){
@@ -98,7 +98,7 @@ $("#fileElem").change(function(e){
   }
   
 });
-$(".file").click(function(){  
+$("#file").click(function(){  
   $(".sidenav").toggle();
   if ($(".sidenav").is(":visible")){
     $(".header").css("margin-left","160px");
