@@ -97,4 +97,8 @@ $("#blast-o").change(() => {
   if ($("#blast-o").is(':checked')) editor.setOption('blastCode', { effect: 1 });
   else editor._codeBlast.destroy()
 })
+$("#soft-o").change(() => {
+  if ($("#soft-o").is(':checked')) editor.setOption('useSoftTabs', true);
+  else editor.setOption('useSoftTabs', false)
+})
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
