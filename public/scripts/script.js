@@ -26,24 +26,10 @@ editor.setValue(
 		message "You're holding a %type of tool% whose ID is %id of tool%."`
 );
 editor.setOptions({
-  useSoftTabs: false.
+  useSoftTabs: false,
   enableBasicAutocompletion: true,
-        enableLiveAutocompletion: true
+  enableLiveAutocompletion: true
 });
-var staticWordCompleter = {
-    getCompletions: function(editor, session, pos, prefix, callback) {
-        var wordList = ["foo", "bar", "baz"];
-        callback(null, wordList.map(function(word) {
-            return {
-                caption: word,
-                value: word,
-                meta: "static"
-            };
-        }));
-
-    }
-}
-editor.completers = [staticWordCompleter]
 $('#export').click(() => create('skript.sk',editor.getValue()));
 $("#theme").change(() => {
   editor.setTheme("ace/theme/" + $("#theme").val())
