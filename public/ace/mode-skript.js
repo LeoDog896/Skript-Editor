@@ -1,10 +1,10 @@
-define("ace/mode/python_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"], function(require, exports, module) {
+define("ace/mode/skript_highlight_rules",["require","exports","module","ace/lib/oop","ace/mode/text_highlight_rules"], function(require, exports, module) {
 "use strict";
 
 var oop = require("../lib/oop");
 var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 
-var PythonHighlightRules = function() {
+var SkriptHighlightRules = function() {
 
     var keywords = (
         "and|if|else if|else|description|command|permission|cooldown|trigger|execute|console|loop|all"
@@ -247,12 +247,12 @@ var PythonHighlightRules = function() {
     this.normalizeRules();
 };
 
-oop.inherits(PythonHighlightRules, TextHighlightRules);
+oop.inherits(SkriptHighlightRules, TextHighlightRules);
 
-exports.PythonHighlightRules = PythonHighlightRules;
+exports.SkriptHighlightRules = SkriptHighlightRules;
 });
 
-define("ace/mode/folding/pythonic",["require","exports","module","ace/lib/oop","ace/mode/folding/fold_mode"], function(require, exports, module) {
+define("ace/mode/folding/skriptic",["require","exports","module","ace/lib/oop","ace/mode/folding/fold_mode"], function(require, exports, module) {
 "use strict";
 
 var oop = require("../../lib/oop");
@@ -281,18 +281,18 @@ oop.inherits(FoldMode, BaseFoldMode);
 
 });
 
-define("ace/mode/python",["require","exports","module","ace/lib/oop","ace/mode/text","ace/mode/python_highlight_rules","ace/mode/folding/pythonic","ace/range"], function(require, exports, module) {
+define("ace/mode/skript",["require","exports","module","ace/lib/oop","ace/mode/text","ace/mode/skript_highlight_rules","ace/mode/folding/skriptic","ace/range"], function(require, exports, module) {
 "use strict";
 
 var oop = require("../lib/oop");
 var TextMode = require("./text").Mode;
-var PythonHighlightRules = require("./python_highlight_rules").PythonHighlightRules;
-var PythonFoldMode = require("./folding/pythonic").FoldMode;
+var SkriptHighlightRules = require("./skript_highlight_rules").SkriptHighlightRules;
+var SkriptFoldMode = require("./folding/skriptic").FoldMode;
 var Range = require("../range").Range;
 
 var Mode = function() {
-    this.HighlightRules = PythonHighlightRules;
-    this.foldingRules = new PythonFoldMode("\\:");
+    this.HighlightRules = SkriptHighlightRules;
+    this.foldingRules = new SkriptFoldMode("\\:");
     this.$behaviour = this.$defaultBehaviour;
 };
 oop.inherits(Mode, TextMode);
@@ -356,12 +356,12 @@ oop.inherits(Mode, TextMode);
             doc.remove(new Range(row, indent.length-tab.length, row, indent.length));
     };
 
-    this.$id = "ace/mode/python";
+    this.$id = "ace/mode/skript";
 }).call(Mode.prototype);
 
 exports.Mode = Mode;
 });                (function() {
-                    window.require(["ace/mode/python"], function(m) {
+                    window.require(["ace/mode/skript"], function(m) {
                         if (typeof module == "object" && typeof exports == "object" && module) {
                             module.exports = m;
                         }
