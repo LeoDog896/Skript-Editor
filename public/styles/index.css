@@ -68,11 +68,11 @@ html, body {
 }
 .left img {
   float: left;
-  padding-left: 10vh
+  padding-left: 5vh
 }
 .right img {
   float: right;
-  padding-right: 10vh
+  padding-right: 4vh
 }
 .footer {
   height: 10vh;

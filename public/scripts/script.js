@@ -29,8 +29,6 @@ editor.setValue(
 );
 editor.setOptions({
   useSoftTabs: false,
-  enableBasicAutocompletion: true,
-  enableLiveAutocompletion: true
 });
 $('#export').click(() => create('skript.sk',editor.getValue()));
 $("#theme").change(() => {
@@ -93,12 +91,7 @@ $("#file").click(function(){
 })
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
-$("#blast-o").change(() => {
-  if ($("#blast-o").is(':checked')) editor.setOption('blastCode', { effect: 1 });
-  else editor._codeBlast.destroy()
-})
-$("#soft-o").change(() => {
-  if ($("#soft-o").is(':checked')) editor.setOption('useSoftTabs', true);
-  else editor.setOption('useSoftTabs', false)
-})
+$("#blast-o").change(() => $("#blast-o").is(':checked') ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy())
+$("#soft-o").change(() => $("#soft-o").is(':checked') ? editor.setOption('useSoftTabs', true) : editor.setOption('useSoftTabs', false))
+$("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
