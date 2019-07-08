@@ -15,7 +15,7 @@ var PythonHighlightRules = function() {
     );
 
     var builtinFunctions = (
-        "abs|message|send|teleport|acos|asin|atan|atan2|calcExperience"
+        "abs|message|send|teleport|acos|asin|atan|atan2|calcExperience|ceil|ceiling|cos|date|exp|floor|In|location|log|max|min|mod|product|round|sin|sqrt|tan|vector|world"
     );
 
     //var futureReserved = "";
