@@ -3,7 +3,9 @@ if (location.protocol != "https:") location.protocol = "https:";
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
   {reg: /\scommand [/\w]+:/g, msg: "Declerations of commands should not have whitespaces behind them"},
-  {reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z"}
+  {reg: /\scommand [/\w]+:/g, msg: "Command properties should have whitespaces behind them"},
+  {reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z"},
+  {reg: /^{_\w+}/g, msg: "You cant use temp variables unless its in an event!"}
 ]
 function create(filename, text) {
   let element = document.createElement('a');
