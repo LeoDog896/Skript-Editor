@@ -109,12 +109,6 @@ var PythonHighlightRules = function() {
             token: "punctuation",
             regex: ",|:|;|\\->|\\+=|\\-=|\\*=|\\/=|\\/\\/=|%=|@=|&=|\\|=|^=|>>=|<<=|\\*\\*="
         }, {
-            token: "paren.lparen",
-            regex: "[\\[\\(\\{]"
-        }, {
-            token: "paren.rparen",
-            regex: "[\\]\\)\\}]"
-        }, {
             token: "text",
             regex: "\\s+"
         }, {
@@ -182,10 +176,6 @@ var PythonHighlightRules = function() {
             regex: '"|$',
             next: "start"
         }, {
-            token: "paren.lparen",
-            regex: "{",
-            push: "fqstringParRules"
-        }, {
             defaultToken: "string"
         }],
         "fqstring": [{
@@ -195,10 +185,6 @@ var PythonHighlightRules = function() {
             token: "string",
             regex: "'|$",
             next: "start"
-        }, {
-            token: "paren.lparen",
-            regex: "{",
-            push: "fqstringParRules"
         }, {
             defaultToken: "string"
         }],
@@ -211,10 +197,6 @@ var PythonHighlightRules = function() {
             regex: '"|$',
             next: "start"
         }, {
-            token: "paren.lparen",
-            regex: "{",
-            push: "fqstringParRules"
-        }, {
             defaultToken: "string"
         }],
         "rfqstring": [{
@@ -222,19 +204,9 @@ var PythonHighlightRules = function() {
             regex: "'|$",
             next: "start"
         }, {
-            token: "paren.lparen",
-            regex: "{",
-            push: "fqstringParRules"
-        }, {
             defaultToken: "string"
         }],
-        "fqstringParRules": [{//TODO: nested {}
-            token: "paren.lparen",
-            regex: "[\\[\\(]"
-        }, {
-            token: "paren.rparen",
-            regex: "[\\]\\)]"
-        }, {
+        "fqstringParRules": [{
             token: "string",
             regex: "\\s+"
         }, {
@@ -248,14 +220,6 @@ var PythonHighlightRules = function() {
             regex: "(!s|!r|!a)"
         }, {
             include: "constants"
-        },{
-            token: 'paren.rparen',
-            regex: "}",
-            next: 'pop'
-        },{
-            token: 'paren.lparen',
-            regex: "{",
-            push: "fqstringParRules"
         }],
         "constants": [{
             token: "constant.numeric", // imaginary
@@ -275,6 +239,9 @@ var PythonHighlightRules = function() {
         }, {
             token: keywordMapper,
             regex: "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
+        }, {
+            token: "storage.type",
+            regex: "{\w+}"
         }]
     };
     this.normalizeRules();
