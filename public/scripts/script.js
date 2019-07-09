@@ -1,4 +1,5 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce */
+const { Split } = require('ace/split');
 if (location.protocol != "https:") location.protocol = "https:";
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
@@ -17,7 +18,19 @@ function create(filename, text) {
   element.click();
   document.body.removeChild(element);
 }
-
+function editorLoad(editor) {
+	var sp = editor.env.split;
+	var value = "beside"
+	var newEditor = (sp.getSplits() == 1);
+	sp.setOrientation(value == "below" ? sp.BELOW : sp.BESIDE);
+	sp.setSplits(2);
+	if (newEditor) {
+		var session = sp.getEditor(0).session;
+		var newSession = sp.setSession(sp.$cloneSession(session), 1);
+		newSession.name = session.name;
+	}
+	sp.resize(true)
+}
 var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
