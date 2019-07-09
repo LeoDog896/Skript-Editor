@@ -30,6 +30,7 @@ editor.setValue(
 );
 editor.setOptions({
   useSoftTabs: false,
+  enableLiveAutocompletion: true
 });
 $('#export').click(() => create('skript.sk',editor.getValue()));
 $("#theme").change(() => {
@@ -41,7 +42,6 @@ editor.getSession().on('change', function() {
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
-  // location.hash = LZString.compressToBase64(editor.getValue())
   if (window.parseReady) {
     editor.getSession().setAnnotations([])
     if (editor.getValue() == "") {
@@ -90,6 +90,7 @@ $("#file").click(function(){
     $("#editor").css("width",window.innerWidth);
   }
 })
+$("#hash").click(() => location.hash = LZString.compressToBase64(editor.getValue()))
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
 $("#blast-o").change(() => $("#blast-o").is(':checked') ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy())
