@@ -32,6 +32,21 @@ editor.setOptions({
   useSoftTabs: false,
   enableLiveAutocompletion: true
 });
+var langTools = ace.require('ace/ext/language_tools');
+var staticWordCompleter = {
+    getCompletions: function(editor, session, pos, prefix, callback) {
+        callback(null, ["message|effect", "send|effect", "abs|function"].map(function(word) {
+            return {
+                caption: word.split("|")[0],
+                value: word.split("|")[0],
+                meta: word.split("|")[1]
+            };
+        }));
+
+    }
+}
+
+langTools.setCompleters([staticWordCompleter])
 $('#export').click(() => create('skript.sk',editor.getValue()));
 $("#theme").change(() => {
   editor.setTheme("ace/theme/" + $("#theme").val())
