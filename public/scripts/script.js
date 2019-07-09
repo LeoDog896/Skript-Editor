@@ -33,29 +33,6 @@ editor.setOptions({
   enableLiveAutocompletion: true
 });
 var langTools = ace.require('ace/ext/language_tools');
-
-langTools.addCompleter([{
-  getCompletions: function(editor, session, pos, prefix, callback) {
-    callback(null, "abs|atan2|calcExperience|ceil|ceiling|cos|date|exp|floor|In|location|log|max|min|mod|product|round|sin|sqrt|tan|vector|world".split("|").map(function(word) {
-      return {
-        caption: word,
-        value: word,
-        meta: "function"
-      };
-    }));
-  }
-}])
-langTools.addCompleter([{
-  getCompletions: function(editor, session, pos, prefix, callback) {
-    callback(null, ("message|send|broadcast|teleport").map(function (word) {
-        return {
-          caption: word,
-        value: word,
-        meta: "effect"
-      };
-    }));
-  }
-}])
 $('#export').click(() => create('skript.sk',editor.getValue()));
 $("#theme").change(() => {
   editor.setTheme("ace/theme/" + $("#theme").val())
