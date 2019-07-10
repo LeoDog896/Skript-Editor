@@ -7,7 +7,7 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var SkriptHighlightRules = function() {
 
     var keywords = (
-        "and|if|else if|else|description|command|permission|cooldown|trigger|execute|console|loop|all"
+        "and|if|else if|else|description|command|permission|executable by|cooldown|trigger|aliases|usage|execute|console|loop|all"
     );
 
     var builtinConstants = (
