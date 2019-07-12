@@ -6,7 +6,7 @@ let errorRegs = [
   {reg: /^(trigger|description|cooldown|permission)([/\w]+|):([/\w+]|)/g, msg: "Command properties should have whitespaces behind them"},
   {reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z"},
   {reg: /^{_\w+}/g, msg: "You cant use temp variables unless its in an event!"},
-  {reg: /^format slot \d+ of [\w\s]+/g, msg: "We reccomend using TuSKe instead of skQuery GUI"}
+  {reg: /^(\s|)+format slot \d+ of [\w\s]+/g, msg: "We reccomend using TuSKe instead of skQuery GUI", type: "warning"}
 ]
 function create(filename, text) {
   let element = document.createElement('a');
