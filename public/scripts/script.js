@@ -17,6 +17,7 @@ function create(filename, text) {
   element.click();
   document.body.removeChild(element);
 }
+
 var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
@@ -94,7 +95,10 @@ $("#file").click(function(){
 $("#hash").click(() => location.hash = LZString.compressToBase64(editor.getValue()))
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
-$("#blast-o").change(() => $("#blast-o").is(':checked') ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy())
+$("#blast-o").change(() => {
+  $("#blast-o").is(':checked') ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy()
+  $("#blast-o").is(':checked') ? Cookies.set('blastCode', true) : Cookies.set('blastCode', false)
+})
 $("#soft-o").change(() => $("#soft-o").is(':checked') ? editor.setOption('useSoftTabs', true) : editor.setOption('useSoftTabs', false))
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
