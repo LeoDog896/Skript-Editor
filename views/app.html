@@ -90,7 +90,11 @@
         <input type="number" name="tabsize" id="soft-s" value="4" placeholder="Tab Size">
       </div>
     </div>
-
+    <script>
+    if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('/sw.js', {scope: '/'})
+      }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="ace/ace.js"></script>
     <script src="lib/codeblast.js"></script>
