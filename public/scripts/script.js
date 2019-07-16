@@ -17,7 +17,6 @@ function create(filename, text) {
   element.click();
   document.body.removeChild(element);
 }
-$(function () { $('.sidenav').jstree(); });
 var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
