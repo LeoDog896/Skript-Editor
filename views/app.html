@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js" integrity="sha256-nRoO8HoupfqozUr7YKBRgHXmdx40Hl/04OSBzv7e7L8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
     <link rel="stylesheet" href="styles/main.css">
     <link rel="manifest" href="/manifest.json">
   </head>
@@ -21,8 +22,15 @@
       <img id="hash" class="button" alt="Options" src="images/hash.svg" width="50" height="50">
     </div>
     <div class="sidenav">
-      <span class="files-header">Files</span><br>
-      <span>main.sk</span>
+      <ul>
+        <li>Root node 1
+          <ul>
+            <li id="child_node_1">Child node 1</li>
+            <li>Child node 2</li>
+          </ul>
+        </li>
+        <li>Root node 2</li>
+      </ul>
     </div>
     <div class="main">
       <div class="compile-code">
@@ -96,6 +104,7 @@
       }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
     <script src="ace/ace.js"></script>
     <script src="lib/codeblast.js"></script>
     <script src="ace/ext-split.js"></script>
