@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
+* {font-family: 'Inconsolata', monospace;}
 .add-button {
   position: absolute;
   top: 1px;
@@ -6,7 +7,6 @@
   z-index: 100000
 }
 body {
-  
   margin: 0;
   overflow: hidden;
 }
@@ -30,7 +30,6 @@ body {
   width: 100%;
   z-index: 20;
   font-size: 13px;
-  font-family: 'Inconsolata', monospace;
 }
 .sidenav {
   height: 100%;
@@ -73,17 +72,18 @@ body {
   font-size: 20px;
 }
 .modal {
-    z-index: 1000;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  font-family: 'Inconsolata', monospace;
 }
 .modal-content {
     position: absolute;
@@ -94,6 +94,7 @@ body {
     padding: 1rem 1.5rem;
     width: 24rem;
     border-radius: 0.5rem;
+  font-family: 'Inconsolata', monospace;
 }
 .close-button {
     float: right;
@@ -105,11 +106,12 @@ body {
     background-color: lightgray;
 }
 .close-button:hover {
-    background-color: darkgray;
+  background-color: darkgray;
 }
 .show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  font-family: 'Inconsolata', monospace;
 }
