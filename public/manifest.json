@@ -1,5 +1,5 @@
 {
-  "shortname": "skEditor",
+  "short_name": "skEditor",
   "name": "Skript Editor",
   "description": "An app to edit Skript!",
   "version": "0.1",
