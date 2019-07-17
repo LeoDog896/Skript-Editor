@@ -29,6 +29,7 @@ body {
   width: 100%;
   z-index: 20;
   font-size: 13px;
+  font-family: 'Inconsolata', monospace;
 }
 .sidenav {
   height: 100%;
@@ -43,6 +44,7 @@ body {
   padding-left: 5px;
   color: white;
   font-family: Monospace;
+  font-family: 'Inconsolata', monospace;
 }
 .header {
   position: fixed;

@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-var CACHE_NAME = 've01'              
+var CACHE_NAME = 'skript_ver'              
 
 // Add a path you want to cache in this list.
 var URLS = [                
