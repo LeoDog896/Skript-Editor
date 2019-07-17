@@ -1,5 +1,4 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce */
-if (location.protocol != "https:") location.protocol = "https:";
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
   {reg: /\s+(command|function) .+:/g, msg: "Declerations of commands & functions should not have whitespaces behind them"},
