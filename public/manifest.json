@@ -21,7 +21,7 @@
       "type": "image/png"
     },
     {
-      "src": "images/icons/icon-144x144.png",
+      "src": "https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2Ficon-144x144.png?v=1563456517622",
       "sizes": "144x144",
       "type": "image/png"
     },
@@ -41,7 +41,7 @@
       "type": "image/png"
     },
     {
-      "src": "images/icons/icon-512x512.png",
+      "src": "https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2Ficon-512x512.png?v=1563456518365",
       "sizes": "512x512",
       "type": "image/png"
     }

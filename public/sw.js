@@ -15,7 +15,6 @@ var URLS = [
   'images/brush.svg',
   'images/download.svg',
   'images/file.svg',
-  'images/logo.svg',
   'images/options.svg',
   'images/refresh.svg',
   'images/upload.svg',
