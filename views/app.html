@@ -6,10 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Skript editor is a tool that allows you to edit the coding language, skript, with autocorrect and error formatting."/>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js" integrity="sha256-nRoO8HoupfqozUr7YKBRgHXmdx40Hl/04OSBzv7e7L8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="manifest" href="/manifest.json">
   </head>
   <body>
@@ -90,16 +86,20 @@
         <input type="number" name="tabsize" id="soft-s" value="4" placeholder="Tab Size">
       </div>
     </div>
-    <script>
-    if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('/sw.js', {scope: '/'})
-      }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js" integrity="sha256-nRoO8HoupfqozUr7YKBRgHXmdx40Hl/04OSBzv7e7L8=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="ace/ace.js"></script>
     <script src="lib/codeblast.js"></script>
     <script src="ace/ext-split.js"></script>
     <script src="ace/ext-language_tools.js"></script>
     <script src="scripts/script.js" defer></script> 
+    <script>
+    if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('/sw.js', {scope: '/'})
+      }
+    </script>
   </body>
 </html>
