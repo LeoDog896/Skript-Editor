@@ -65,6 +65,8 @@ editor.getSession().on('change', function() {
 $(() => {
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
+  if (Cookies.get("blastCode")) editor.setOption('blastCode', { effect: 1 })
+  if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", true)
   if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
   editor.clearSelection();
   $(`[value=${editor.getTheme().replace("ace/theme/","")}]`).prop('selected', true);
@@ -95,8 +97,12 @@ $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
 $("#blast-o").change(() => {
   $("#blast-o").is(':checked') ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy()
-  $("#blast-o").is(':checked') ? Cookies.set('blastCode', true) : Cookies.set('blastCode', false)
+  Cookies.set('blastCode', $("#blast-o").is(':checked'))
 })
 $("#soft-o").change(() => $("#soft-o").is(':checked') ? editor.setOption('useSoftTabs', true) : editor.setOption('useSoftTabs', false))
+$("#autocomplete-o").change(() => {
+  editor.setOption("enableLiveAutocompletion", $("#autocomplete-o").is(':checked'))
+  Cookies.set('autocomplete', $("#autocomplete-o").is(':checked'))
+})
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
