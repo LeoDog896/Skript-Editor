@@ -65,8 +65,8 @@ editor.getSession().on('change', function() {
 $(() => {
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
-  if (Cookies.get("blastCode")) editor.setOption('blastCode', { effect: 1 })
-  if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", true)
+  Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy()
+  if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", Cookies.get('autocomplete'))
   if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
   editor.clearSelection();
   $(`[value=${editor.getTheme().replace("ace/theme/","")}]`).prop('selected', true);
