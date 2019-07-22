@@ -26,22 +26,17 @@ var URLS = [
   'https://fonts.gstatic.com/s/inconsolata/v17/QldKNThLqRwH-OJ1UHjlKGlZ5qg.woff2',
   'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'
 ]
-console.log(navigator)
-console.log(navigator.geolocation)
 
 // Respond with cached resources
 // This is called everytime the browser requests resources from the server
 self.addEventListener('fetch', function (e) {
-  console.log('fetch request : ' + e.request.url)
   e.respondWith(
     caches.match(e.request).then(function (request) {
       if (request) {
         // if cache is available, respond with cache
-        console.log('responding with cache : ' + e.request.url)
         return request
       } else {
         // if there are no cache, try fetching request
-        console.log('file is not cached, fetching : ' + e.request.url)
         return fetch(e.request)
       }
     })
@@ -51,11 +46,7 @@ self.addEventListener('fetch', function (e) {
 // Cache resources
 self.addEventListener('install', function (e) {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      console.log('installing cache : ' + CACHE_NAME)
-      // cache everything listed on URLS list 
-      return cache.addAll(URLS)
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(URLS))
   )
 })
 
@@ -66,7 +57,6 @@ self.addEventListener('activate', function (e) {
       // `keyList` contains all cache names under appname.glitch.me domain
       return Promise.all(keyList.map(function (key, i) {
         if (keyList[i] !== CACHE_NAME) {
-          console.log('deleting cache : ' + keyList[i] )
           return caches.delete(keyList[i])
         }
       }))
