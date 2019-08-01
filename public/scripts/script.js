@@ -112,6 +112,8 @@ $("#discord").click(() => window.open("https://discord.gg/ukEwAAC"))
 
 // Block stuff
 
-$(".block")[0].forEach(i => i.addEventListener("dragstart", function(ev) {
+Array.from(document.getElementsByClassName("block")).forEach(i => i.addEventListener("dragstart", function(ev) {
     ev.dataTransfer.setData("text", "\n" + this.getAttribute("value"));
 }))
+console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
+console.log("If your going to put something inside here -- i dont really care go ahead")
