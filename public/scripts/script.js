@@ -62,6 +62,7 @@ editor.getSession().on('change', function() {
     }
   }
 });
+
 $(() => {
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
@@ -107,3 +108,10 @@ $("#autocomplete-o").change(() => {
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
 $("#discord").click(() => window.open("https://discord.gg/ukEwAAC"))
+
+
+// Block stuff
+
+$(".block")[0].forEach(i => i.addEventListener("dragstart", function(ev) {
+    ev.dataTransfer.setData("text", "\n" + this.getAttribute("value"));
+}))
