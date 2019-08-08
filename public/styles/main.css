@@ -116,13 +116,3 @@ body {
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
   font-family: 'Inconsolata', monospace;
 }
-
-
-.block { 
-  background-color: #666;
-  color: white;
-  text-align: center;
-  margin-top: 5px
-  padding: 10px !important;
-}
-  
