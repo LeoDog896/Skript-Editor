@@ -2,7 +2,7 @@
 
 # API
 
-Read the liscense [here](https://skript-editor.glitch.me/license).
+Read the license [here](https://skript-editor.glitch.me/license).
 
 Embed API can be accessed at [`/embed`](https://skript-editor.glitch.me/embed)
 
