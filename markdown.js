@@ -1,6 +1,5 @@
 const fs              = require('fs').promises;
 const marked          = require('marked')
-const sanitizeHtml    = require('sanitize-html');
 class Markdown {
   constructor() {
     this.buildText = this.buildText.bind(this)
@@ -19,7 +18,7 @@ class Markdown {
     <title>${options.title}</title>
   </head>
   <body>
-    ${sanitizeHtml(marked.parse(txt))}
+    ${marked.parse(txt)}
     <style scoped> @import url("${options.style}");</style>
   </body>
 </html>
