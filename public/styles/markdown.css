@@ -380,10 +380,10 @@ blockquote {
   padding: 0 1em;
 }
 
-.markdown-body blockquote>:first-child {
+blockquote>:first-child {
   margin-top: 0;
 }
 
-.markdown-body blockquote>:last-child {
+blockquote>:last-child {
   margin-bottom: 0;
 }

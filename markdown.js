@@ -19,7 +19,7 @@ class Markdown {
   </head>
   <body>
     ${marked.parse(txt)}
-    <style> @import url("${options.style}");</style>
+    <style>@import url("${options.style}");</style>
   </body>
 </html>
 `
