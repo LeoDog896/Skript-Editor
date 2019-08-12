@@ -13,6 +13,10 @@ body { /* TEXT PARENT */
     font-weight: 300;
     line-height: 1.4;
     text-align: center;
+  background-color: #ebebeb;
+  margin-top: 25px;
+  border: 2px solid gray;
+  padding: 25px;
 }
 
 body * {
@@ -368,12 +372,8 @@ hr {
     margin: 2rem auto;
 }
 
-/*hr::after {
-    content: "* *";
-    display: block;
-    position: relative;
-    bottom: 1.5em;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 2rem;
-}*/
+h1:after {
+    content:' ';
+    display:block;
+    border:2px solid gray;
+}

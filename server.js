@@ -2,9 +2,6 @@ const express         = require('express');
 const compression     = require('compression')
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const helmet          = require('helmet')
-const fs              = require('fs').promises;
-const marked          = require('marked')
-const sanitizeHtml    = require('sanitize-html');
 const markdown        = require('./markdown.js')
 const app             = express();
 
