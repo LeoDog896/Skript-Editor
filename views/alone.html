@@ -22,6 +22,16 @@
     <script src="ace/ace.js"></script>
     <script src="lib/codeblast.js"></script>
     <script src="ace/ext-language_tools.js"></script>
-    <script src="scripts/script.js" defer></script> 
+    <script src="scripts/script.js"></script> 
+    <script defer>
+    editor.setOptions({
+      readOnly: true,
+      highlightActiveLine: false,
+      highlightGutterLine: false
+    })
+    editor.renderer.$cursorLayer.element.style.opacity=0
+    editor.textInput.getElement().disabled=true
+    editor.commands.commmandKeyBinding={}
+    </script>
   </body>
 </html>
