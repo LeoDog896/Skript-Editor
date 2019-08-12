@@ -5,6 +5,7 @@ const helmet          = require('helmet')
 const fs              = require('fs').promises;
 const marked          = require('marked')
 const sanitizeHtml    = require('sanitize-html');
+const markdown        = require('./markdown.js')
 const app             = express();
 
 app.use(redirectToHTTPS());
@@ -16,7 +17,7 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 app.get('/app', (req, res) => res.sendFile(__dirname + '/views/app.html'));
 app.get('/embed', (req, res) => res.sendFile(__dirname + '/views/embed.html'))
 
-app.get('/license', async (request, response) => response.send(sanitizeHtml(marked.parse(await fs.readFile('LICENSE.md', 'utf8'))) + '<style scoped> @import url("/styles/markdown.css");</style>'))
-app.get('/api', async (request, response) => response.send(sanitizeHtml(marked.parse(await fs.readFile('API.md', 'utf8'))) + '<style scoped> @import url("/styles/markdown.css");</style>'))
+app.get('/license', async (request, response) => response.send(markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
+app.get('/api', async (request, response) => response.send(markdown.buildFile('API.md', {title: "skAPI", desc: "API for Skript Editor", style: "/styles/markdown.css"})))
 
 const listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
