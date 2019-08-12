@@ -3,7 +3,7 @@ dependencies:
   express: 4.17.1
   express-http-to-https: 1.1.4
   helmet: 3.20.0
-  marked: 0.6.3
+  marked: 0.7.0
   sanitize-html: 1.20.1
   socket.io: 2.2.0
 packages:
@@ -587,13 +587,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
-  /marked/0.6.3:
+  /marked/0.7.0:
     dev: false
     engines:
       node: '>=0.10.0'
     hasBin: true
     resolution:
-      integrity: sha512-Fqa7eq+UaxfMriqzYLayfqAE40WN03jf+zHjT18/uXNuzjq3TY0XTbrAoPeqSJrAmPz11VuUA+kBPYOhHt9oOQ==
+      integrity: sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
   /media-typer/0.3.0:
     dev: false
     engines:
@@ -987,6 +987,6 @@ specifiers:
   express: ^4.16.4
   express-http-to-https: ^1.1.4
   helmet: ^3.20.0
-  marked: ^0.6.3
+  marked: ^0.7.0
   sanitize-html: ^1.20.1
   socket.io: ^2.2.0
