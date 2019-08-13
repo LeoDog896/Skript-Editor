@@ -19,9 +19,7 @@ function create(filename, text) {
 }
 function copyTextToClipboard(text) {
   if (!navigator.clipboard) return;
-  navigator.clipboard.writeText(text).then(function() {
-    console.log('Async: Copying to clipboard was successful!');
-  });
+  navigator.clipboard.writeText(text)
 }
 var editor = ace.edit("editor");
 codeBlastAce(ace)

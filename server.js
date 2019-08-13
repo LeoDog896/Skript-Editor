@@ -24,6 +24,11 @@ app.get('/raw', (req, res) => res.sendFile(__dirname + '/views/raw.html'))
 
 app.route('/shorturl').post((req, res) => {
   let tim = tiny(5);
+  let isSame = false;
+  while (!isSame) {
+    tim = tiny(5);
+    if (!humans.find(i => i == tim)) isSame = true
+  }
   humans.push(tim);
   retrieveHumans[tim] = req.body.data
   app.get("/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(1)]))
