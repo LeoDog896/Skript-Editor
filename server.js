@@ -20,7 +20,10 @@ app.get('/alone', (req, res) => res.sendFile(__dirname + '/views/alone.html'))
 app.get('/raw', (req, res) => res.sendFile(__dirname + '/views/raw.html'))
 
 app.route('/shorturl').post((req, res) => {
-  res.send("Parsing a short url")
+  let tim = tiny(5);
+  humans.push(tim);
+  app.get("/" + tim, (req, res) => res.redirect(__dirname + '/views/app.html'))
+  res.json({url: tim})
 }).get((req, res) => res.json({error: "Wrong Method"}))
 
 app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
