@@ -62,3 +62,9 @@ html, body {
   padding: 6px 24px 6px 24px;
   box-shadow: 2px 5px 4px grey;
 }
+pre code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
