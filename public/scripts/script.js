@@ -17,6 +17,12 @@ function create(filename, text) {
   element.click();
   document.body.removeChild(element);
 }
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) return;
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  });
+}
 var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
@@ -99,7 +105,21 @@ $("#hash").click(() => {
     type: "POST",
     url: "/shorturl",
     data: {data: LZString.compressToBase64(editor.getValue())},
-    success: function(data) {new Toast({message: "Link: https://skript-editor.glitch.me/" + data.url})}
+    success: function(data) {
+      let toaster = new Toast({
+        message: "Link: https://skript-editor.glitch.me/" + data.url,
+        type: "success",
+        customButtons: [
+          {
+            text: "Copy",
+            onClick: function() {
+              copyTextToClipboard("https://skript-editor.glitch.me/" + data.url)
+              toaster._close()
+            }
+          }
+        ]
+      })
+    }
   });
 })
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
