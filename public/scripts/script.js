@@ -1,4 +1,6 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast */
+let isReadyShort = true;
+setInterval(() => isReadyShort = true, 5000)
 console.log(location.hash)
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
@@ -125,6 +127,8 @@ $("#file").click(function(){
 })
 
 $("#hash").click(() => {
+  if (!isReadyShort) return;
+  isReadyShort = false
   $.ajax({
     type: "POST",
     url: "/shorturl",
