@@ -86,6 +86,7 @@ $(() => {
       reader.onload = function(e) {
         var text = e.target.result;
       }
+      console.log(reader.readAsText(e.originalEvent.dataTransfer.files[0]))
       editor.setValue(reader.readAsText(e.originalEvent.dataTransfer.files[0]));
     }
   });
