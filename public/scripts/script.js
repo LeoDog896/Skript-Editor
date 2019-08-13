@@ -72,18 +72,18 @@ $(() => {
   $('body').on('dragover', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    $("html").css("filter", "blur(4px)")
+    $("#editor").css("filter", "blur(4px)")
   })
   $('body').on('dragenter', function(e) {
     e.preventDefault();
     e.stopPropagation();
   })
   $("body").on('dragleave', function() {
-    $("html").css("filter", "blur(0px)")
+    $("#editor").css("filter", "blur(0px)")
   })
   $('body').on('drop', function(e){
     if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
-      $("html").css("filter", "blur(0px)")
+      $("#editor").css("filter", "blur(0px)")
       e.preventDefault();
       e.stopPropagation();
       var reader = new FileReader();
@@ -123,6 +123,14 @@ $("#file").click(function(){
     $("#editor").css("width",window.innerWidth);
   }
 })
+editor.commands.addCommand({
+    name: 'myCommand',
+    bindKey: {win: 'Ctrl-G',  mac: 'Command-G'},
+    exec: function(editor) {
+        alert("Ay!")
+    },
+    readOnly: true // false if this command should not apply in readOnly mode
+});
 $("#hash").click(() => {
   $.ajax({
     type: "POST",
