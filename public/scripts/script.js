@@ -72,13 +72,18 @@ $(() => {
   $('body').on('dragover', function(e) {
     e.preventDefault();
     e.stopPropagation();
+    $("html").css("filter", "blur(4px)")
   })
   $('body').on('dragenter', function(e) {
     e.preventDefault();
     e.stopPropagation();
   })
+  $("body").on('dragleave', function() {
+    $("html").css("filter", "blur(0px)")
+  })
   $('body').on('drop', function(e){
     if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
+      $("html").css("filter", "blur(0px)")
       e.preventDefault();
       e.stopPropagation();
       var reader = new FileReader();
@@ -86,7 +91,6 @@ $(() => {
         var text = e.target.result;
         editor.setValue(text)
       }
-      console.log(reader.readAsText(e.originalEvent.dataTransfer.files[0]))
       reader.readAsText(e.originalEvent.dataTransfer.files[0]);
     }
   });
