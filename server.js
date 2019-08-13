@@ -4,6 +4,9 @@ const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const helmet          = require('helmet')
 const markdown        = require('./markdown.js')
 const app             = express();
+const tiny            = require('./tiny.js')
+
+let humans = [];
 
 app.use(redirectToHTTPS());
 app.use(compression());
@@ -15,6 +18,10 @@ app.get('/app', (req, res) => res.sendFile(__dirname + '/views/app.html'));
 app.get('/embed', (req, res) => res.sendFile(__dirname + '/views/embed.html'))
 app.get('/alone', (req, res) => res.sendFile(__dirname + '/views/alone.html'))
 app.get('/raw', (req, res) => res.sendFile(__dirname + '/views/raw.html'))
+
+app.route('/shorturl').post((req, res) => {
+  res.send("Parsing a short url")
+}).get((req, res) => res.json({error: "Wrong Method"}))
 
 app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
 app.get('/api', async (request, response) => response.send(await markdown.buildFile('API.md', {title: "skAPI", desc: "API for Skript Editor", style: "/styles/markdown.css"})))
