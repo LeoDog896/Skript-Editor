@@ -77,6 +77,18 @@ $(() => {
     e.preventDefault();
     e.stopPropagation();
   })
+  $('body').on('drop', function(e){
+    if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(e.originalEvent.dataTransfer.files[0])
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var text = e.target.result;
+      }
+      editor.setValue(reader.readAsText(e.originalEvent.dataTransfer.files[0]));
+    }
+  });
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   Cookies.get("blastCode") && editor.setOption('blastCode', { effect: 1 })
