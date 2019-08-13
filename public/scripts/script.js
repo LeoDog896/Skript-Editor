@@ -123,14 +123,7 @@ $("#file").click(function(){
     $("#editor").css("width",window.innerWidth);
   }
 })
-editor.commands.addCommand({
-    name: 'myCommand',
-    bindKey: {win: 'Ctrl-G',  mac: 'Command-G'},
-    exec: function(editor) {
-        alert("Ay!")
-    },
-    readOnly: true // false if this command should not apply in readOnly mode
-});
+
 $("#hash").click(() => {
   $.ajax({
     type: "POST",
