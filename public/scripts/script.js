@@ -1,5 +1,5 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce */
-console.log(l)
+console.log(location.hash)
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
   {reg: /\s+(command|function) .+:/g, msg: "Declerations of commands & functions should not have whitespaces behind them"},
@@ -94,7 +94,14 @@ $("#file").click(function(){
     $("#editor").css("width",window.innerWidth);
   }
 })
-$("#hash").click(() => location.hash = LZString.compressToBase64(editor.getValue()))
+$("#hash").click(() => {
+  $.ajax({
+    type: "POST",
+    url: "/shorturl",
+    data: {data: LZString.compressToBase64(editor.getValue())},
+    success: function(data) {alert(data.url)}
+  });
+})
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
 $("#blast-o").change(() => {

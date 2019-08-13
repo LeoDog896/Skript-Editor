@@ -27,7 +27,11 @@ app.route('/shorturl').post((req, res) => {
   humans.push(tim);
   retrieveHumans[tim] = req.body.data
   console.log(tim + "|" + req.body.data)
-  app.get("/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.baseUrl.substring(1)]))
+  app.get("/" + tim, (req, res) => {
+    console.log(req.url)
+    console.log(retrieveHumans[req.url.substring(1)])
+    res.redirect("/app#" + retrieveHumans[req.url.substring(1)])
+  })
   res.json({url: tim, data: req.body.data})
 }).get((req, res) => res.json({error: "Wrong Method"}))
 
