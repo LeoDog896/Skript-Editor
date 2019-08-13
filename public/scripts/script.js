@@ -1,4 +1,4 @@
-/* global ace, Mode, Cookies, define, LZString, codeBlastAce */
+/* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast */
 console.log(location.hash)
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
@@ -99,7 +99,7 @@ $("#hash").click(() => {
     type: "POST",
     url: "/shorturl",
     data: {data: LZString.compressToBase64(editor.getValue())},
-    success: function(data) {alert(data.url)}
+    success: function(data) {new Toast({message: "Link: https://skript-editor.glitch.me/" + data.url})}
   });
 })
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
