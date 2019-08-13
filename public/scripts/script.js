@@ -69,6 +69,14 @@ editor.getSession().on('change', function() {
 });
 
 $(() => {
+  $('body').on('dragover', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  })
+  $('body').on('dragenter', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  })
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   Cookies.get("blastCode") && editor.setOption('blastCode', { effect: 1 })
