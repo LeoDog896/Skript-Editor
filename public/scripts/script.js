@@ -81,7 +81,6 @@ $(() => {
     if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
       e.preventDefault();
       e.stopPropagation();
-      console.log(e.originalEvent.dataTransfer.files[0])
       var reader = new FileReader();
       reader.onload = function(e) {
         var text = e.target.result;
