@@ -2,6 +2,7 @@ const express         = require('express');
 const compression     = require('compression')
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const helmet          = require('helmet')
+const bodyParser      = require('body-parser')
 const markdown        = require('./markdown.js')
 const app             = express();
 const tiny            = require('./tiny.js')
@@ -12,6 +13,7 @@ app.use(redirectToHTTPS());
 app.use(compression());
 app.use(express.static('public'));
 app.use(helmet());
+app.use(bodyParser.urlencoded());
 
 app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
 app.get('/app', (req, res) => res.sendFile(__dirname + '/views/app.html'));
@@ -22,8 +24,8 @@ app.get('/raw', (req, res) => res.sendFile(__dirname + '/views/raw.html'))
 app.route('/shorturl').post((req, res) => {
   let tim = tiny(5);
   humans.push(tim);
-  app.get("/" + tim, (req, res) => res.redirect(__dirname + '/views/app.html'))
-  res.json({url: tim})
+  app.get("/" + tim, (req, res) => res.redirect("/app#" + req.body.data))
+  res.json({url: tim, data: req.body.data})
 }).get((req, res) => res.json({error: "Wrong Method"}))
 
 app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
