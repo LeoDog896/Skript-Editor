@@ -84,9 +84,10 @@ $(() => {
       var reader = new FileReader();
       reader.onload = function(e) {
         var text = e.target.result;
+        editor.setValue(text)
       }
       console.log(reader.readAsText(e.originalEvent.dataTransfer.files[0]))
-      editor.setValue(reader.readAsText(e.originalEvent.dataTransfer.files[0]));
+      reader.readAsText(e.originalEvent.dataTransfer.files[0]);
     }
   });
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
