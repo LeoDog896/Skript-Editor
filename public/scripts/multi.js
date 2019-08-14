@@ -159,4 +159,4 @@ $("#discord").click(() => window.open("https://discord.gg/ukEwAAC"))
 
 // Block stuff
 console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
-console.log("If your going to put something inside here -- i dont really care go ahead")
+console.log("If your going to put something inside here, only do it if you know what your doing!")
