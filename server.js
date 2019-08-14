@@ -7,7 +7,6 @@ const markdown        = require('./markdown.js')
 const app             = express();
 const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
-const io              = require('socket.io')(http);
 
 let humans = [];
 let retrieveHumans = [];
@@ -54,6 +53,7 @@ app.post('/shareurl', (req, res) => {
   res.json({url: "share/" + tim, data: req.body.data})
 })
 
+
 app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
 app.get('/api', async (request, response) => response.send(await markdown.buildFile('API.md', {title: "skAPI", desc: "API for Skript Editor", style: "/styles/markdown.css"})))
 app.get('/code_of_conduct', async (request, response) => response.send(await markdown.buildFile('CODE_OF_CONDUCT.md', {title: "skCOC", desc: "Code of Conduct for skript editor", style: "/styles/markdown.css"})))
@@ -61,4 +61,13 @@ app.get('/contributors', async (request, response) => response.send(await markdo
 app.get('/contribution', async (request, response) => response.send(await markdown.buildFile('CONTRIBUTION.md', {title: "Contribution", desc: "Users who contributed to skEditor", style: "/styles/markdown.css"})))
 
 
-const listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
+var listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
+
+const io = require('socket.io').listen(listener);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});

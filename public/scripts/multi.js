@@ -1,4 +1,4 @@
-/* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast */
+/* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast, io */
 let isReadyShort = true;
 setInterval(() => isReadyShort = true, 5000)
 console.log(location.hash)
@@ -70,31 +70,7 @@ editor.getSession().on('change', function() {
 });
 
 $(() => {
-  $('body').on('dragover', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $("#editor").css("filter", "blur(4px)")
-  })
-  $('body').on('dragenter', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  })
-  $("body").on('dragleave', function() {
-    $("#editor").css("filter", "blur(0px)")
-  })
-  $('body').on('drop', function(e){
-    if (e.originalEvent.dataTransfer && e.originalEvent.dataTransfer.files.length) {
-      $("#editor").css("filter", "blur(0px)")
-      e.preventDefault();
-      e.stopPropagation();
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        var text = e.target.result;
-        editor.setValue(text)
-      }
-      reader.readAsText(e.originalEvent.dataTransfer.files[0]);
-    }
-  });
+  let socket = io();
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   setTimeout(() =>Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
@@ -106,24 +82,6 @@ $(() => {
 $("#bytes").html(byteCount(editor.getValue()))
 $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
 $('#import').click(() => document.getElementById("fileElem").click());
-$("#fileElem").change(function(e){
-  let tempFile = e.target.files[0];
-  var reader = new FileReader();
-  reader.readAsText(tempFile, "UTF-8");
-  reader.onload = evt => editor.setValue(evt.target.result);
-});
-$("#file").click(function(){  
-  $(".sidenav").toggle();
-  if ($(".sidenav").is(":visible")){
-    $(".header").css("margin-left","160px");
-    $("#editor").css("margin-left","160px");
-    $("#editor").css("width",window.innerWidth - 160);
-  } else {
-    $("#editor").css("margin-left","0px");
-    $(".header").css("margin-left","0px");
-    $("#editor").css("width",window.innerWidth);
-  }
-})
 
 $("#link").click(() => {
   if (!isReadyShort) return;

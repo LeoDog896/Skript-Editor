@@ -12,8 +12,6 @@
   <body>
     <input type="file" id="fileElem" multiple accept=".sk, .txt" style="display:none" onchange="handleFiles(this.files)">
     <div class="header">
-      <img id="file" class="button" alt="Folders" src="images/file.svg" width="50" height="50">
-      <img id="import" class="button" alt="Upload File(s)" src="images/upload.svg" width="50" height="50">
       <img id="export" class="button" alt="Download File" src="images/download.svg" width="50" height="50">
       <img id="customize" class="button" alt="Customize" src="images/brush.svg" width="50" height="50">
       <img id="options" class="button" alt="Options" src="images/options.svg" width="50" height="50">
@@ -89,7 +87,7 @@
         <input type="number" name="tabsize" id="soft-s" value="4" placeholder="Tab Size">
       </div>
     </div>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/multi.css">
     <link rel="stylesheet" href="lib/toast.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
@@ -100,7 +98,7 @@
     <script src="ace/ext-split.js"></script>
     <script src="ace/ext-language_tools.js"></script>
     <script src="lib/toast.js"></script>
-    <script src="scripts/script.js" defer></script>
+    <script src="scripts/multi.js" defer></script>
     <script>
     if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js', {scope: '/'})
     </script>
