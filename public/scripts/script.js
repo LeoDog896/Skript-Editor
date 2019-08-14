@@ -191,7 +191,7 @@ $("#autocomplete-o").change(() => {
 })
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
-$("#discord").click(() => window.open("https://discord.gg/ukEwAAC"))
+$("#discord").click(() => window.open("https://discord.gg/y9ENcnz"))
 
 
 // Block stuff
