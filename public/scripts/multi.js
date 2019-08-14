@@ -46,6 +46,7 @@ $("#theme").change(() => {
 })
 setTimeout(() => window.parseReady = true, 2000);
 editor.getSession().on('change', function(e) {
+  if (!(editor.curOp && editor.curOp.command.name)) return;
   tempSocket.emit("change", e)
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
