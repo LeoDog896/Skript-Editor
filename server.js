@@ -71,6 +71,7 @@ io.on('connection', function(socket){
     io.emit('userDisconnect', 1)
   });
   socket.on('change', (data) => {
+    console.log(data)
     socket.broadcast.emit("changeEvent", data)
   })
 });

@@ -45,8 +45,8 @@ $("#theme").change(() => {
   Cookies.set('theme', $("#theme").val())
 })
 setTimeout(() => window.parseReady = true, 2000);
-editor.getSession().on('change', function() {
-  tempSocket.emit("change")
+editor.getSession().on('change', function(e) {
+  tempSocket.emit("change", e)
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
@@ -76,7 +76,10 @@ $(() => {
   tempSocket.on("userLogin", () => {
     new Toast({message: 'A user logged in!'});
   })
-  
+  tempSocket.on("changeEvent", e => {
+    console.log(e)
+    editor.session.insert(e.start, e.lines.length == 1 ? e.lines.join("") : e.lines.join("\n"))
+  })
   tempSocket.on("userDisconnect", () => {
     new Toast({message: "A user disconnected!"})
   })
