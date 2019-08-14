@@ -24,7 +24,7 @@ app.get('/embed', (req, res) => res.sendFile(__dirname + '/views/embed.html'))
 app.get('/alone', (req, res) => res.sendFile(__dirname + '/views/alone.html'))
 app.get('/raw', (req, res) => res.sendFile(__dirname + '/views/raw.html'))
 
-app.route('/shorturl').post((req, res) => {
+app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
   let isSame = false;
   while (!isSame) {
@@ -33,9 +33,9 @@ app.route('/shorturl').post((req, res) => {
   }
   humans.push(tim);
   retrieveHumans[tim] = req.body.data
-  app.get("/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(1)]))
-  res.json({url: tim, data: req.body.data})
-}).get((req, res) => res.json({error: "Wrong Method"}))
+  app.get("/u/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(3)]))
+  res.json({url: "u/" + tim, data: req.body.data})
+})
 
 app.post('/shareurl', (req, res) => {
   let tim = tiny(6);
@@ -46,7 +46,10 @@ app.post('/shareurl', (req, res) => {
   }
   humans.push(tim);
   retrieveHumans[tim] = req.body.data
-  app.get("/share/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(1)]))
+  app.get("/share/" + tim, (req, res) => {
+    // TODO make real time share
+    res.redirect("/app#" + retrieveHumans[req.url.substring(7)])
+  })
   res.json({url: "share/" + tim, data: req.body.data})
 })
 

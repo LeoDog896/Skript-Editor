@@ -149,6 +149,33 @@ $("#link").click(() => {
     }
   });
 })
+
+$("#share").click(() => {
+  if (!isReadyShort) return;
+  isReadyShort = false
+  $.ajax({
+    type: "POST",
+    url: "/shareurl",
+    data: {data: LZString.compressToBase64(editor.getValue())},
+    success: function(data) {
+      let toaster = new Toast({
+        message: "Link: https://skript-editor.glitch.me/" + data.url,
+        type: "success",
+        customButtons: [
+          {
+            text: "Copy",
+            onClick: function() {
+              copyTextToClipboard("https://skript-editor.glitch.me/" + data.url)
+              toaster._close()
+            }
+          }
+        ]
+      })
+    }
+  });
+})
+
+
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
 $("#blast-o").change(() => {
