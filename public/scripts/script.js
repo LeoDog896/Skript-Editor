@@ -7,7 +7,7 @@ let errorRegs = [
   {reg: /\s+(command|function) .+:/g, msg: "Declerations of commands & functions should not have whitespaces behind them"},
   {reg: /^(trigger|description|cooldown|permission)([/\w]+|):([/\w+]|)/g, msg: "Command properties should have whitespaces behind them"},
   {reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z"},
-  {reg: /^{_\w+}/g, msg: "You cant use temp variables unless its in an event!"},
+  {reg: /^{_\w+}/g, msg: "You cant use temp variables unless its in an event/command!"},
   {reg: /^(\s|)+format slot \d+ of [\w\s]+/g, msg: "We reccomend using TuSKe instead of skQuery GUI", type: "warning"}
 ]
 function create(filename, text) {
@@ -33,7 +33,6 @@ editor.setValue(
 	trigger:
 		message "You're holding a %type of tool% whose ID is %id of tool%."`
 );
-const { Split } = require('ace/split');
 editor.setOptions({
   useSoftTabs: false,
   enableLiveAutocompletion: true
@@ -98,7 +97,7 @@ $(() => {
   });
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
-  Cookies.get("blastCode") && editor.setOption('blastCode', { effect: 1 })
+  setTimeout(() =>Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
   if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", Cookies.get('autocomplete'))
   if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
   editor.clearSelection();

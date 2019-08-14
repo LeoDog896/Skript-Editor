@@ -23,16 +23,16 @@ app.get('/alone', (req, res) => res.sendFile(__dirname + '/views/alone.html'))
 app.get('/raw', (req, res) => res.sendFile(__dirname + '/views/raw.html'))
 
 app.route('/shorturl').post((req, res) => {
-  let tim = tiny(5);
+  let tim = tiny(6);
   let isSame = false;
   while (!isSame) {
-    tim = tiny(5);
+    tim = tiny(6);
     if (!humans.find(i => i == tim)) isSame = true
   }
   humans.push(tim);
   retrieveHumans[tim] = req.body.data
-  app.get("/s/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(1)]))
-  res.json({url: "s/" + tim, data: req.body.data})
+  app.get("/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(1)]))
+  res.json({url: tim, data: req.body.data})
 }).get((req, res) => res.json({error: "Wrong Method"}))
 
 app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
