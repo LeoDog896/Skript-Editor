@@ -74,6 +74,7 @@ pre code {
 .cat {
   width: 150px;
   transition: 200ms all;
+  user-select: none;
 }
 
 .cat:hover {
