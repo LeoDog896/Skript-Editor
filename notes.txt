@@ -1,0 +1,10 @@
+Assets:
+https://sweetalert2.github.io/#input-types
+https://socket.io/
+https://ireade.github.io/Toast.js/
+
+/Share/ can now tell when a user logs in
+
+/share/ tells that a user has logged in vi toast.js
+
+/share/ tells that a user has disconnected via toast

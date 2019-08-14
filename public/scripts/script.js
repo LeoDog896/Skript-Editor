@@ -151,6 +151,8 @@ $("#link").click(() => {
 })
 
 $("#share").click(() => {
+  window.location = "https://skript-editor.glitch.me/share"
+  /*
   if (!isReadyShort) return;
   isReadyShort = false
   $.ajax({
@@ -172,7 +174,7 @@ $("#share").click(() => {
         ]
       })
     }
-  });
+  });*/
 })
 
 

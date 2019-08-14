@@ -66,8 +66,8 @@ var listener = app.listen(process.env.PORT, () => console.log('Your app is liste
 const io = require('socket.io').listen(listener);
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  io.emit('userLogin', 1)
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    io.emit('userDisconnect', 1)
   });
 });

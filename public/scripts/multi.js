@@ -71,6 +71,13 @@ editor.getSession().on('change', function() {
 
 $(() => {
   let socket = io();
+  socket.on("userLogin", () => {
+    new Toast({message: 'A user logged in!'});
+  })
+  
+  socket.on("userDisconnect", () => {
+    new Toast({message: "A user disconnected!"})
+  })
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   setTimeout(() =>Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
