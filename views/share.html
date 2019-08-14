@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Skript Editor</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Skript editor is a tool that allows you to edit the language designed for minecraft, skript, with autocorrect and error formatting."/>
+    <meta name="theme-color" content="#ffce8f"/>
+    <link rel="manifest" href="/manifest.json">
+  </head>
+  <body>
+    <input type="file" id="fileElem" multiple accept=".sk, .txt" style="display:none" onchange="handleFiles(this.files)">
+    <div class="header">
+      <img id="file" class="button" alt="Folders" src="images/file.svg" width="50" height="50">
+      <img id="import" class="button" alt="Upload File(s)" src="images/upload.svg" width="50" height="50">
+      <img id="export" class="button" alt="Download File" src="images/download.svg" width="50" height="50">
+      <img id="customize" class="button" alt="Customize" src="images/brush.svg" width="50" height="50">
+      <img id="options" class="button" alt="Options" src="images/options.svg" width="50" height="50">
+      <img id="link" class="button" alt="ShortURL" src="images/link.svg" width="50" height="50">
+      <img id="share" class="button" alt="Share" src="images/share.svg" width="50" height="50">
+      <img id="discord" class="button" alt="Discord" src="images/discord.svg" width="50" height="50">
+      <img id="home" class="button" alt="Add to Home Screen" src="images/home.svg" width="50" height="50">
+    </div>
+    <div class="main">
+      <div class="compile-code">
+        <pre name="code" id="editor" style="border: none;"></pre>
+      </div>
+    </div>
+    <div class="footer">
+        Bytes: <span id="bytes">0</span>; Lines: <span id="lines">0</span>;
+    </div>
+    <div class="modal themes-modal">
+      <div class="modal-content">
+        <span class="close-button">×</span>
+        <select id="theme">
+          <optgroup label="Light">
+            <option value="chrome">Chrome</option>
+            <option value="clouds">Clouds</option>
+            <option value="crimson_editor">Crimson</option>
+            <option value="dawn">Dawn</option>
+            <option value="dracula">Dracula</option>
+            <option value="dreamweaver">Dreamweaver</option>
+            <option value="eclipse">Eclipse</option>
+            <option value="github">Github</option>
+            <option value="iplastic">IPlastic</option>
+            <option value="katzenmilch">katzenmilch</option>
+            <option value="kuroir">Kuroir</option>
+            <option value="solarized_light">Solarized</option> <!-- -->
+            <option value="sqlserver">SQLServer</option>
+            <option value="tomorrow_night">Tomorrow Night</option>
+            <option value="terminal">Terminal</option>
+            <option value="textmate" selected>Text Mate</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="xcode">XCode</option>
+          </optgroup>
+          <optgroup label="Dark">
+            <option value="ambiance">Ambiance</option>
+            <option value="chaos">Chaos</option>
+            <option value="clouds_midnight">Clouds (Midnight)</option>
+            <option value="cobalt">Cobalt</option>
+            <option value="gob">Gob</option> <!-- -->
+            <option value="gruvbox">Gruvbox</option>
+            <option value="idle_fingers">Idle Fingers</option>
+            <option value="kr_theme">Kr Theme</option>
+            <option value="merbivore">Merbivore</option>
+            <option value="merbivore_soft">Merbivore (Soft)</option>
+            <option value="mono_industrial">Mono Industrial</option>
+            <option value="monokai">Monokai</option>
+            <option value="pastel_on_dark">Pastel On Dark</option>
+            <option value="solarized_dark">Solarized</option>
+            <option value="tomorrow_night">Tomorrow Night</option>
+            <option value="tomorrow_night_blue">Tomorrow Night Blue</option>
+            <option value="tomorrow_night_bright">Tomorrow Night Bright</option>
+            <option value="tomorrow_night_eighties">Tomorrow Night 80s</option>
+            <option value="twilight">Twilight</option>
+            <option value="vibirant_ink">Vibirant Ink</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <div class="modal options-modal">
+      <div class="modal-content">
+        <span class="close-button">×</span>
+        <input type="checkbox" name="blast" id="blast-o" value="blast">Code Blast<br>
+        <input type="checkbox" name="autocomplete" id="autocomplete-o" checked>Autocompletion<br>
+        <input type="checkbox" name="blast" id="soft-o" value="soft-tab">Soft Tabbing<br>
+        <label for="soft-s">Tab Size:</label>
+        <input type="number" name="tabsize" id="soft-s" value="4" placeholder="Tab Size">
+      </div>
+    </div>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="lib/toast.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js" integrity="sha256-nRoO8HoupfqozUr7YKBRgHXmdx40Hl/04OSBzv7e7L8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="ace/ace.js"></script>
+    <script src="lib/codeblast.js"></script>
+    <script src="ace/ext-split.js"></script>
+    <script src="ace/ext-language_tools.js"></script>
+    <script src="lib/toast.js"></script>
+    <script src="scripts/script.js" defer></script>
+    <script>
+    if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js', {scope: '/'})
+    </script>
+  </body>
+</html>
