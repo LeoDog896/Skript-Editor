@@ -1,5 +1,6 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast, io */
 let isReadyShort = true;
+let tempSocket = 1;
 setInterval(() => isReadyShort = true, 5000)
 console.log(location.hash)
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
@@ -45,6 +46,7 @@ $("#theme").change(() => {
 })
 setTimeout(() => window.parseReady = true, 2000);
 editor.getSession().on('change', function() {
+  tempSocket.emit("change")
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
@@ -70,12 +72,12 @@ editor.getSession().on('change', function() {
 });
 
 $(() => {
-  let socket = io();
-  socket.on("userLogin", () => {
+  tempSocket = io();
+  tempSocket.on("userLogin", () => {
     new Toast({message: 'A user logged in!'});
   })
   
-  socket.on("userDisconnect", () => {
+  tempSocket.on("userDisconnect", () => {
     new Toast({message: "A user disconnected!"})
   })
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));

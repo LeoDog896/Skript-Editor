@@ -67,7 +67,10 @@ const io = require('socket.io').listen(listener);
 
 io.on('connection', function(socket){
   io.emit('userLogin', 1)
-  socket.on('disconnect', function(){
+  socket.on('disconnect', () => {
     io.emit('userDisconnect', 1)
   });
+  socket.on('change', (data) => {
+    socket.broadcast.emit("changeEvent", data)
+  })
 });
