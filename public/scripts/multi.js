@@ -72,8 +72,7 @@ $(() => {
     new Toast({message: 'A user logged in!'});
   })
   tempSocket.on("changeEvent", e => {
-    console.log(e)
-    editor.session.insert(e.start, e.lines.length == 1 ? e.lines.join("") : e.lines.join("\n"))
+    editor.session.redoChanges([e], true)
   })
   tempSocket.on("userDisconnect", () => {
     new Toast({message: "A user disconnected!"})
