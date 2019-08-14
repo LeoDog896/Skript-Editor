@@ -5,7 +5,9 @@ const helmet          = require('helmet')
 const bodyParser      = require('body-parser')
 const markdown        = require('./markdown.js')
 const app             = express();
-const tiny            = require('./tiny.js')
+const tiny            = require('./tiny.js');
+const http            = require('http').createServer(app);
+const io              = require('socket.io')(http);
 
 let humans = [];
 let retrieveHumans = [];
@@ -34,6 +36,19 @@ app.route('/shorturl').post((req, res) => {
   app.get("/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(1)]))
   res.json({url: tim, data: req.body.data})
 }).get((req, res) => res.json({error: "Wrong Method"}))
+
+app.post('/shareurl', (req, res) => {
+  let tim = tiny(6);
+  let isSame = false;
+  while (!isSame) {
+    tim = tiny(6);
+    if (!humans.find(i => i == tim)) isSame = true
+  }
+  humans.push(tim);
+  retrieveHumans[tim] = req.body.data
+  app.get("/share/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(1)]))
+  res.json({url: "share/" + tim, data: req.body.data})
+})
 
 app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
 app.get('/api', async (request, response) => response.send(await markdown.buildFile('API.md', {title: "skAPI", desc: "API for Skript Editor", style: "/styles/markdown.css"})))
