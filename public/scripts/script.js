@@ -126,7 +126,7 @@ $("#file").click(function(){
   }
 })
 
-$("#hash").click(() => {
+$("#link").click(() => {
   if (!isReadyShort) return;
   isReadyShort = false
   $.ajax({
