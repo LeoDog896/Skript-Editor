@@ -23,6 +23,23 @@ function copyTextToClipboard(text) {
   if (!navigator.clipboard) return;
   navigator.clipboard.writeText(text)
 }
+window.isUpdateAvailable = new Promise(function(resolve, reject) {
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('/sw.js').then(reg => {
+		  reg.onupdatefound = () => {
+			  const installingWorker = reg.installing;
+				installingWorker.onstatechange = () => {
+				switch (installingWorker.state) {
+					case 'installed':
+						if (navigator.serviceWorker.controller) resolve(true)
+            else resolve(false);
+						break;
+					}
+        };
+			};
+		}).catch(err => console.error('[SW ERROR]', err));
+	}
+});
 var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
@@ -70,6 +87,11 @@ editor.getSession().on('change', function() {
 });
 
 $(() => {
+  window['isUpdateAvailable'].then(isAvailable => {
+		if (isAvailable) {
+			new Toast({message: "A new update is available! Refresh to update!"})
+		}
+	});
   $('body').on('dragover', function(e) {
     e.preventDefault();
     e.stopPropagation();

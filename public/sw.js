@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-var CACHE_NAME = 'skript_ver01_06'              
+var CACHE_NAME = 'skript_ver01_05-patch'              
 
 // Add a path you want to cache in this list.
 var URLS = [                
@@ -33,6 +33,7 @@ var URLS = [
 // Respond with cached resources
 // This is called everytime the browser requests resources from the server
 self.addEventListener('fetch', function (e) {
+  if (navigator.onLine) self.skipWaiting();
   e.respondWith(
     caches.match(e.request).then(function (request) {
       if (request) {

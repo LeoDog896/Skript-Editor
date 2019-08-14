@@ -3,17 +3,17 @@
   position: absolute;
   top: 1px;
   left: 1px;
-  z-index: 100000
+  z-index: 100000;
 }
 body {
   margin: 0;
   overflow: hidden;
 }
 #editor {
-    margin-top: 50px;
-    width: 100%;
-    height: calc(100vh - 50px - 18px);
-    font-size: 13px;
+  margin-top: 50px;
+  width: 100%;
+  height: calc(100vh - 50px - 18px);
+  font-size: 13px;
 }
 .footer {
   position: fixed;
@@ -23,7 +23,7 @@ body {
   padding: 1px;
   padding-left: 5px;
   height: 18px;
-  background-color: #7ABBFF;
+  background-color: #7abbff;
   color: black;
   width: 100%;
   z-index: 20;
@@ -49,7 +49,7 @@ body {
   background-color: white;
   border-radius: 10px;
 }
-.button:active{
+.button:active {
   transform: scale(1.2);
 }
 .files-header {
@@ -70,24 +70,24 @@ body {
   font-family: 'Inconsolata', monospace;
 }
 .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 24rem;
-    border-radius: 0.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
   font-family: 'Inconsolata', monospace;
 }
 .close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
 }
 .close-button:hover {
   background-color: darkgray;
@@ -95,7 +95,7 @@ body {
 .show-modal {
   opacity: 1;
   visibility: visible;
-  transform: scale(1.0);
+  transform: scale(1);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
   font-family: 'Inconsolata', monospace;
 }
