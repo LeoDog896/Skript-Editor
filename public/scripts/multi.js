@@ -28,12 +28,6 @@ var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/skript");
-editor.setValue(
-  `command /id: # this is a comment
-	description: Find the ID of the item you're holding
-	trigger:
-		message "You're holding a %type of tool% whose ID is %id of tool%."`
-);
 editor.setOptions({
   useSoftTabs: false,
   enableLiveAutocompletion: true
@@ -84,11 +78,9 @@ $(() => {
   tempSocket.on("userDisconnect", () => {
     new Toast({message: "A user disconnected!"})
   })
-  if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   setTimeout(() =>Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
   if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", Cookies.get('autocomplete'))
-  if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
   editor.clearSelection();
   $(`[value=${editor.getTheme().replace("ace/theme/","")}]`).prop('selected', true);
 })
