@@ -42,6 +42,7 @@ The following behaviors are considered harassment and are unacceptable within ou
  * Deliberate intimidation, stalking or following (online or in person).
  * Advocating for, or encouraging, any of the above behavior.
  * Sustained disruption of community events, including talks and presentations.
+ * Anime and furry sub-culture is not allowed here (see rule 12)
 
 ## 5. Weapons Policy
 
@@ -70,7 +71,6 @@ If you feel you have been falsely or unfairly accused of violating this Code of 
 [NOTE: Every organization's governing policies should dictate how you handle warnings and expulsions of community members. It is strongly recommended that you mention those policies here or in Section 7 and that you include a mechanism for addressing grievances.]
 
 ## 9. Scope
-
 We expect all community participants (contributors, paid or otherwise; sponsors; and other guests) to abide by this Code of Conduct in all community venues--online and in-person--as well as in all one-on-one communications pertaining to community business.
 
 This code of conduct and its related procedures also applies to unacceptable behavior occurring outside the scope of community activities when such behavior has the potential to adversely affect the safety and well-being of community members.
@@ -92,3 +92,9 @@ _Revision 2.2. Posted 4 February 2016._
 _Revision 2.1. Posted 23 June 2014._
 
 _Revision 2.0, adopted by the [Stumptown Syndicate](http://stumptownsyndicate.org) board on 10 January 2013. Posted 17 March 2013._
+
+## 12. Illegal instances of OwO
+
+Any illegal instances of OwO will result in a full report of your IP to the local police of that IP and and FBI tip
+
+We take OwO very seriously here >:(
