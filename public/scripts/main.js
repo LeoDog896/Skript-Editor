@@ -2,7 +2,7 @@ var x = new Audio('https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2
 
 document.getElementById("cat").onclick = function() {
   x.play();
-  navigator.vibrate(200);
+  navigator.vibrate(500);
   console.log(1)
 }
 
