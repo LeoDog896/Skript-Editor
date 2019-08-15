@@ -8,6 +8,7 @@ const app             = express();
 const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
 const hbs             = require('hbs');
+const ace             = require('./ace')
 
 let tinyURL = [];
 let tinyURLfetch = [];
@@ -121,21 +122,22 @@ var listener = app.listen(process.env.PORT, () => console.log('Your app is liste
 
 const io = require('socket.io').listen(listener);
 
-var allCode = ""
+Document = ace.Document
+var allCode = new Document("")
 
 io.on('connection', socket => {
   socket.on("login", e => {
     socket.username = e;
-    socket.emit("verified", allCode)
+    socket.emit("verified", allCode.getValue())
     socket.broadcast.emit('userLogin', e)
     socket.on('disconnect', () => {
       if (Object.keys(io.sockets.connected).length == 0) {
-        allCode = "";
+        var allCode = new Document("")
       }
       io.emit('userDisconnect', socket.username)
     });
     socket.on('change', data => {
-      allCode = applyDelta(allCode, data.delta)
+      allCode.applyDelta(data.delta)
       socket.broadcast.emit("changeEvent", data.delta)
     })
   })
