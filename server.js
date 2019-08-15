@@ -8,12 +8,14 @@ const app             = express();
 const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
 const hbs             = require('hbs');
+
 let tinyURL = [];
 let tinyURLfetch = [];
 
 let shareURL = [];
 let shareURLfetch = [];
 
+hbs.registerPartials(__dirname + '/partials');
 app.set('view engine', 'hbs');
 
 app.use(redirectToHTTPS());

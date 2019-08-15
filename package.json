@@ -16,7 +16,8 @@
     "marked": "^0.7.0",
     "socket.io": "^2.2.0",
     "express-handlebars": "^3.1.0",
-    "hbs": "^4.0.4"
+    "hbs": "^4.0.4",
+    "ace-builds": "^1.4.4"
   },
   "engines": {
     "node": "12.x"
