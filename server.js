@@ -7,11 +7,14 @@ const markdown        = require('./markdown.js')
 const app             = express();
 const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
+const hbs             = require('hbs');
 let tinyURL = [];
 let tinyURLfetch = [];
 
 let shareURL = [];
 let shareURLfetch = [];
+
+app.set('view engine', 'hbs');
 
 app.use(redirectToHTTPS());
 app.use(compression());
@@ -19,12 +22,12 @@ app.use(express.static('public'));
 app.use(helmet());
 app.use(bodyParser.urlencoded());
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/views/index.html'));
-app.get('/app', (req, res) => res.sendFile(__dirname + '/views/app.html'));
-app.get('/share', (req, res) => res.sendFile(__dirname + '/views/share.html'))
-app.get('/embed', (req, res) => res.sendFile(__dirname + '/views/embed.html'))
-app.get('/alone', (req, res) => res.sendFile(__dirname + '/views/alone.html'))
-app.get('/raw', (req, res) => res.sendFile(__dirname + '/views/raw.html'))
+app.get('/', (req, res) => res.render('index'));
+app.get('/app', (req, res) => res.render('app'));
+app.get('/share', (req, res) => res.render('share'))
+app.get('/embed', (req, res) => res.render('embed'))
+app.get('/alone', (req, res) => res.render('alone'))
+app.get('/raw', (req, res) => res.render('raw'))
 
 app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
