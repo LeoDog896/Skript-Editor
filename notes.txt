@@ -2,6 +2,7 @@ Assets:
 https://sweetalert2.github.io/#input-types
 https://socket.io/
 https://ireade.github.io/Toast.js/
+cndjs
 
 /Share/ can now tell when a user logs in
 

@@ -46,7 +46,7 @@ app.post('/shareurl', (req, res) => {
   }
   humans.push(tim);
   retrieveHumans[tim] = req.body.data
-  res.json({url: "share/" + tim, data: req.body.data})
+  res.json({url: "share#" + tim, data: req.body.data})
 })
 
 
