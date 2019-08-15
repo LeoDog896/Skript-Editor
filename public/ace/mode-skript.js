@@ -7,7 +7,7 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var SkriptHighlightRules = function() {
 
     var keywords = (
-        "and|if|else if|else|description|command|permission|executable by|cooldown|trigger|aliases|usage|execute|console|loop|all|player|loop-player|victim|entity|attacker|players|action bar|bossbar|ban|unban"
+        "and|if|else if|else|description|command|function|permission|executable by|cooldown|trigger|aliases|usage|execute|console|loop|all|player|loop-player|victim|entity|attacker|players|action bar|bossbar|ban|unban"
     );
 
     var builtinConstants = (

@@ -1,4 +1,4 @@
-const makeid = length => {
+const tiny = length => {
   let result           = '';
   const characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let charactersLength = characters.length;
@@ -7,4 +7,4 @@ const makeid = length => {
   return result;
 }
 
-module.exports = makeid
+module.exports = tiny;

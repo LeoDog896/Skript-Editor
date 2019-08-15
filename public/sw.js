@@ -1,8 +1,8 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-var CACHE_NAME = 'skript_ver01_05-patch'              
+const CACHE_NAME = 'skript_ver01_05-patch'              
 
 // Add a path you want to cache in this list.
-var URLS = [                
+const URLS = [                
   '/',
   '/app',
   'ace/ace.js',
@@ -33,7 +33,6 @@ var URLS = [
 // Respond with cached resources
 // This is called everytime the browser requests resources from the server
 self.addEventListener('fetch', function (e) {
-  if (navigator.onLine) self.skipWaiting();
   e.respondWith(
     caches.match(e.request).then(function (request) {
       if (request) {
@@ -45,21 +44,20 @@ self.addEventListener('fetch', function (e) {
       }
     })
   )
-})
+});
 
 // Cache resources
-self.addEventListener('install', function (e) {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(URLS))
-  )
-})
+self.addEventListener('install', e => e.waitUntil(
+  caches.open(CACHE_NAME).then(cache => cache.addAll(URLS))
+));
 
 // Delete outdated caches
-self.addEventListener('activate', function (e) {
+self.addEventListener('activate', e => {
+  if (navigator.onLine) self.skipWaiting();
   e.waitUntil(
-    caches.keys().then(function (keyList) {
+    caches.keys().then(keyList => {
       // `keyList` contains all cache names under appname.glitch.me domain
-      return Promise.all(keyList.map(function (key, i) {
+      return Promise.all(keyList.map((key, i) => {
         if (keyList[i] !== CACHE_NAME) {
           return caches.delete(keyList[i])
         }
