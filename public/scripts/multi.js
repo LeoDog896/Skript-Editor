@@ -78,7 +78,11 @@ $(() => {
     new Toast({message: "A user disconnected!"})
   })
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
-  setTimeout(() => Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
+  try {
+    setTimeout(() => Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
+  } catch (e) {
+    
+  }
   if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", Cookies.get('autocomplete'))
   editor.clearSelection();
   $(`[value=${editor.getTheme().replace("ace/theme/","")}]`).prop('selected', true);
