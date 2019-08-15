@@ -5,12 +5,3 @@ document.getElementById("cat").onclick = function() {
   navigator.vibrate(500);
   console.log(1)
 }
-
-function playMe() {
-  x.play();
-}
-
-function Stop() {
-  //Most likey wont be used
-  x.stop();
-}

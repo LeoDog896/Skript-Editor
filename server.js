@@ -8,8 +8,11 @@ const app             = express();
 const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
 
-let humans = [];
-let retrieveHumans = [];
+let tinyURL = [];
+let tinyURLfetch = [];
+
+let shareURL = [];
+let shareURLfetch = [];
 
 app.use(redirectToHTTPS());
 app.use(compression());
@@ -29,11 +32,11 @@ app.post('/shorturl', (req, res) => {
   let isSame = false;
   while (!isSame) {
     tim = tiny(6);
-    if (!humans.find(i => i == tim)) isSame = true
+    if (!tinyURL.find(i => i == tim)) isSame = true
   }
-  humans.push(tim);
-  retrieveHumans[tim] = req.body.data
-  app.get("/u/" + tim, (req, res) => res.redirect("/app#" + retrieveHumans[req.url.substring(3)]))
+  tinyURL.push(tim);
+  tinyURLfetch[tim] = req.body.data
+  app.get("/u/" + tim, (req, res) => res.redirect("/app#" + tinyURLfetch[req.url.substring(3)]))
   res.json({url: "u/" + tim, data: req.body.data})
 })
 
@@ -42,10 +45,10 @@ app.post('/shareurl', (req, res) => {
   let isSame = false;
   while (!isSame) {
     tim = tiny(6);
-    if (!humans.find(i => i == tim)) isSame = true
+    if (!shareURL.find(i => i == tim)) isSame = true
   }
-  humans.push(tim);
-  retrieveHumans[tim] = req.body.data
+  shareURL.push(tim);
+  shareURLfetch[tim] = req.body.data
   res.json({url: "share#" + tim, data: req.body.data})
 })
 
