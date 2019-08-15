@@ -44,7 +44,7 @@ editor.getSession().on('change', function(e) {
   tempSocket.emit("change", e)
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
-  Cookies.set('data',editor.getValue());
+  Cookies.set('data-share',editor.getValue());
   if (window.parseReady) {
     editor.getSession().setAnnotations([])
     if (editor.getValue() == "") {
@@ -65,7 +65,7 @@ editor.getSession().on('change', function(e) {
     }
   }
 });
-var username
+var username, tempThingy
 $(() => {
   swal({
     title: "Enter your username",
@@ -98,7 +98,10 @@ $(() => {
     tempSocket.emit("login", username)
     tempSocket.on("verified", () => {
       tempSocket.on("userLogin", e => new Toast({message: `"${e}" logged in!`}))
-      tempSocket.on("changeEvent", e => editor.session.redoChanges([e], true))
+      tempSocket.on("changeEvent", e => {
+        tempThingy = e
+        editor.session.redoChanges([e], true)
+      })
       tempSocket.on("userDisconnect", e => new Toast({message: `"${e}" disconnected!`}))
     })
     
