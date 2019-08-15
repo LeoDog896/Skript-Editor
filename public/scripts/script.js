@@ -61,7 +61,8 @@ $("#theme").change(() => {
   Cookies.set('theme', $("#theme").val())
 })
 setTimeout(() => window.parseReady = true, 2000);
-editor.getSession().on('change', function() {
+editor.getSession().on('change', function(e) {
+  console.log(e)
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());

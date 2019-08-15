@@ -52,6 +52,25 @@ app.post('/shareurl', (req, res) => {
   res.json({url: "share#" + tim, data: req.body.data})
 })
 
+function positionInDocument(docLines, position) {
+    return position.row    >= 0 && position.row    <  docLines.length &&
+           position.column >= 0 && position.column <= docLines[position.row].length;
+}
+
+function validateDelta(docLines, delta) {
+    if (delta.action != "insert" && delta.action != "remove") return false;
+    if (!(delta.lines instanceof Array)) return false;
+    if (!delta.start || !delta.end) return false;
+    var start = delta.start;
+    if (!positionInDocument(docLines, delta.start)) return false;
+    var end = delta.end;
+    if (delta.action == "remove" && !positionInDocument(docLines, end)) return false;
+    var numRangeRows = end.row - start.row;
+    var numRangeLastLineChars = (end.column - (numRangeRows == 0 ? start.column : 0));
+    if (numRangeRows != delta.lines.length - 1 || delta.lines[numRangeRows].length != numRangeLastLineChars) return false;
+  return true;
+}
+
 function applyDelta(text, delta) {
   text = text + '';
   var docLines = text.split('\n')
@@ -112,8 +131,9 @@ io.on('connection', socket => {
       io.emit('userDisconnect', socket.username)
     });
     socket.on('change', data => {
-      allCode = applyDelta(allCode, data)
-      socket.broadcast.emit("changeEvent", data)
+      if (!validateDelta((allCode + '').split("\n"), data.delta)) return;
+      allCode = applyDelta(allCode, data.delta)
+      socket.broadcast.emit("changeEvent", data.delta)
     })
   })
 });
