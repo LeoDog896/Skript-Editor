@@ -9,3 +9,7 @@ https://cdnjs.com/
 /share/ tells that a user has logged in vi toast.js
 
 /share/ tells that a user has disconnected via toast
+
+
+Host -- no special permissions
+just handles the live updates

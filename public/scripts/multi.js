@@ -100,8 +100,6 @@ $(() => {
       tempSocket.on("userLogin", e => new Toast({message: `"${e}" logged in!`}))
       tempSocket.on("changeEvent", e => editor.session.redoChanges([e], true))
       tempSocket.on("userDisconnect", e => new Toast({message: `"${e}" disconnected!`}))
-      tempSocket.on("Oneuser", e => new Toast({message: `"${e}", your the only user here`}))
-      tempSocket.on("Newhost", e => new Toast({message: `"${e}", your the host now`}))
     })
     
   })
