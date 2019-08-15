@@ -46,10 +46,6 @@ app.post('/shareurl', (req, res) => {
   }
   humans.push(tim);
   retrieveHumans[tim] = req.body.data
-  app.get("/share/" + tim, (req, res) => {
-    // TODO make real time share
-    res.redirect("/app#" + retrieveHumans[req.url.substring(7)])
-  })
   res.json({url: "share/" + tim, data: req.body.data})
 })
 
@@ -66,12 +62,7 @@ var listener = app.listen(process.env.PORT, () => console.log('Your app is liste
 const io = require('socket.io').listen(listener);
 
 io.on('connection', function(socket){
-  io.emit('userLogin', 1)
-  socket.on('disconnect', () => {
-    io.emit('userDisconnect', 1)
-  });
-  socket.on('change', (data) => {
-    console.log(data)
-    socket.broadcast.emit("changeEvent", data)
-  })
+  socket.broadcast.emit('userLogin', 1)
+  socket.on('disconnect', () => io.emit('userDisconnect', 1));
+  socket.on('change', data => socket.broadcast.emit("changeEvent", data))
 });
