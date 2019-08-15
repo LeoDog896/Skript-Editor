@@ -78,7 +78,7 @@ $(() => {
     new Toast({message: "A user disconnected!"})
   })
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
-  setTimeout(() =>Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
+  setTimeout(() => Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
   if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", Cookies.get('autocomplete'))
   editor.clearSelection();
   $(`[value=${editor.getTheme().replace("ace/theme/","")}]`).prop('selected', true);
@@ -157,7 +157,6 @@ $("#discord").click(() => window.open("https://discord.gg/y9ENcnz"))
 // Block stuff
 console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
 console.log("If your going to put something inside here, only do it if you know what your doing!")
-
 
 let deferredPrompt;
 const addBtn = document.querySelector('#home');

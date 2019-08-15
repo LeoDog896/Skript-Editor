@@ -119,7 +119,13 @@ $(() => {
   });
   if (Cookies.get('data') && !location.hash) editor.setValue(Cookies.get('data'));
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
-  setTimeout(() =>Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy(), 200)
+  setTimeout(() => {
+    try {
+      Cookies.get("blastCode") ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy()
+    } catch (e) {
+      
+    }
+  }, 200)
   if (Cookies.get("autocomplete")) editor.setOption("enableLiveAutocompletion", Cookies.get('autocomplete'))
   if (location.hash) editor.setValue(LZString.decompressFromBase64(decodeURI(location.hash.substring(1))))
   editor.clearSelection();
@@ -215,6 +221,18 @@ $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
 $("#discord").click(() => window.open("https://discord.gg/y9ENcnz"))
 
+let deferredPrompt;
+const addBtn = document.querySelector('#home');
+$("#home").hide()
+window.addEventListener('beforeinstallprompt', (e) => {
+  deferredPrompt = e;
+  $("#home").show()
+  addBtn.addEventListener('click', e => {
+    addBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => deferredPrompt = null);
+  });
+});
 
 // Block stuff
 console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
