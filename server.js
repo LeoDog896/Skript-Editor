@@ -85,9 +85,10 @@ io.on('connection', function(socket){ /* */
       }
       
       if (socket.host) {
-       if (Object.keys(io.sockets.connected).length == 1) {
-         // TODO alert the user that he is the only one left
-       } 
+        let user = Object.keys(io.sockets.connected)[Math.floor(Math.random()*Object.keys(io.sockets.connected).length)];
+        if (Object.keys(io.sockets.connected).length == 1) {
+          io.to(Object.keys(io.sockets.connected)[0]).emit("Oneuser", socket.usernam)
+        } 
       }
     });
     socket.on('change', data => socket.broadcast.emit("changeEvent", data))

@@ -100,7 +100,10 @@ $(() => {
       tempSocket.on("userLogin", e => new Toast({message: `"${e}" logged in!`}))
       tempSocket.on("changeEvent", e => editor.session.redoChanges([e], true))
       tempSocket.on("userDisconnect", e => new Toast({message: `"${e}" disconnected!`}))
+      tempSocket.on("Oneuser", e => new Toast({message: `"${e}", your the only user here`}))
+      tempSocket.on("Newhost", e => new Toast({message: `"${e}", your the host now`}))
     })
+    
   })
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   try {
@@ -200,6 +203,3 @@ window.addEventListener('beforeinstallprompt', (e) => {
     deferredPrompt.userChoice.then((choiceResult) => deferredPrompt = null);
   });
 });
-
-
-fun
