@@ -68,7 +68,6 @@ var allCode = ""
 
 io.on('connection', function(socket){ /* */
   socket.on("login", e => {
-    console.log(Object.keys(io.sockets.connected))
     if (Object.keys(io.sockets.connected).length == 1) {
       socket.host = true;
     } else {
