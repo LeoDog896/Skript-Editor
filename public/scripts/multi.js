@@ -96,7 +96,8 @@ $(() => {
   }).then(() => {
     tempSocket = io();
     tempSocket.emit("login", username)
-    tempSocket.on("verified", () => {
+    tempSocket.on("verified", text => {
+      editor.setValue(text)
       tempSocket.on("userLogin", e => new Toast({message: `"${e}" logged in!`}))
       tempSocket.on("changeEvent", e => {
         tempThingy = e

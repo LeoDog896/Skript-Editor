@@ -53,6 +53,7 @@ app.post('/shareurl', (req, res) => {
 })
 
 function applyDelta(text, delta) {
+  text = text + '';
   var docLines = text.split('\n')
   var row = delta.start.row;
   var startColumn = delta.start.column;
@@ -100,12 +101,21 @@ var allCode = ""
 
 io.on('connection', socket => {
   socket.on("login", e => {
+    console.log(allCode)
     socket.username = e;
-    socket.emit("verified")
+    socket.emit("verified", allCode)
     socket.broadcast.emit('userLogin', e)
     socket.on('disconnect', () => {
+      console.log(allCode)
+      if (Object.keys(io.sockets.connected).length == 0) {
+        allCode = "";
+      }
       io.emit('userDisconnect', socket.username)
     });
-    socket.on('change', data => socket.broadcast.emit("changeEvent", data))
+    socket.on('change', data => {
+      console.log(allCode)
+      allCode = applyDelta(allCode, data)
+      socket.broadcast.emit("changeEvent", data)
+    })
   })
 });

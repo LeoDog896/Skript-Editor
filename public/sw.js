@@ -11,6 +11,7 @@ const URLS = [
   'ace/ext-language_tools.js',
   'scripts/script.js',
   'styles/main.css',
+  'styles/index.css',
   'images/link.svg',
   'images/brush.svg',
   'images/download.svg',

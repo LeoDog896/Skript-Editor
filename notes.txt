@@ -12,11 +12,6 @@ https://cdnjs.com/
 
 
 
-WHEN user types THEN send delta
-WHEN delta recieved THEN process delta
-WHEN user joins THEN recieve processed data
-WHEN everyone disconnects THEN erase all data
-
 WHEN user clicker 'share' THEN create room ALSO create link tied to room
 
 WHEN user opens share link THEN check link ID and check if link ID is tied to a room, if not send http404
