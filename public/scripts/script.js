@@ -60,9 +60,10 @@ $("#theme").change(() => {
   editor.setTheme("ace/theme/" + $("#theme").val())
   Cookies.set('theme', $("#theme").val())
 })
+var temp;
 setTimeout(() => window.parseReady = true, 2000);
 editor.getSession().on('change', function(e) {
-  console.log(e)
+  temp = e;
   $("#bytes").html(byteCount(editor.getValue()))
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
   Cookies.set('data',editor.getValue());
