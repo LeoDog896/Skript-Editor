@@ -83,6 +83,7 @@ function applyDelta(text, delta) {
       }
       break;
   }
+  console.log(docLines)
   return docLines
 };
 
@@ -101,19 +102,16 @@ var allCode = ""
 
 io.on('connection', socket => {
   socket.on("login", e => {
-    console.log(allCode)
     socket.username = e;
     socket.emit("verified", allCode)
     socket.broadcast.emit('userLogin', e)
     socket.on('disconnect', () => {
-      console.log(allCode)
       if (Object.keys(io.sockets.connected).length == 0) {
         allCode = "";
       }
       io.emit('userDisconnect', socket.username)
     });
     socket.on('change', data => {
-      console.log(allCode)
       allCode = applyDelta(allCode, data)
       socket.broadcast.emit("changeEvent", data)
     })
