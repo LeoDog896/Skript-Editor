@@ -1,4 +1,4 @@
-/* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast, io */
+/* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast, io, swal */
 let isReadyShort = true;
 let tempSocket = 1;
 setInterval(() => isReadyShort = true, 5000)
@@ -65,17 +65,42 @@ editor.getSession().on('change', function(e) {
     }
   }
 });
-
+var username
 $(() => {
-  tempSocket = io();
-  tempSocket.on("userLogin", () => {
-    new Toast({message: 'A user logged in!'});
-  })
-  tempSocket.on("changeEvent", e => {
-    editor.session.redoChanges([e], true)
-  })
-  tempSocket.on("userDisconnect", () => {
-    new Toast({message: "A user disconnected!"})
+  swal({
+    title: "Enter your username",
+    content: {
+      element: "input",
+      attributes: {
+        placeholder: "Enter your username",
+        type: "text",
+      },
+    },
+  }).then(e => {
+    if (/^[\w\d]+/g.test(e)) {
+      swal({
+        icon: "success",
+        title: "Confirmed!",
+        text: "Your username is \"" + e + "\""
+      })
+    } else {
+      let users = ['Dog', 'Cat', 'Rhino', 'Unicorn', 'Horse', 'Mouse', 'Rat', 'Snake', 'Ox', 'Rabbit', 'Monkey', 'Tiger', 'Rooster', 'Chicken', 'Pig', 'Sheep', 'Cow', 'Wolf', 'Dragon', 'Bird', 'Squirrel', 'Goose', 'Duck', 'Hippo', 'Dino', 'Platypus', 'Sloth', 'Panda', 'Slug']
+      e = `User ${users[Math.floor(Math.random()*users.length)]}`;
+      swal({
+        icon: "warning",
+        title: "Wrong Input",
+        text: "Your username is invalid. Switching to " + e
+      })
+    }
+    username = e;
+  }).then(() => {
+    tempSocket = io();
+    tempSocket.emit("login", username)
+    tempSocket.on("verified", () => {
+      tempSocket.on("userLogin", e => new Toast({message: `"${e}" logged in!`}))
+      tempSocket.on("changeEvent", e => editor.session.redoChanges([e], true))
+      tempSocket.on("userDisconnect", e => new Toast({message: `"${e}" disconnected!`}))
+    })
   })
   if (Cookies.get('theme')) editor.setTheme("ace/theme/" + Cookies.get('theme'))
   try {
