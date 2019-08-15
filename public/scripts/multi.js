@@ -200,3 +200,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
     deferredPrompt.userChoice.then((choiceResult) => deferredPrompt = null);
   });
 });
+
+
+fun

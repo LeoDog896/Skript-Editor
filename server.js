@@ -68,10 +68,28 @@ var allCode = ""
 
 io.on('connection', function(socket){ /* */
   socket.on("login", e => {
+    console.log(Object.keys(io.sockets.connected))
+    if (Object.keys(io.sockets.connected).length == 1) {
+      socket.host = true;
+    } else {
+      socket.host = false;
+    }
     socket.username = e;
     socket.emit("verified")
     socket.broadcast.emit('userLogin', e)
-    socket.on('disconnect', () => io.emit('userDisconnect', socket.username));
+    socket.on('disconnect', () => {
+      io.emit('userDisconnect', socket.username)
+      if (Object.keys(io.sockets.connected).length == 0) {
+        //TODO Destroy
+        return;
+      }
+      
+      if (socket.host) {
+       if (Object.keys(io.sockets.connected).length == 1) {
+         // TODO alert the user that he is the only one left
+       } 
+      }
+    });
     socket.on('change', data => socket.broadcast.emit("changeEvent", data))
   })
 });
