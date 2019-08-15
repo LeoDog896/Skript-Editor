@@ -77,9 +77,7 @@ io.on('connection', socket => {
     socket.emit("verified", allCode.getValue())
     socket.broadcast.emit('userLogin', e)
     socket.on('disconnect', () => {
-      if (Object.keys(io.sockets.connected).length == 0) {
-        var allCode = new Document("")
-      }
+      if (Object.keys(io.sockets.connected).length == 0) allCode.setValue("")
       io.emit('userDisconnect', socket.username)
     });
     socket.on('change', data => {
