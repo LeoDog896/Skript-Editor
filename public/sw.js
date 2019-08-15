@@ -32,11 +32,10 @@ const URLS = [
 
 // Respond with cached resources
 // This is called everytime the browser requests resources from the server
-self.addEventListener('fetch', function (e) {
+self.addEventListener('fetch', e => {
   e.respondWith(
-    caches.match(e.request).then(function (request) {
+    caches.match(e.request).then(request => {
       if (request) {
-        // if cache is available, respond with cache
         return request
       } else {
         // if there are no cache, try fetching request
