@@ -64,7 +64,9 @@ var listener = app.listen(process.env.PORT, () => console.log('Your app is liste
 
 const io = require('socket.io').listen(listener);
 
-io.on('connection', function(socket){
+var allCode = ""
+
+io.on('connection', function(socket){ /* */
   socket.on("login", e => {
     socket.username = e;
     socket.emit("verified")
