@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="footer">
-        Bytes: <span id="bytes">0</span>; Lines: <span id="lines">0</span>;
+        {{> footer}}
     </div>
     <div class="modal themes-modal">
       <div class="modal-content">
@@ -45,12 +45,7 @@
     </div>
     <div class="modal options-modal">
       <div class="modal-content">
-        <span class="close-button">×</span>
-        <input type="checkbox" name="blast" id="blast-o" value="blast">Code Blast<br>
-        <input type="checkbox" name="autocomplete" id="autocomplete-o" checked>Autocompletion<br>
-        <input type="checkbox" name="blast" id="soft-o" value="soft-tab">Soft Tabbing<br>
-        <label for="soft-s">Tab Size:</label>
-        <input type="number" name="tabsize" id="soft-s" value="4" placeholder="Tab Size">
+        {{> settings}}
       </div>
     </div>
     <link rel="stylesheet" href="styles/main.css">

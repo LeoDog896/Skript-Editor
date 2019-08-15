@@ -57,60 +57,6 @@ app.post('/shareurl', (req, res) => {
   res.json({url: "share#" + tim, data: req.body.data})
 })
 
-function positionInDocument(docLines, position) {
-    return position.row    >= 0 && position.row    <  docLines.length &&
-           position.column >= 0 && position.column <= docLines[position.row].length;
-}
-
-function validateDelta(docLines, delta) {
-    if (delta.action != "insert" && delta.action != "remove") return false;
-    if (!(delta.lines instanceof Array)) return false;
-    if (!delta.start || !delta.end) return false;
-    var start = delta.start;
-    if (!positionInDocument(docLines, delta.start)) return false;
-    var end = delta.end;
-    if (delta.action == "remove" && !positionInDocument(docLines, end)) return false;
-    var numRangeRows = end.row - start.row;
-    var numRangeLastLineChars = (end.column - (numRangeRows == 0 ? start.column : 0));
-    if (numRangeRows != delta.lines.length - 1 || delta.lines[numRangeRows].length != numRangeLastLineChars) return false;
-  return true;
-}
-
-function applyDelta(text, delta) {
-  text = text + '';
-  var docLines = text.split('\n')
-  var row = delta.start.row;
-  var startColumn = delta.start.column;
-  var line = docLines[row] || "";
-  switch (delta.action) {
-    case "insert":
-      var lines = delta.lines;
-      if (lines.length === 1) {
-        docLines[row] = line.substring(0, startColumn) + delta.lines[0] + line.substring(startColumn);
-      } else {
-        var args = [row, 1].concat(delta.lines);
-        docLines.splice.apply(docLines, args);
-        docLines[row] = line.substring(0, startColumn) + docLines[row];
-        docLines[row + delta.lines.length - 1] += line.substring(startColumn);
-      }
-      break;
-    case "remove":
-      var endColumn = delta.end.column;
-      var endRow = delta.end.row;
-      if (row === endRow) {
-        docLines[row] = line.substring(0, startColumn) + line.substring(endColumn);
-      } else {
-        docLines.splice(
-          row, endRow - row + 1,
-          line.substring(0, startColumn) + docLines[endRow].substring(endColumn)
-        );
-      }
-      break;
-  }
-  console.log(docLines)
-  return docLines
-};
-
 app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
 app.get('/api', async (request, response) => response.send(await markdown.buildFile('API.md', {title: "skAPI", desc: "API for Skript Editor", style: "/styles/markdown.css"})))
 app.get('/code_of_conduct', async (request, response) => response.send(await markdown.buildFile('CODE_OF_CONDUCT.md', {title: "skCOC", desc: "Code of Conduct for skript editor", style: "/styles/markdown.css"})))
