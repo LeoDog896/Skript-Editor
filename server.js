@@ -131,7 +131,6 @@ io.on('connection', socket => {
       io.emit('userDisconnect', socket.username)
     });
     socket.on('change', data => {
-      if (!validateDelta((allCode + '').split("\n"), data.delta)) return;
       allCode = applyDelta(allCode, data.delta)
       socket.broadcast.emit("changeEvent", data.delta)
     })
