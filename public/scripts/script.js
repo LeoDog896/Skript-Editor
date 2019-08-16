@@ -222,18 +222,14 @@ $("#autocomplete-o").change(() => {
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
 $("#discord").click(() => window.open("https://discord.gg/nRQBqgr"))
-$("#toggleMode").click(() => {
-  if (mode == "txt") {
-    mode = "block";
-    $("#toggleMode").attr("src", "../images/text.svg")
-    tglSkTextBlockly()
-  } else {
-    mode = "txt";
-    $("#toggleMode").attr("src", "../images/blockly.svg")
-    tglSkTextBlockly()
-  }
-})
-/* global Blockly */
+var tglSkTextBlockly = () => {
+  $("#blocklyDiv").toggle()
+  $("#blocklyArea").toggle()
+  $("#editor").toggle()
+  Blockly.svgResize(demoWorkspace);
+  Blockly.resizeSvgContents(demoWorkspace)
+  onresize();
+}
 Blockly.Blocks['broadcast'] = {
   init: function() {
     this.appendValueInput("LABEL")
@@ -247,12 +243,24 @@ Blockly.Blocks['broadcast'] = {
  this.setHelpUrl("");
   }
 };
-Blockly.JavaScript['broadcast'] = function(block) {
-  var value_label = Blockly.JavaScript.valueToCode(block, 'LABEL', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
+Blockly.Python['broadcast'] = function(block) {
+  var value_label = Blockly.Python.valueToCode(block, 'LABEL', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
   var code = '...;\n';
   return code;
 };
+$("#toggleMode").click(() => {
+  if (mode == "txt") {
+    mode = "block";
+    $("#toggleMode").attr("src", "../images/text.svg")
+    tglSkTextBlockly()
+  } else {
+    mode = "txt";
+    $("#toggleMode").attr("src", "../images/blockly.svg")
+    tglSkTextBlockly()
+  }
+})
+/* global Blockly */
 var blocklyArea = document.getElementById('blocklyArea');
 var blocklyDiv = document.getElementById('blocklyDiv');
 $("#blocklyDiv").hide()
@@ -279,14 +287,6 @@ var onresize = function(e) {
 };
 window.addEventListener('resize', onresize, false);
 Blockly.svgResize(demoWorkspace);
-let tglSkTextBlockly = () => {
-  $("#blocklyDiv").toggle()
-  $("#blocklyArea").toggle()
-  $("#editor").toggle()
-  Blockly.svgResize(demoWorkspace);
-  Blockly.resizeSvgContents(demoWorkspace)
-  onresize();
-}
 // Block stuff
 console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
 console.log("If your going to put something inside here, only do it if you know what your doing!")
