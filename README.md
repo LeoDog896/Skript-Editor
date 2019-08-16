@@ -8,4 +8,4 @@ Skript editor was created due to a lack of editors for the language Skript.
 
 We use a Apache License Version 2.0 for our project,
 
-Copywrite notice can be found in copywrite-notice.md or [/copywrite/](/copywrite/)
+Copywrite notice can be found in copywrite.md or [/copywrite/](/copywrite/)
