@@ -205,6 +205,8 @@ $("#share").click(() => {
   });
 })
 
+var mode = "txt"
+
 
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
@@ -220,6 +222,17 @@ $("#autocomplete-o").change(() => {
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
 $("#discord").click(() => window.open("https://discord.gg/nRQBqgr"))
+$("#toggleMode").click(() => {
+  if (mode == "txt") {
+    mode = "block";
+    $("#toggleMode").attr("src", "../images/text.svg")
+    tglSkTextBlockly()
+  } else {
+    mode = "txt";
+    $("#toggleMode").attr("src", "../images/blockly.svg")
+    tglSkTextBlockly()
+  }
+})
 /* global Blockly */
 var blocklyArea = document.getElementById('blocklyArea');
 var blocklyDiv = document.getElementById('blocklyDiv');
