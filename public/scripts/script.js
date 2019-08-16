@@ -234,6 +234,25 @@ $("#toggleMode").click(() => {
   }
 })
 /* global Blockly */
+Blockly.Blocks['broadcast'] = {
+  init: function() {
+    this.appendValueInput("LABEL")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(new Blockly.FieldLabelSerializable("broadcast"), "NAME");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(165);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+Blockly.JavaScript['broadcast'] = function(block) {
+  var value_label = Blockly.JavaScript.valueToCode(block, 'LABEL', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};
 var blocklyArea = document.getElementById('blocklyArea');
 var blocklyDiv = document.getElementById('blocklyDiv');
 $("#blocklyDiv").hide()

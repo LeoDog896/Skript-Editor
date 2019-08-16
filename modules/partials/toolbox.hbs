@@ -34,11 +34,12 @@
   </category>
   <category id="catText" colour="160" name="Text">
     <block type="text"></block>
-    <block type="text_print">
-      <value name="TEXT">
-        <shadow type="text">
-          <field name="TEXT">abc</field>
-        </shadow>
+    <block type="broadcast">
+      <field name="NAME">broadcast</field>
+      <value name="LABEL">
+        <block type="text">
+          <field name="TEXT">&amp;athis is a colored broadcast message</field>
+        </block>
       </value>
     </block>
   </category>
