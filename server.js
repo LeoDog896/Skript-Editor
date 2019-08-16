@@ -71,22 +71,25 @@ var listener = app.listen(process.env.PORT, () => console.log('Your app is liste
 const io = require('socket.io').listen(listener);
 
 Document = ace.Document
-var allCode = new Document("")
+var allCode = [];
 
 io.on('connection', socket => {
   socket.on("login", ({username, channel}) => {
     socket.username = username;
     socket.join(channel)
-    io.in(channel).emit('JoinRoom', {username, channel});
+    socket.theChannel = channel;
+    if (!allCode[socket.theChannel]) {
+      allCode[socket.theChannel] = new Document("");
+    }
+    socket.to(channel).emit('JoinRoom', {username, channel});
     socket.emit("verified", allCode.getValue())
-    socket.broadcast.emit('userLogin', username)
     socket.on('disconnect', () => {
-      if (Object.keys(io.sockets.connected).length == 0) allCode.setValue("")
+      if (Object.keys(io.sockets.connected).length == 0) delete allCode[socket.theChannel]
       io.emit('userDisconnect', socket.username)
     });
     socket.on('change', ({delta, cursor, highlight}) => {
-      allCode.applyDelta(delta)
-      socket.broadcast.emit("changeEvent", delta)
+      allCode[socket.theChannel].applyDelta(delta)
+      socket.to(socket.theChannel).emit("changeEvent", delta)
     })
   })
 });

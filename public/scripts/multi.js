@@ -95,10 +95,10 @@ $(() => {
     username = e;
   }).then(() => {
     tempSocket = io();
-    tempSocket.emit("login", username)
+    tempSocket.emit("login", {username, channel: location.hash.substring(1)})
     tempSocket.on("verified", text => {
       editor.setValue(text)
-      tempSocket.on("userLogin", e => new Toast({message: `"${e}" logged in!`}))
+      tempSocket.on("JoinRoom", ({username, channel}) => new Toast({message: `"${username}" logged in!`}))
       tempSocket.on("changeEvent", e => {
         tempThingy = e
         editor.session.redoChanges([e], true)
@@ -185,7 +185,7 @@ $("#autocomplete-o").change(() => {
 })
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
-$("#discord").click(() => window.open("https://discord.gg/y9ENcnz"))
+$("#discord").click(() => window.open("https://discord.gg/nRQBqgr"))
 
 
 // Block stuff
