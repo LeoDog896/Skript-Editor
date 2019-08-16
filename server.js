@@ -9,6 +9,7 @@ const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
 const hbs             = require('hbs');
 const ace             = require('./ace')
+const lzString        = require('lz-string')
 
 let tinyURL = [];
 let tinyURLfetch = [];
@@ -54,6 +55,7 @@ app.post('/shareurl', (req, res) => {
     tim = tiny(6);
     if (!shareURL.find(i => i == tim)) isSame = true
   }
+  if (!allCode[tim]) allCode[tim] = new Document(LZString.decompressFromBase64(req.body.data));
   shareURL.push(tim);
   shareURLfetch[tim] = req.body.data
   res.json({url: "share#" + tim, data: req.body.data})
@@ -64,7 +66,6 @@ app.get('/api', async (request, response) => response.send(await markdown.buildF
 app.get('/code_of_conduct', async (request, response) => response.send(await markdown.buildFile('CODE_OF_CONDUCT.md', {title: "skCOC", desc: "Code of Conduct for skript editor", style: "/styles/markdown.css"})))
 app.get('/contributors', async (request, response) => response.send(await markdown.buildFile('CONTRIBUTION.md', {title: "Contribution", desc: "Users who contributed to skEditor", style: "/styles/markdown.css"})))
 app.get('/contribution', async (request, response) => response.send(await markdown.buildFile('CONTRIBUTION.md', {title: "Contribution", desc: "Users who contributed to skEditor", style: "/styles/markdown.css"})))
-app.get('/goldenwind', async (request, response) => response.render('golden'))
 
 var listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
 

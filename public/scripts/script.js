@@ -239,7 +239,7 @@ var blocklyDiv = document.getElementById('blocklyDiv');
 $("#blocklyDiv").hide()
 $("#blocklyArea").hide()
 var demoWorkspace = Blockly.inject(blocklyDiv, {
-  media: '../../media/',
+  media: '../blocks/media/',
   toolbox: document.getElementById('toolbox')
 });
 var onresize = function(e) {
