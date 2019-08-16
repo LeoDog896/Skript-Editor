@@ -74,17 +74,19 @@ Document = ace.Document
 var allCode = new Document("")
 
 io.on('connection', socket => {
-  socket.on("login", e => {
-    socket.username = e;
+  socket.on("login", ({username, channel}) => {
+    socket.username = username;
+    socket.join(channel)
+    io.in(channel).emit('JoinRoo', 'the game will start soon');
     socket.emit("verified", allCode.getValue())
-    socket.broadcast.emit('userLogin', e)
+    socket.broadcast.emit('userLogin', username)
     socket.on('disconnect', () => {
       if (Object.keys(io.sockets.connected).length == 0) allCode.setValue("")
       io.emit('userDisconnect', socket.username)
     });
-    socket.on('change', data => {
-      allCode.applyDelta(data.delta)
-      socket.broadcast.emit("changeEvent", data.delta)
+    socket.on('change', ({delta, cursor, highlight}) => {
+      allCode.applyDelta(delta)
+      socket.broadcast.emit("changeEvent", delta)
     })
   })
 });
