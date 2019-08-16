@@ -222,29 +222,32 @@ $(".close-button").click(() => $(".modal").removeClass("show-modal"))
 $("#discord").click(() => window.open("https://discord.gg/nRQBqgr"))
 /* global Blockly */
 var blocklyArea = document.getElementById('blocklyArea');
-    var blocklyDiv = document.getElementById('blocklyDiv');
+var blocklyDiv = document.getElementById('blocklyDiv');
 $("#blocklyDiv").hide()
 $("#blocklyArea").hide()
-var demoWorkspace = Blockly.inject(blocklyDiv, {media: '../../media/', toolbox: document.getElementById('toolbox')});
+var demoWorkspace = Blockly.inject(blocklyDiv, {
+  media: '../../media/',
+  toolbox: document.getElementById('toolbox')
+});
 var onresize = function(e) {
-      var element = blocklyArea;
-      var x = 0;
-      var y = 0;
-      do {
-        x += element.offsetLeft;
-        y += element.offsetTop;
-        element = element.offsetParent;
-      } while (element);
-      // Position blocklyDiv over blocklyArea.
-      blocklyDiv.style.left = x + 'px';
-      blocklyDiv.style.top = y + 'px';
-      blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-      blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-      Blockly.svgResize(demoWorkspace);
-    };
-    window.addEventListener('resize', onresize, false);
-    onresize();
-    Blockly.svgResize(demoWorkspace);
+  var element = blocklyArea;
+  var x = 0;
+  var y = 0;
+  do {
+    x += element.offsetLeft;
+    y += element.offsetTop;
+    element = element.offsetParent;
+  } while (element);
+  // Position blocklyDiv over blocklyArea.
+  blocklyDiv.style.left = x + 'px';
+  blocklyDiv.style.top = y + 'px';
+  blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+  blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+  Blockly.svgResize(demoWorkspace);
+};
+window.addEventListener('resize', onresize, false);
+onresize();
+Blockly.svgResize(demoWorkspace);
 let tglSkTextBlockly = () => {
   $("#blocklyDiv").toggle()
   $("#blocklyArea").toggle()
