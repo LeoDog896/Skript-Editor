@@ -5,9 +5,23 @@
   left: 1px;
   z-index: 100000;
 }
-body {
+body, html {
   margin: 0;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+table {
+  margin-top: 50px;
+  margin-left: 160px;
+  width: calc(100% - 160px);
+  height: calc(100vh - 50px - 18px);
+  font-size: 13px;
+}
+
+.blocklyFlyout {
+  width: 300px;
 }
 #editor {
   margin-top: 50px;
@@ -115,4 +129,9 @@ body {
   transform: scale(1);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
   font-family: 'Inconsolata', monospace;
+}
+
+#blocklyArea {
+      height: 99%;
+    
 }

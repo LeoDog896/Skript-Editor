@@ -246,12 +246,12 @@ var onresize = function(e) {
   Blockly.svgResize(demoWorkspace);
 };
 window.addEventListener('resize', onresize, false);
-onresize();
 Blockly.svgResize(demoWorkspace);
 let tglSkTextBlockly = () => {
   $("#blocklyDiv").toggle()
   $("#blocklyArea").toggle()
   $("#editor").toggle()
+  onresize();
 }
 // Block stuff
 console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
