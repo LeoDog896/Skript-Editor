@@ -25,6 +25,8 @@ app.use(express.static('public'));
 app.use(helmet());
 app.use(bodyParser.urlencoded());
 
+app.use('/scratch-blocks', express.static(__dirname + '/scratch-blocks/'));
+
 app.get('/', (req, res) => res.render('index'));
 app.get('/app', (req, res) => res.render('app'));
 app.get('/share', (req, res) => res.render('share'))
