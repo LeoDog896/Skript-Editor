@@ -16,7 +16,7 @@ let tinyURLfetch = [];
 let shareURL = [];
 let shareURLfetch = [];
 
-hbs.registerPartials(__dirname + '/partials');
+hbs.registerPartials(__dirname + '/modules/partials');
 app.set('view engine', 'hbs');
 
 app.use(redirectToHTTPS());
@@ -25,7 +25,7 @@ app.use(express.static('public'));
 app.use(helmet());
 app.use(bodyParser.urlencoded());
 
-app.use('/blocks', express.static(__dirname + '/blocks/'));
+app.use('/blocks', express.static(__dirname + '/modules/blocks/'));
 
 app.get('/', (req, res) => res.render('index'));
 app.get('/app', (req, res) => res.render('app'));
