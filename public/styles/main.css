@@ -19,9 +19,8 @@ table {
   height: calc(100vh - 50px - 18px);
   font-size: 13px;
 }
-
-.blocklyFlyout {
-  width: 300px;
+.blocklyWorkspace {
+  width: 200px;
 }
 #editor {
   margin-top: 50px;
