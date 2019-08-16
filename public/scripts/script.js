@@ -251,6 +251,8 @@ let tglSkTextBlockly = () => {
   $("#blocklyDiv").toggle()
   $("#blocklyArea").toggle()
   $("#editor").toggle()
+  Blockly.svgResize(demoWorkspace);
+  Blockly.resizeSvgContents(demoWorkspace)
   onresize();
 }
 // Block stuff
