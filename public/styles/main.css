@@ -1,10 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
-.add-button {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  z-index: 100000;
-}
 body, html {
   margin: 0;
   overflow: hidden;
@@ -17,8 +11,8 @@ table {
   margin-left: 160px;
   width: calc(100% - 160px);
   height: calc(100vh - 50px - 18px);
-  font-size: 13px;
 }
+
 .blocklyWorkspace {
   width: 200px;
 }
@@ -131,6 +125,10 @@ table {
 }
 
 #blocklyArea {
-      height: 99%;
-    
+  height: 99%;  
+}
+
+
+svg {
+  width: 172.093 !important;
 }

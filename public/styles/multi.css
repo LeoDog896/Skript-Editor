@@ -1,10 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
-.add-button {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  z-index: 100000;
-}
 body {
   margin: 0;
   overflow: hidden;
