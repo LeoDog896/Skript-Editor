@@ -78,14 +78,12 @@ io.on('connection', socket => {
     socket.username = username;
     socket.join(channel)
     socket.theChannel = channel;
-    if (!allCode[socket.theChannel]) {
-      allCode[socket.theChannel] = new Document("");
-    }
+    if (!allCode[socket.theChannel]) allCode[socket.theChannel] = new Document("");
     socket.to(channel).emit('JoinRoom', {username, channel});
-    socket.emit("verified", allCode.getValue())
+    socket.emit("verified", allCode[socket.theChannel].getValue())
     socket.on('disconnect', () => {
       if (Object.keys(io.sockets.connected).length == 0) delete allCode[socket.theChannel]
-      io.emit('userDisconnect', socket.username)
+      io.to(socket.theChannel).emit('userDisconnect', socket.username)
     });
     socket.on('change', ({delta, cursor, highlight}) => {
       allCode[socket.theChannel].applyDelta(delta)
