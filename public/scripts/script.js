@@ -248,8 +248,9 @@ Blockly.Blocks['broadcast'] = {
   }
 };
 Blockly.Python['broadcast'] = function(block) {
-  var value = block.getFieldValue('NAME')
-  var code = 'broadcast "' + value + "\"";
+  console.log(block)
+  var value = Blockly.Python.valueToCode(block,"LABEL",Blockly.Python.ORDER_NONE)
+  var code = 'broadcast "' + (value).substring(1, value.length-1) + "\"\n";
   return code;
 };
 $("#toggleMode").click(() => {
