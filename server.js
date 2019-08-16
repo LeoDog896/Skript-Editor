@@ -55,7 +55,7 @@ app.post('/shareurl', (req, res) => {
     tim = tiny(6);
     if (!shareURL.find(i => i == tim)) isSame = true
   }
-  if (!allCode[tim]) allCode[tim] = new Document(LZString.decompressFromBase64(req.body.data));
+  if (!allCode[tim]) allCode[tim] = new Document(lzString.decompressFromBase64(req.body.data));
   shareURL.push(tim);
   shareURLfetch[tim] = req.body.data
   res.json({url: "share#" + tim, data: req.body.data})
