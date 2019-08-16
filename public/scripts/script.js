@@ -226,9 +226,13 @@ var tglSkTextBlockly = () => {
   $("#blocklyDiv").toggle()
   $("#blocklyArea").toggle()
   $("#editor").toggle()
-  Blockly.svgResize(demoWorkspace);
-  Blockly.resizeSvgContents(demoWorkspace)
+  Blockly.svgResize(workspace);
+  Blockly.resizeSvgContents(workspace)
   onresize();
+}
+
+function escapeString(str) {
+  str.replace('"', '""')
 }
 Blockly.Blocks['broadcast'] = {
   init: function() {
@@ -244,9 +248,8 @@ Blockly.Blocks['broadcast'] = {
   }
 };
 Blockly.Python['broadcast'] = function(block) {
-  var value_label = Blockly.Python.valueToCode(block, 'LABEL', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...;\n';
+  var value = block.getFieldValue('NAME')
+  var code = 'broadcast "' + value + "\"";
   return code;
 };
 $("#toggleMode").click(() => {
@@ -265,7 +268,7 @@ var blocklyArea = document.getElementById('blocklyArea');
 var blocklyDiv = document.getElementById('blocklyDiv');
 $("#blocklyDiv").hide()
 $("#blocklyArea").hide()
-var demoWorkspace = Blockly.inject(blocklyDiv, {
+var workspace = Blockly.inject(blocklyDiv, {
   media: '../blocks/media/',
   toolbox: document.getElementById('toolbox')
 });
@@ -283,10 +286,10 @@ var onresize = function(e) {
   blocklyDiv.style.top = y + 'px';
   blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
   blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-  Blockly.svgResize(demoWorkspace);
+  Blockly.svgResize(workspace);
 };
 window.addEventListener('resize', onresize, false);
-Blockly.svgResize(demoWorkspace);
+Blockly.svgResize(workspace);
 // Block stuff
 console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
 console.log("If your going to put something inside here, only do it if you know what your doing!")
