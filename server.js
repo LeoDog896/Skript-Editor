@@ -51,10 +51,7 @@ app.post('/shorturl', (req, res) => {
 app.post('/shareurl', (req, res) => {
   let tim = tiny(6);
   let isSame = false;
-  while (!isSame) {
-    tim = tiny(6);
-    if (!shareURL.find(i => i == tim)) isSame = true
-  }
+  while (!isSame) !shareURL.find(i => i == tim) ? isSame = true : tim = tiny(6);
   if (!allCode[tim]) allCode[tim] = new Document(lzString.decompressFromBase64(req.body.data));
   shareURL.push(tim);
   shareURLfetch[tim] = req.body.data
