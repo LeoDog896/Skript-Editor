@@ -77,7 +77,7 @@ io.on('connection', socket => {
   socket.on("login", ({username, channel}) => {
     socket.username = username;
     socket.join(channel)
-    io.in(channel).emit('JoinRoo', 'the game will start soon');
+    io.in(channel).emit('JoinRoom', {username, channel});
     socket.emit("verified", allCode.getValue())
     socket.broadcast.emit('userLogin', username)
     socket.on('disconnect', () => {
