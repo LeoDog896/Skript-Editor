@@ -235,6 +235,56 @@ function escapeString(str) {
   str.replace('"', '""')
 }
 
+Blockly.Blocks['string_split'] = {
+  init: function() {
+    this.appendValueInput("STRING")
+        .setCheck("String");
+    this.appendValueInput("SPLITTER")
+        .setCheck("String")
+        .appendField("split at");
+    this.setInputsInline(true);
+    this.setOutput(true, "String");
+    this.setColour(150);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Python['string_split'] = function(block) {
+  var value_string = Blockly.Python.valueToCode(block, 'STRING', Blockly.Python.ORDER_ATOMIC);
+  var value_splitter = Blockly.Python.valueToCode(block, 'SPLITTER', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Blocks['condition_repeat'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("repeat");
+    this.appendValueInput("NAME")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("times");
+    this.appendStatementInput("BLOCKS")
+        .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Python['condition_repeat'] = function(block) {
+  var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
+  var statements_blocks = Blockly.Python.statementToCode(block, 'BLOCKS');
+  // TODO: Assemble Python into code variable.
+  var code = 'loop ' + value_name + " times:\n" + statements_blocks;
+  return code;
+};
+
 Blockly.Blocks['event_skript_load'] = {
   init: function() {
     this.appendDummyInput()
