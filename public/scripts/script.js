@@ -234,6 +234,26 @@ var tglSkTextBlockly = () => {
 function escapeString(str) {
   str.replace('"', '""')
 }
+
+Blockly.Blocks['event_skript_load'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("On skript load");
+    this.appendStatementInput("INFO")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Python['event_skript_load'] = function(block) {
+  var statements_info = Blockly.Python.statementToCode(block, 'INFO');
+  console.log(statements_info)
+  var code = '...\n';
+  return code;
+};
+
 Blockly.Blocks['broadcast'] = {
   init: function() {
     this.appendValueInput("LABEL")
@@ -253,6 +273,8 @@ Blockly.Python['broadcast'] = function(block) {
   var code = 'broadcast "' + (value).substring(1, value.length-1) + "\"\n";
   return code;
 };
+
+
 $("#toggleMode").click(() => {
   if (mode == "txt") {
     mode = "block";
