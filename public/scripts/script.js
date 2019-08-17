@@ -235,6 +235,35 @@ function escapeString(str) {
   str.replace('"', '""')
 }
 
+Blockly.Blocks['create_command'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck("String")
+        .appendField("command");
+    this.appendStatementInput("Attributes")
+        .setCheck("type")
+        .appendField("attributes");
+    this.appendStatementInput("BLOCKS")
+        .setCheck(null)
+        .appendField("on run");
+    this.appendDummyInput()
+        .appendField("");
+    this.setInputsInline(false);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Python['create_command'] = function(block) {
+  var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
+  var statements_attributes = Blockly.Python.statementToCode(block, 'Attributes');
+  var statements_blocks = Blockly.Python.statementToCode(block, 'BLOCKS');
+  // TODO: Assemble Python into code variable.
+  var code = 'command ' + value_name + ":" ;
+  return code;
+};
+
 Blockly.Blocks['string_split'] = {
   init: function() {
     this.appendValueInput("STRING")
