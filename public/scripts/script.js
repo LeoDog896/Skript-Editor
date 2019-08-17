@@ -250,7 +250,7 @@ Blockly.Blocks['event_skript_load'] = {
 Blockly.Python['event_skript_load'] = function(block) {
   var statements_info = Blockly.Python.statementToCode(block, 'INFO');
   console.log(statements_info)
-  var code = '...\n';
+  var code = 'on load:\n' + statements_info;
   return code;
 };
 
