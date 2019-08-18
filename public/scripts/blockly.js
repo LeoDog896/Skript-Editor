@@ -31,11 +31,11 @@ Blockly.Blocks['create_command'] = {
 };
 
 Blockly.Python['create_command'] = function(block) {
-  var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
+  var value_name = block.getFieldValue('NAME')
   var statements_attributes = Blockly.Python.statementToCode(block, 'Attributes');
   var statements_blocks = Blockly.Python.statementToCode(block, 'BLOCKS');
   // TODO: Assemble Python into code variable.
-  var code = 'command ' + value_name + ":\n" + statements_attributes + "\t\ntrigger:\n" + statements_blocks;
+  var code = 'command ' + value_name + ":\n" + statements_attributes + "\ntrigger:\n" + statements_blocks;
   console.log(statements_attributes, "||", statements_blocks)
   return code;
 };
