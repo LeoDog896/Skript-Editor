@@ -28,13 +28,13 @@ Blockly.Blocks['random_num'] = {
   }
 };
 
-Blockly.JavaScript['random_num'] = function(block) {
-  var value_min = Blockly.JavaScript.valueToCode(block, 'MIN', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_max = Blockly.JavaScript.valueToCode(block, 'MAX', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
+Blockly.Python['random_num'] = function(block) {
+  var value_min = Blockly.Python.valueToCode(block, 'MIN', Blockly.Python.ORDER_ATOMIC);
+  var value_max = Blockly.Python.valueToCode(block, 'MAX', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
   var code = `random integer between ${value_min} and ${value_max}`;
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return [code, Blockly.Python.ORDER_NONE];
 };
 
 Blockly.Blocks['create_command'] = {
