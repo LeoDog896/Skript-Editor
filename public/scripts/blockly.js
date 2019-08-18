@@ -36,6 +36,7 @@ Blockly.Python['create_command'] = function(block) {
   var statements_blocks = Blockly.Python.statementToCode(block, 'BLOCKS');
   // TODO: Assemble Python into code variable.
   var code = 'command ' + value_name + ":\n" + statements_attributes + "\t\ntrigger:\n" + statements_blocks;
+  console.log(statements_attributes, "||", statements_blocks)
   return code;
 };
 
