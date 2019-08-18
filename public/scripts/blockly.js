@@ -23,8 +23,6 @@ Blockly.Blocks['create_command'] = {
     this.appendStatementInput("BLOCKS")
         .setCheck(null)
         .appendField("on run");
-    this.appendDummyInput()
-        .appendField("");
     this.setInputsInline(false);
     this.setColour(65);
  this.setTooltip("");
@@ -37,7 +35,7 @@ Blockly.Python['create_command'] = function(block) {
   var statements_attributes = Blockly.Python.statementToCode(block, 'Attributes');
   var statements_blocks = Blockly.Python.statementToCode(block, 'BLOCKS');
   // TODO: Assemble Python into code variable.
-  var code = 'command ' + value_name + ":\n" + statements_attributes + "\ntrigger:" + statements_blocks;
+  var code = 'command ' + value_name + ":\n" + statements_attributes + "\t\ntrigger:\n" + statements_blocks;
   return code;
 };
 
