@@ -12,6 +12,31 @@ function escapeString(str) {
   str.replace('"', '""')
 }
 
+Blockly.Blocks['random_num'] = {
+  init: function() {
+    this.appendValueInput("MIN")
+        .setCheck("Number")
+        .appendField("random number between");
+    this.appendValueInput("MAX")
+        .setCheck("Number")
+        .appendField("and");
+    this.setInputsInline(true);
+    this.setOutput(true, "Number");
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['random_num'] = function(block) {
+  var value_min = Blockly.JavaScript.valueToCode(block, 'MIN', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_max = Blockly.JavaScript.valueToCode(block, 'MAX', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = `random integer between ${value_min} and ${value_max}`;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 Blockly.Blocks['create_command'] = {
   init: function() {
     this.appendValueInput("NAME")
@@ -74,8 +99,8 @@ Blockly.Blocks['condition_repeat'] = {
         .appendField("times");
     this.appendStatementInput("BLOCKS")
         .setCheck(null);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+    this.setPreviousStatement(true, "code");
+    this.setNextStatement(true, "code");
     this.setColour(120);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -115,8 +140,8 @@ Blockly.Blocks['broadcast'] = {
         .setCheck("String")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(new Blockly.FieldLabelSerializable("broadcast"), "NAME");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+    this.setPreviousStatement(true, "code");
+    this.setNextStatement(true, "code");
     this.setColour(165);
  this.setTooltip("");
  this.setHelpUrl("");
