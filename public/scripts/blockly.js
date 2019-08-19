@@ -12,6 +12,24 @@ function escapeString(str) {
   str.replace('"', '""')
 }
 
+Blockly.Blocks['cancel_event'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("cancel the event");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, "code");
+    this.setNextStatement(true, "code");
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Python['cancel_event'] = function(block) {
+  var code = 'cancel the event';
+  return code;
+};
+
 Blockly.Blocks['random_num'] = {
   init: function() {
     this.appendValueInput("MIN")
