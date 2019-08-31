@@ -4,12 +4,13 @@ setInterval(() => isReadyShort = true, 5000)
 console.log(location.hash)
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
-  {reg: /\s+(command|function) .+:/g, msg: "Declerations of commands & functions should not have whitespaces behind them"},
-  {reg: /^(trigger|description|cooldown|permission)([/\w]+|):([/\w+]|)/g, msg: "Command properties should have whitespaces behind them"},
-  {reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z"},
-  {reg: /^{_\w+}/g, msg: "You cant use temp variables unless its in an event/command!"},
-  {reg: /^(\s|)+format slot \d+ of [\w\s]+/g, msg: "We reccomend using TuSKe instead of skQuery GUI", type: "warning"}
+  { reg: /\s+(command|function) .+:/g, msg: 'Declerations of commands & functions should not have whitespaces behind them' },
+  { reg: /^(trigger|description|cooldown|permission)([/\w]+|):([/\w+]|)/g, msg: 'Command properties should have whitespaces behind them' },
+  { reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z" },
+  { reg: /^{_\w+}/g, msg: 'You cant use temp variables unless its in an event/command!' },
+  { reg: /^(\s|)+format slot \d+ of [\w\s]+/g, msg: 'We recommend using TuSKe instead of skQuery GUI", type: "warning' }
 ]
+
 function create(filename, text) {
   let element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -19,10 +20,12 @@ function create(filename, text) {
   element.click();
   document.body.removeChild(element);
 }
+
 function copyTextToClipboard(text) {
   if (!navigator.clipboard) return;
   navigator.clipboard.writeText(text)
 }
+
 window.isUpdateAvailable = new Promise(function(resolve, reject) {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/sw.js').then(reg => {
@@ -44,12 +47,12 @@ var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/skript");
-editor.setValue(
-  `command /id: # this is a comment
+editor.setValue(`
+command /id: # this is a comment
 	description: Find the ID of the item you're holding
 	trigger:
-		message "You're holding a %type of tool% whose ID is %id of tool%."`
-);
+		message "You're holding a %type of tool% whose ID is %id of tool%."
+`);
 editor.setOptions({
   useSoftTabs: false,
   enableLiveAutocompletion: true
@@ -225,4 +228,4 @@ $("#discord").click(() => window.open("https://discord.gg/nRQBqgr"))
 
 // Block stuff
 console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
-console.log("If your going to put something inside here, only do it if you know what your doing!")
+console.log("If you're going to put something inside here, only do it if you know what your doing!")
