@@ -1,4 +1,4 @@
-module.exports.tiny = length => {
+module.exports = length => {
   let result           = '';
   const characters     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let charactersLength = characters.length;
