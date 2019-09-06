@@ -3,8 +3,8 @@ const marked = require('marked')
 
 class Markdown {
   constructor() {
-    this.buildText = this.buildText.bind(this)
-    this.buildFile = this.buildFile.bind(this)
+    this.buildText = this.buildText.bind(this);
+    this.buildFile = this.buildFile.bind(this);
   }
   
   async buildText (txt, options) {
@@ -23,12 +23,12 @@ class Markdown {
           <style>@import url("${options.style}");</style>
         </body>
       </html>
-    `
+    `;
   }
   
   async buildFile (file, options) {
-    return await this.buildText(await fs.readFile(file, 'utf8'), options)
+    return await this.buildText(await fs.readFile(file, 'utf8'), options);
   }
 }
 
-module.exports = new Markdown()
+module.exports = new Markdown();

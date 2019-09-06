@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var Anchor = exports.Anchor = function(doc, row, column) {
   this.$onChange = this.onChange.bind(this);
   this.attach(doc);

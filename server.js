@@ -37,35 +37,71 @@ app.get('/raw', (req, res) => res.render('raw'));
 
 app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
-  let isSame = false;
-  while (!isSame) {
+  while (!tinyURL.find(i => i == tim)) {
     tim = tiny(6);
-    if (!tinyURL.find(i => i == tim)) isSame = true
   }
   tinyURL.push(tim);
-  tinyURLfetch[tim] = req.body.data
-  app.get("/u/" + tim, (req, res) => res.redirect("/app#" + tinyURLfetch[req.url.substring(3)]))
-  res.json({url: "u/" + tim, data: req.body.data})
-})
+  tinyURLfetch[tim] = req.body.data;
+  app.get(`u/${tim}`, (req, res) => res.redirect(`/app#${tinyURLfetch[req.url.substring(3)]}`));
+  res.json({
+    url: `u/${tim}`,
+    data: req.body.data,
+  });
+});
 
 app.post('/shareurl', (req, res) => {
   let tim = tiny(6);
-  let isSame = false;
-  while (!isSame) {
+  while (!shareURL.find(i => i == tim)) {
     tim = tiny(6);
-    if (!shareURL.find(i => i == tim)) isSame = true
   }
   if (!allCode[tim]) allCode[tim] = new Document(lzString.decompressFromBase64(req.body.data));
   shareURL.push(tim);
   shareURLfetch[tim] = req.body.data
-  res.json({url: "share#" + tim, data: req.body.data})
-})
+  res.json({
+    url: `share#${tim}`,
+    data: req.body.data,
+  });
+});
 
-app.get('/license', async (request, response) => response.send(await markdown.buildFile('LICENSE.md', {title: "skLicense", desc: "License for Skript Editor", style: "/styles/markdown.css"})))
-app.get('/api', async (request, response) => response.send(await markdown.buildFile('API.md', {title: "skAPI", desc: "API for Skript Editor", style: "/styles/markdown.css"})))
-app.get('/code_of_conduct', async (request, response) => response.send(await markdown.buildFile('CODE_OF_CONDUCT.md', {title: "skCOC", desc: "Code of Conduct for skript editor", style: "/styles/markdown.css"})))
-app.get('/contributors', async (request, response) => response.send(await markdown.buildFile('CONTRIBUTION.md', {title: "Contribution", desc: "Users who contributed to skEditor", style: "/styles/markdown.css"})))
-app.get('/contribution', async (request, response) => response.send(await markdown.buildFile('CONTRIBUTION.md', {title: "Contribution", desc: "Users who contributed to skEditor", style: "/styles/markdown.css"})))
+app.get('/license', async (req, res) => {
+  res.send(await markdown.buildFile('LICENSE.md', {
+    title: 'skLicense',
+    desc: 'License for Skript Editor',
+    style: '/styles/markdown.css',
+  }));
+});
+
+app.get('/api', async (req, res) => {
+  res.send(await markdown.buildFile('API.md', {
+    title: 'skAPI',
+    desc: 'API for Skript Editor',
+    style: '/styles/markdown.css',
+  }));
+});
+
+app.get('/code_of_conduct', async (req, res) => {
+  res.send(await markdown.buildFile('CODE_OF_CONDUCT.md', {
+    title: 'skCOC',
+    desc: 'Code of Conduct for skript editor',
+    style: '/styles/markdown.css',
+  }));
+});
+
+app.get('/contributors', async (req, res) => {
+  res.send(await markdown.buildFile('CONTRIBUTION.md', {
+    title: 'Contribution',
+    desc: 'Users who contributed to skEditor',
+    style: '/styles/markdown.css',
+  }));
+});
+
+app.get('/contribution', async (req, res) => {
+  res.send(await markdown.buildFile('CONTRIBUTION.md', {
+    title: 'Contribution',
+    desc: 'Users who contributed to skEditor',
+    style: '/styles/markdown.css',
+  }));
+});
 
 var listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
 
