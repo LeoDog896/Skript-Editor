@@ -24,16 +24,16 @@ app.use(redirectToHTTPS());
 app.use(compression());
 app.use(express.static('public'));
 app.use(helmet());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/blocks', express.static(__dirname + '/modules/blocks/'));
 
 app.get('/', (req, res) => res.render('index'));
 app.get('/app', (req, res) => res.render('app'));
-app.get('/share', (req, res) => res.render('share'))
-app.get('/embed', (req, res) => res.render('embed'))
-app.get('/alone', (req, res) => res.render('alone'))
-app.get('/raw', (req, res) => res.render('raw'))
+app.get('/share', (req, res) => res.render('share'));
+app.get('/embed', (req, res) => res.render('embed'));
+app.get('/alone', (req, res) => res.render('alone'));
+app.get('/raw', (req, res) => res.render('raw'));
 
 app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
@@ -75,20 +75,20 @@ Document = ace.Document
 var allCode = [];
 
 io.on('connection', socket => {
-  socket.on("login", ({username, channel}) => {
+  socket.on('login', ({ username, channel }) => {
     socket.username = username;
-    socket.join(channel)
+    socket.join(channel);
     socket.theChannel = channel;
-    if (!allCode[socket.theChannel]) allCode[socket.theChannel] = new Document("");
+    if (!allCode[socket.theChannel]) allCode[socket.theChannel] = new Document('');
     socket.to(channel).emit('JoinRoom', {username, channel});
-    socket.emit("verified", allCode[socket.theChannel].getValue())
+    socket.emit('verified', allCode[socket.theChannel].getValue());
     socket.on('disconnect', () => {
-      if (Object.keys(io.sockets.connected).length == 0) delete allCode[socket.theChannel]
-      io.to(socket.theChannel).emit('userDisconnect', socket.username)
+      if (Object.keys(io.sockets.connected).length == 0) delete allCode[socket.theChannel];
+      io.to(socket.theChannel).emit('userDisconnect', socket.username);
     });
-    socket.on('change', ({delta, cursor, highlight}) => {
-      allCode[socket.theChannel].applyDelta(delta)
-      socket.to(socket.theChannel).emit("changeEvent", delta)
-    })
-  })
+    socket.on('change', ({ delta, cursor, highlight }) => {
+      allCode[socket.theChannel].applyDelta(delta);
+      socket.to(socket.theChannel).emit('changeEvent', delta);
+    });
+  });
 });
