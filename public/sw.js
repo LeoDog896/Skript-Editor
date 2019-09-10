@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-const CACHE_NAME = 'skEditor-1.0.0.3'              
+const CACHE_NAME = 'skEditor-1.0.0.4'              
 
 // Add a path you want to cache in this list.
 const URLS = [                
@@ -8,6 +8,8 @@ const URLS = [
   'ace/ace.js',
   'lib/codeblast.js',
   'ace/ext-split.js',
+  'ace/ext-prompt.js',
+  'ace/ext-searchbox.js',
   'ace/ext-language_tools.js',
   'scripts/script.js',
   'styles/main.css',
