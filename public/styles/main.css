@@ -64,9 +64,7 @@ table {
   height: 50px;
   z-index: 20;
   font-size: 9px;
-  overflow: scroll;
   overflow-y: hidden; 
-  overflow-x: scroll; 
 }
 .button {
   transition: 200ms all;

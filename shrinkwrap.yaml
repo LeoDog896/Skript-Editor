@@ -5,11 +5,11 @@ dependencies:
   express-alias: 0.4.0
   express-handlebars: 3.1.0
   express-http-to-https: 1.1.4
-  hbs: 4.0.4
-  helmet: 3.21.0
+  hbs: 4.0.5
+  helmet: 3.21.1
   lz-string: 1.4.4
   marked: 0.7.0
-  socket.io: 2.2.0
+  socket.io: 2.3.0
 packages:
   /accepts/1.3.7:
     dependencies:
@@ -40,12 +40,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
-  /async/2.6.3:
-    dependencies:
-      lodash: 4.17.15
-    dev: false
-    resolution:
-      integrity: sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==
   /backo2/1.0.2:
     dev: false
     resolution:
@@ -60,12 +54,12 @@ packages:
       node: '>= 0.6.0'
     resolution:
       integrity: sha1-c5JncZI7Whl0etZmqlzUv5xunOg=
-  /base64id/1.0.0:
+  /base64id/2.0.0:
     dev: false
     engines:
-      node: '>= 0.4.0'
+      node: ^4.5.0 || >= 5.9
     resolution:
-      integrity: sha1-R2iMuZu2gE8OBtPnY7HDLlfY5rY=
+      integrity: sha512-lGe34o6EHj9y3Kts9R4ZYs/Gr+6N7MCaMlIFA3F1R2O5/m7K06AxfSeO5530PEERE6/WyEg3lsuyw4GHlPZHog==
   /better-assert/1.0.2:
     dependencies:
       callsite: 1.0.0
@@ -93,10 +87,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
-  /bowser/2.5.4:
+  /bowser/2.7.0:
     dev: false
     resolution:
-      integrity: sha512-74GGwfc2nzYD19JCiA0RwCxdq7IY5jHeEaSrrgm/5kusEuK+7UK0qDG3gyzN47c4ViNyO4osaKtZE+aSV6nlpQ==
+      integrity: sha512-aIlMvstvu8x+34KEiOHD3AsBgdrzg6sxALYiukOWhFvGMbQI6TRP/iY0LMhUrHs56aD6P1G0Z7h45PUJaa5m9w==
   /brace-expansion/1.1.11:
     dependencies:
       balanced-match: 1.0.0
@@ -271,12 +265,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
-  /engine.io-client/3.3.2:
+  /engine.io-client/3.4.0:
     dependencies:
       component-emitter: 1.2.1
       component-inherit: 0.0.3
-      debug: 3.1.0
-      engine.io-parser: 2.1.3
+      debug: 4.1.1
+      engine.io-parser: 2.2.0
       has-cors: 1.1.0
       indexof: 0.0.1
       parseqs: 0.0.5
@@ -286,8 +280,8 @@ packages:
       yeast: 0.1.2
     dev: false
     resolution:
-      integrity: sha512-y0CPINnhMvPuwtqXfsGuWE8BB66+B6wTtCofQDRecMQPYX3MYUZXFNKDhdrSe3EVjgOu4V3rxdeqN/Tr91IgbQ==
-  /engine.io-parser/2.1.3:
+      integrity: sha512-a4J5QO2k99CM2a0b12IznnyQndoEvtA4UAldhGzKqnHf42I3Qs2W5SPnDvatZRcMaNZs4IevVicBPayxYt6FwA==
+  /engine.io-parser/2.2.0:
     dependencies:
       after: 0.8.2
       arraybuffer.slice: 0.0.7
@@ -296,18 +290,18 @@ packages:
       has-binary2: 1.0.3
     dev: false
     resolution:
-      integrity: sha512-6HXPre2O4Houl7c4g7Ic/XzPnHBvaEmN90vtRO9uLmwtRqQmTOw0QMevL1TOfL2Cpu1VzsaTmMotQgMdkzGkVA==
-  /engine.io/3.3.2:
+      integrity: sha512-6I3qD9iUxotsC5HEMuuGsKA0cXerGz+4uGcXQEkfBidgKf0amsjrrtwcbwK/nzpZBxclXlV7gGl9dgWvu4LF6w==
+  /engine.io/3.4.0:
     dependencies:
       accepts: 1.3.7
-      base64id: 1.0.0
+      base64id: 2.0.0
       cookie: 0.3.1
-      debug: 3.1.0
-      engine.io-parser: 2.1.3
-      ws: 6.1.4
+      debug: 4.1.1
+      engine.io-parser: 2.2.0
+      ws: 7.1.2
     dev: false
     resolution:
-      integrity: sha512-AsaA9KG7cWPXWHp5FvHdDWY3AMWeZ8x+2pUVLcn71qE5AtAzgGbxuclOytygskw8XGmiQafTmnI9Bix3uihu2w==
+      integrity: sha512-XCyYVWzcHnK5cMz7G4VTu2W7zJS7SM1QkcelghyIk/FmobWBtXE7fwhBusEKvCSqc3bMh8fNFMlUkCKTFRxH2w==
   /escape-html/1.0.3:
     dev: false
     resolution:
@@ -450,19 +444,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-IItsdsea19BoLC7ELy13q1iJFNmd7ofZH5+X/pJr90/nRoPEX0DJo1dHDbgtYWOhJhcCgMDTOw84RZ72q6lB+Q==
-  /handlebars/4.0.14:
-    dependencies:
-      async: 2.6.3
-      optimist: 0.6.1
-      source-map: 0.6.1
-    dev: false
-    engines:
-      node: '>=0.4.7'
-    hasBin: true
-    optionalDependencies:
-      uglify-js: 3.6.0
-    resolution:
-      integrity: sha512-E7tDoyAA8ilZIV3xDJgl18sX3M8xB9/fMw8+mfW4msLW8jlX97bAnWgT3pmaNXuvzIEgSBMnAHfuXsB2hdzfow==
   /handlebars/4.1.2:
     dependencies:
       neo-async: 2.6.1
@@ -476,6 +457,19 @@ packages:
       uglify-js: 3.6.0
     resolution:
       integrity: sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
+  /handlebars/4.3.3:
+    dependencies:
+      neo-async: 2.6.1
+      optimist: 0.6.1
+      source-map: 0.6.1
+    dev: false
+    engines:
+      node: '>=0.4.7'
+    hasBin: true
+    optionalDependencies:
+      uglify-js: 3.6.0
+    resolution:
+      integrity: sha512-VupOxR91xcGojfINrzMqrvlyYbBs39sXIrWa7YdaQWeBudOlvKEGvCczMfJPgnuwHE/zyH1M6J+IUP6cgDVyxg==
   /has-binary2/1.0.3:
     dependencies:
       isarray: 2.0.1
@@ -492,24 +486,25 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha1-uhqPGvKg/DllD1yFA2dwQSIGO0Q=
-  /hbs/4.0.4:
+  /hbs/4.0.5:
     dependencies:
-      handlebars: 4.0.14
-      walk: 2.3.9
+      handlebars: 4.3.3
+      walk: 2.3.14
     dev: false
     engines:
-      node: '>= 0.8.0'
+      node: '>= 0.8'
+      npm: 1.2.8000 || >= 1.4.16
     resolution:
-      integrity: sha512-esVlyV/V59mKkwFai5YmPRSNIWZzhqL5YMN0++ueMxyK1cCfPa5f6JiHtapPKAIVAhQR6rpGxow0troav9WMEg==
+      integrity: sha512-lzyXY0HalmVqHyhty05cLoPqxY51gNnCI6cMlXiPbrIKvB3BTJh3waQ9de86x25jX9QhU/tkAojsOO4KB6vPfg==
   /helmet-crossdomain/0.4.0:
     dev: false
     engines:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-AB4DTykRw3HCOxovD1nPR16hllrVImeFp5VBV9/twj66lJ2nU75DP8FPL0/Jp4jj79JhTfG+pFI2MD02kWJ+fA==
-  /helmet-csp/2.9.1:
+  /helmet-csp/2.9.2:
     dependencies:
-      bowser: 2.5.4
+      bowser: 2.7.0
       camelize: 1.0.0
       content-security-policy-builder: 2.1.0
       dasherize: 2.0.0
@@ -517,8 +512,8 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-HgdXSJ6AVyXiy5ohVGpK6L7DhjI9KVdKVB1xRoixxYKsFXFwoVqtLKgDnfe3u8FGGKf9Ml9k//C9rnncIIAmyA==
-  /helmet/3.21.0:
+      integrity: sha512-Lt5WqNfbNjEJ6ysD4UNpVktSyjEKfU9LVJ1LaFmPfYseg/xPealPfgHhtqdAdjPDopp5zbg/VWCyp4cluMIckw==
+  /helmet/3.21.1:
     dependencies:
       depd: 2.0.0
       dns-prefetch-control: 0.2.0
@@ -527,7 +522,7 @@ packages:
       feature-policy: 0.3.0
       frameguard: 3.1.0
       helmet-crossdomain: 0.4.0
-      helmet-csp: 2.9.1
+      helmet-csp: 2.9.2
       hide-powered-by: 1.1.0
       hpkp: 2.0.0
       hsts: 2.2.0
@@ -539,7 +534,7 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-TS3GryQMPR7n/heNnGC0Cl3Ess30g8C6EtqZyylf+Y2/kF4lM8JinOR90rzIICsw4ymWTvji4OhDmqsqxkLrcg==
+      integrity: sha512-IC/54Lxvvad2YiUdgLmPlNFKLhNuG++waTF5KPYq/Feo3NNhqMFbcLAlbVkai+9q0+4uxjxGPJ9bNykG+3zZNg==
   /hide-powered-by/1.1.0:
     dev: false
     engines:
@@ -625,10 +620,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-o32U7ZzaLVmGXJ92/llu4fM4dB4=
-  /lodash/4.17.15:
-    dev: false
-    resolution:
-      integrity: sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
   /lz-string/1.4.4:
     dev: false
     hasBin: true
@@ -883,14 +874,14 @@ packages:
     dev: false
     resolution:
       integrity: sha1-KoBeihTWNyEk3ZFZrUUC+MsH8Gs=
-  /socket.io-client/2.2.0:
+  /socket.io-client/2.3.0:
     dependencies:
       backo2: 1.0.2
       base64-arraybuffer: 0.1.5
       component-bind: 1.0.0
       component-emitter: 1.2.1
-      debug: 3.1.0
-      engine.io-client: 3.3.2
+      debug: 4.1.1
+      engine.io-client: 3.4.0
       has-binary2: 1.0.3
       has-cors: 1.1.0
       indexof: 0.0.1
@@ -901,7 +892,7 @@ packages:
       to-array: 0.1.4
     dev: false
     resolution:
-      integrity: sha512-56ZrkTDbdTLmBIyfFYesgOxsjcLnwAKoN4CiPyTVkMQj3zTUh0QAx3GbvIvLpFEOvQWu92yyWICxB0u7wkVbYA==
+      integrity: sha512-cEQQf24gET3rfhxZ2jJ5xzAOo/xhZwK+mOqtGRg5IowZsMgwvHwnf/mCRapAAkadhM26y+iydgwsXGObBB5ZdA==
   /socket.io-parser/3.3.0:
     dependencies:
       component-emitter: 1.2.1
@@ -910,17 +901,25 @@ packages:
     dev: false
     resolution:
       integrity: sha512-hczmV6bDgdaEbVqhAeVMM/jfUfzuEZHsQg6eOmLgJht6G3mPKMxYm75w2+qhAQZ+4X+1+ATZ+QFKeOZD5riHng==
-  /socket.io/2.2.0:
+  /socket.io-parser/3.4.0:
     dependencies:
+      component-emitter: 1.2.1
       debug: 4.1.1
-      engine.io: 3.3.2
-      has-binary2: 1.0.3
-      socket.io-adapter: 1.1.1
-      socket.io-client: 2.2.0
-      socket.io-parser: 3.3.0
+      isarray: 2.0.1
     dev: false
     resolution:
-      integrity: sha512-wxXrIuZ8AILcn+f1B4ez4hJTPG24iNgxBBDaJfT6MsyOhVYiTXWexGoPkd87ktJG8kQEcL/NBvRi64+9k4Kc0w==
+      integrity: sha512-/G/VOI+3DBp0+DJKW4KesGnQkQPFmUCbA/oO2QGT6CWxU7hLGWqU3tyuzeSK/dqcyeHsQg1vTe9jiZI8GU9SCQ==
+  /socket.io/2.3.0:
+    dependencies:
+      debug: 4.1.1
+      engine.io: 3.4.0
+      has-binary2: 1.0.3
+      socket.io-adapter: 1.1.1
+      socket.io-client: 2.3.0
+      socket.io-parser: 3.4.0
+    dev: false
+    resolution:
+      integrity: sha512-2A892lrj0GcgR/9Qk81EaY2gYhCBxurV0PfmmESO6p27QPrUK1J3zdns+5QPqvUYK2q657nSj0guoIil9+7eFg==
   /source-map/0.6.1:
     dev: false
     engines:
@@ -981,12 +980,12 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
-  /walk/2.3.9:
+  /walk/2.3.14:
     dependencies:
       foreachasync: 3.0.0
     dev: false
     resolution:
-      integrity: sha1-MbTbZnjyrgHDnqn7hyWpAx5Vins=
+      integrity: sha512-5skcWAUmySj6hkBdH6B6+3ddMjVQYH5Qy9QGbPmN8kVmLteXk+yVXg+yfk1nbX30EYakahLrr8iPcCxJQSCBeg==
   /wordwrap/0.0.3:
     dev: false
     engines:
@@ -1003,6 +1002,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-eqZfL+NE/YQc1/ZynhojeV8q+H050oR8AZ2uIev7RU10svA9ZnJUddHcOUZTJLinZ9yEfdA2kSATS2qZK5fhJA==
+  /ws/7.1.2:
+    dependencies:
+      async-limiter: 1.0.1
+    dev: false
+    resolution:
+      integrity: sha512-gftXq3XI81cJCgkUiAVixA0raD9IVmXqsylCrjRygw4+UOOGzPoxnQ6r/CnVL9i+mDncJo94tSkyrtuuQVBmrg==
   /x-xss-protection/1.3.0:
     dev: false
     engines:
@@ -1029,8 +1034,8 @@ specifiers:
   express-alias: ^0.4.0
   express-handlebars: ^3.1.0
   express-http-to-https: ^1.1.4
-  hbs: ^4.0.4
-  helmet: ^3.20.1
+  hbs: ^4.0.5
+  helmet: ^3.21.1
   lz-string: ^1.4.4
   marked: ^0.7.0
-  socket.io: ^2.2.0
+  socket.io: ^2.3.0
