@@ -4,7 +4,6 @@ setInterval(() => isReadyShort = true, 5000)
 console.log(location.hash)
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
 let errorRegs = [
-  { reg: /\s+(command|function) .+:/g, msg: 'Declerations of commands & functions should not have whitespaces behind them' },
   { reg: /^(trigger|description|cooldown|permission)([/\w]+|):([/\w+]|)/g, msg: 'Command properties should have whitespaces behind them' },
   { reg: /teleport (the |)(player|attacker|victim|loop-entity|loop-player|) (to|below|above|next to) (-|)\d+(,|) (-|)\d+(,|) (-|)\d+/g, msg: "Use vector(x, y, z) instead of x, y, z" },
   { reg: /^{_\w+}/g, msg: 'You cant use temp variables unless its in an event/command!' },
