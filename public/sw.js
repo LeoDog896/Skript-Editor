@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-const CACHE_NAME = 'skEditor-1.0.0.6'              
+const CACHE_NAME = 'skEditor-1.0.0.7'              
 
 // Add a path you want to cache in this list.
 
@@ -63,7 +63,7 @@ const URLS = [
   'https://fonts.gstatic.com/s/inconsolata/v17/QldKNThLqRwH-OJ1UHjlKGlZ5qg.woff2',
   'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
   'lib/toast.css',
-  'favicon.ico'
+  '/favicon.ico'
 ]
 
 // Respond with cached resources
