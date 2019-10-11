@@ -46,12 +46,16 @@ var editor = ace.edit("editor");
 codeBlastAce(ace)
 editor.setShowPrintMargin(false);
 editor.session.setMode("ace/mode/skript");
-editor.setValue(`
-command /id: # this is a comment
-	description: Find the ID of the item you're holding
+editor.setValue(`command /hello:
 	trigger:
-		message "You're holding a %type of tool% whose ID is %id of tool%."
-`);
+		send "Hello %player%! This is an example coding language for Minecraft!"
+		give 1 diamond to the player
+
+command /hellogui:
+	trigger:
+		# this is using TuSKe for GUIs. You can use skQuery, but we reccomend TuSKe
+		open virtual chest inventory with size 1 named "&eHello!"
+		format gui slot 0 of player with diamond named "&9Diamond" to do nothing`);
 editor.setOptions({
   useSoftTabs: false,
   enableLiveAutocompletion: true
