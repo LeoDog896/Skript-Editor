@@ -36,10 +36,10 @@ html, body {
 .app {
   border-radius: 5px;
   padding: 4px 16px 4px 16px;
-  border: 2px solid #c9934d;
+  border: 2px solid 4C92C8;
   text-decoration: none;
   color: white;
-  background-color: #c9934d;
+  background-color: #539ed9;
   transition: 0.2s all;
   font-size: 20px;
 }
