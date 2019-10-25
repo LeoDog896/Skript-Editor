@@ -26,6 +26,11 @@ app.use(express.static('public'));
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use((err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+
 app.use('/blocks', express.static(__dirname + '/modules/blocks/'));
 
 app.get('/', (req, res) => res.render('index'));
@@ -128,3 +133,5 @@ io.on('connection', socket => {
     });
   });
 });
+
+process.on("uncaughtException", error => console.error(error.stack));
