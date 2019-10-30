@@ -24,6 +24,7 @@ app.use(redirectToHTTPS());
 app.use(compression());
 app.use(express.static('public'));
 app.use(helmet());
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((err, req, res, next) => {
@@ -34,7 +35,7 @@ app.use((err, req, res, next) => {
 app.use('/blocks', express.static(__dirname + '/modules/blocks/'));
 
 app.get('/', (req, res) => res.render('index'));
-app.get('/app', (req, res) => res.render('app'));
+app.get('/app', (req, res) => {console.log(1);res.render('app')});
 app.get('/share', (req, res) => res.render('share'));
 app.get('/embed', (req, res) => res.render('embed'));
 app.get('/alone', (req, res) => res.render('alone'));

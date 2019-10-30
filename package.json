@@ -13,8 +13,8 @@
     "express-alias": "^0.4.0",
     "express-handlebars": "^3.1.0",
     "express-http-to-https": "^1.1.4",
-    "hbs": "^4.0.5",
-    "helmet": "^3.21.1",
+    "hbs": "^4.0.6",
+    "helmet": "^3.21.2",
     "marked": "^0.7.0",
     "socket.io": "^2.3.0",
     "lz-string": "^1.4.4"

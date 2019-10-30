@@ -5,8 +5,8 @@ dependencies:
   express-alias: 0.4.0
   express-handlebars: 3.1.0
   express-http-to-https: 1.1.4
-  hbs: 4.0.5
-  helmet: 3.21.1
+  hbs: 4.0.6
+  helmet: 3.21.2
   lz-string: 1.4.4
   marked: 0.7.0
   socket.io: 2.3.0
@@ -123,6 +123,11 @@ packages:
     optional: true
     resolution:
       integrity: sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
+  /commander/2.20.3:
+    dev: false
+    optional: true
+    resolution:
+      integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
   /component-bind/1.0.0:
     dev: false
     resolution:
@@ -457,7 +462,7 @@ packages:
       uglify-js: 3.6.0
     resolution:
       integrity: sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
-  /handlebars/4.3.3:
+  /handlebars/4.3.5:
     dependencies:
       neo-async: 2.6.1
       optimist: 0.6.1
@@ -467,9 +472,9 @@ packages:
       node: '>=0.4.7'
     hasBin: true
     optionalDependencies:
-      uglify-js: 3.6.0
+      uglify-js: 3.6.5
     resolution:
-      integrity: sha512-VupOxR91xcGojfINrzMqrvlyYbBs39sXIrWa7YdaQWeBudOlvKEGvCczMfJPgnuwHE/zyH1M6J+IUP6cgDVyxg==
+      integrity: sha512-I16T/l8X9DV3sEkY9sK9lsPRgDsj82ayBY/4pAZyP2BcX5WeRM3O06bw9kIs2GLrHvFB/DNzWWJyFvof8wQGqw==
   /has-binary2/1.0.3:
     dependencies:
       isarray: 2.0.1
@@ -486,23 +491,23 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha1-uhqPGvKg/DllD1yFA2dwQSIGO0Q=
-  /hbs/4.0.5:
+  /hbs/4.0.6:
     dependencies:
-      handlebars: 4.3.3
+      handlebars: 4.3.5
       walk: 2.3.14
     dev: false
     engines:
       node: '>= 0.8'
       npm: 1.2.8000 || >= 1.4.16
     resolution:
-      integrity: sha512-lzyXY0HalmVqHyhty05cLoPqxY51gNnCI6cMlXiPbrIKvB3BTJh3waQ9de86x25jX9QhU/tkAojsOO4KB6vPfg==
+      integrity: sha512-KFt3Y4zOvVQOp84TmqVaFTpBTYO1sVenBoBY712MI3vPkKxVoO6AsuEyDayIRPRAHRYZHHWnmc4spFa8fhQpLw==
   /helmet-crossdomain/0.4.0:
     dev: false
     engines:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-AB4DTykRw3HCOxovD1nPR16hllrVImeFp5VBV9/twj66lJ2nU75DP8FPL0/Jp4jj79JhTfG+pFI2MD02kWJ+fA==
-  /helmet-csp/2.9.2:
+  /helmet-csp/2.9.4:
     dependencies:
       bowser: 2.7.0
       camelize: 1.0.0
@@ -512,8 +517,8 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-Lt5WqNfbNjEJ6ysD4UNpVktSyjEKfU9LVJ1LaFmPfYseg/xPealPfgHhtqdAdjPDopp5zbg/VWCyp4cluMIckw==
-  /helmet/3.21.1:
+      integrity: sha512-qUgGx8+yk7Xl8XFEGI4MFu1oNmulxhQVTlV8HP8tV3tpfslCs30OZz/9uQqsWPvDISiu/NwrrCowsZBhFADYqg==
+  /helmet/3.21.2:
     dependencies:
       depd: 2.0.0
       dns-prefetch-control: 0.2.0
@@ -522,7 +527,7 @@ packages:
       feature-policy: 0.3.0
       frameguard: 3.1.0
       helmet-crossdomain: 0.4.0
-      helmet-csp: 2.9.2
+      helmet-csp: 2.9.4
       hide-powered-by: 1.1.0
       hpkp: 2.0.0
       hsts: 2.2.0
@@ -534,7 +539,7 @@ packages:
     engines:
       node: '>=4.0.0'
     resolution:
-      integrity: sha512-IC/54Lxvvad2YiUdgLmPlNFKLhNuG++waTF5KPYq/Feo3NNhqMFbcLAlbVkai+9q0+4uxjxGPJ9bNykG+3zZNg==
+      integrity: sha512-okUo+MeWgg00cKB8Csblu8EXgcIoDyb5ZS/3u0W4spCimeVuCUvVZ6Vj3O2VJ1Sxpyb8jCDvzu0L1KKT11pkIg==
   /hide-powered-by/1.1.0:
     dev: false
     engines:
@@ -962,6 +967,17 @@ packages:
     optional: true
     resolution:
       integrity: sha512-W+jrUHJr3DXKhrsS7NUVxn3zqMOFn0hL/Ei6v0anCIMoKC93TjcflTagwIHLW7SfMFfiQuktQyFVCFHGUE0+yg==
+  /uglify-js/3.6.5:
+    dependencies:
+      commander: 2.20.3
+      source-map: 0.6.1
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    hasBin: true
+    optional: true
+    resolution:
+      integrity: sha512-7L3W+Npia1OCr5Blp4/Vw83tK1mu5gnoIURtT1fUVfQ3Kf8WStWV6NJz0fdoBJZls0KlweruRTLVe6XLafmy5g==
   /unpipe/1.0.0:
     dev: false
     engines:
@@ -1034,8 +1050,8 @@ specifiers:
   express-alias: ^0.4.0
   express-handlebars: ^3.1.0
   express-http-to-https: ^1.1.4
-  hbs: ^4.0.5
-  helmet: ^3.21.1
+  hbs: ^4.0.6
+  helmet: ^3.21.2
   lz-string: ^1.4.4
   marked: ^0.7.0
   socket.io: ^2.3.0
