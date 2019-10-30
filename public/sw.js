@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-const CACHE_NAME = 'skEditor-1.0.0.9'              
+const CACHE_NAME = 'skEditor1.0.0.5'              
 
 // Add a path you want to cache in this list.
 
@@ -35,6 +35,7 @@ const URLS = [
   'scripts/script.js',
   'styles/main.css',
   'styles/index.css',
+  'images/icons/icon-192x192.png',
   'images/link.svg',
   'images/brush.svg',
   'images/download.svg',
@@ -57,6 +58,8 @@ const URLS = [
   'scripts/main.js',
   'scripts/multi.js',
   'blocks/msg/js/en.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css',
   'https://fonts.googleapis.com/css?family=Inconsolata',
   'https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js',
