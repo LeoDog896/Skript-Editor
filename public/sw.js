@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-const CACHE_NAME = 'skEditor-1.0.0.7'              
+const CACHE_NAME = 'skEditor-1.0.0.9'              
 
 // Add a path you want to cache in this list.
 

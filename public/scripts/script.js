@@ -214,6 +214,7 @@ var mode = "txt"
 
 $("#customize").click(() => $(".themes-modal").addClass("show-modal"))
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
+$("#examples").click(() => $(".examples-modal").addClass("show-modal"))
 $("#blast-o").change(() => {
   $("#blast-o").is(':checked') ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy()
   Cookies.set('blastCode', $("#blast-o").is(':checked'))
