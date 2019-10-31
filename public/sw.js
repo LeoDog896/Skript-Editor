@@ -27,6 +27,7 @@ const URLS = [
   '/',
   '/index.html',
   '/app',
+  '/app/index.html',
   'ace/ace.js',
   'lib/codeblast.js',
   'ace/ext-split.js',
