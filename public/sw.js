@@ -28,6 +28,7 @@ const URLS = [
   '/images/home.svg',
   '/images/blockly.svg',
   '/images/examples.svg',
+  '/images/loading.svg',
   '/ace/mode-skript.js',
   '/manifest.json',
   '/lib/toast.js',
