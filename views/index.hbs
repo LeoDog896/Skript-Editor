@@ -26,7 +26,7 @@
         Skript is a coding language that allows you to easily create minecraft plugins. Here is a non minecraft example:
       </p>
       <pre>
-        <code>on click on cat:<br>&emsp;play sound "purr"<br>&emsp;make user's phone vibrate<br>
+        <code>on click on cat:<br>&emsp;play sound "browser.animals.purr"<br>&emsp;make user's phone vibrate<br>
         </code>
       </pre>
       <img id="cat" class="cat" src="https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2Fkitten-cat-clipart.jpg?v=1565714306319">
@@ -59,9 +59,10 @@
       <a href="/contributors/">these people</a>
     </div>
     <script src="scripts/main.js" defer></script>
-    <auido id="catsuwu">
+    <audio id="catsuwu">
       <source src="https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2FPurring-SoundBible.com-1561515931.wav?v=1565788847182" type="audio/wav">
       <source src="https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2FPurring-SoundBible.com-1561515931.mp3?v=1565788847609" type="audio/mp3">
-    </auido>
+    </audio>
+    <script>if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js', {scope: '/'})</script>
   </body>
 </html>
