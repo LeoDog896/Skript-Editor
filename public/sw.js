@@ -27,7 +27,6 @@ const URLS = [
   '/images/discord.svg',
   '/images/home.svg',
   '/images/blockly.svg',
-  '/images/examples.svg',
   '/images/loading.svg',
   '/ace/mode-skript.js',
   '/manifest.json',

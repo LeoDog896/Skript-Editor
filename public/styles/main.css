@@ -128,3 +128,18 @@ table {
 #blocklyArea {
   height: 99%;  
 }
+
+.bubble {
+  background-color: #45657a;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bubble:hover {
+  background-color: #326b8f;
+}
+
+.bubble.active {
+  background-color: #2a7fb5;
+}
