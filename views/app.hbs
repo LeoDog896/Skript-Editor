@@ -10,10 +10,8 @@
     <meta name="theme-color" content="#ffce8f"/>
     <meta name="keywords" content="skEditor, Skript Editor">
     <link rel="manifest" href="/manifest.json">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css" />
   </head>
-  <body>
+  <body style="background: blue">
     <input type="file" id="fileElem" multiple accept=".sk, .txt" style="display:none" onchange="handleFiles(this.files)">
     <div class="header">
       <img id="file" class="button" alt="Folders" src="images/file.svg" width="50" height="50">
@@ -62,6 +60,8 @@
         {{> settings}}
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css" />
     <script>try{window.loading_screen = window.pleaseWait({ logo: "/images/icons/icon-192x192.png", backgroundColor: 'white', loadingHtml: "<img src='/images/loading.svg' width='50' height='50'></img>" })}catch(e){alert(e)}</script>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="lib/toast.css">
