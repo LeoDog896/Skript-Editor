@@ -43,7 +43,8 @@ app.get('/raw', (req, res) => res.render('raw'));
 
 app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
-  while (!tinyURL.find(i => i == tim)) {
+  while (tinyURL[tim]) {
+    console.log(tim)
     tim = tiny(6);
   }
   tinyURL.push(tim);
@@ -57,7 +58,7 @@ app.post('/shorturl', (req, res) => {
 
 app.post('/shareurl', (req, res) => {
   let tim = tiny(6);
-  while (!shareURL.find(i => i == tim)) {
+  while (shareURL[tim]) {
     tim = tiny(6);
   }
   if (!allCode[tim]) allCode[tim] = new Document(lzString.decompressFromBase64(req.body.data));
