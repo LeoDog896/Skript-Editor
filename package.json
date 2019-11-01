@@ -20,7 +20,7 @@
     "lz-string": "^1.4.4"
   },
   "engines": {
-    "node": "12.x"
+    "node": "13.x"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/skript-editor"
