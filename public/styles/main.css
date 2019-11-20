@@ -47,8 +47,6 @@ table {
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 10px;
-  padding-left: 5px;
   color: white;
   font-family: Monospace;
   font-family: 'Inconsolata', monospace;
@@ -130,16 +128,16 @@ table {
 }
 
 .bubble {
-  background-color: #45657a;
   padding: 10px;
   text-align: center;
-  margin-bottom: 10px;
+  width: 160px;
+  border-bottom: 2px solid lightgray;
 }
 
 .bubble:hover {
-  background-color: #326b8f;
+  background-color: darkgray;
 }
 
 .bubble.active {
-  background-color: #2a7fb5;
+  background-color: lightgray;
 }
