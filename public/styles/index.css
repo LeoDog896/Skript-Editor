@@ -49,8 +49,9 @@ html, body {
 }
 
 h1.features {
-  padding-left: 1em;
-  padding-right: 1em;
+  font-size: 4em;
+  text-align: left;
+  padding: 1em;
 }
 
 .section {
