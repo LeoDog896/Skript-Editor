@@ -14,13 +14,12 @@
     <input type="file" id="fileElem" multiple accept=".sk, .txt" style="display:none" onchange="handleFiles(this.files)">
     <div class="header">
       <img id="export" class="button" alt="Download File" src="images/download.svg" width="50" height="50">
-      <img id="customize" class="button" alt="Customize" src="images/brush.svg" width="50" height="50">
       <img id="options" class="button" alt="Options" src="images/options.svg" width="50" height="50">
       <img id="link" class="button" alt="ShortURL" src="images/link.svg" width="50" height="50">
       <img id="share" class="button" alt="Share" src="https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2Fbaseline-screen_share-24px.svg?v=1565795450778" width="50" height="50">
-      <!-- Issue with /images/share.svg, check it later --->
       <img id="discord" class="button" alt="Discord" src="images/discord.svg" width="50" height="50">
       <img id="home" class="button" alt="Add to Home Screen" src="images/home.svg" width="50" height="50">
+      <img id="toggleMode" class="button" alt="Blockly/Text mode" src="images/blockly.svg" width="50" height="50">
     </div>
     <div class="main">
       <div class="compile-code">
@@ -29,14 +28,6 @@
     </div>
     <div class="footer">
         {{> footer}}
-    </div>
-    <div class="modal themes-modal">
-      <div class="modal-content">
-        <span class="close-button">×</span>
-        <select id="theme">
-          {{> select}}
-        </select>
-      </div>
     </div>
     <div class="modal options-modal">
       <div class="modal-content">
