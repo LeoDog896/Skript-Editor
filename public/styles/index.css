@@ -47,6 +47,12 @@ html, body {
   height: 90vh;
   width: 100%;
 }
+
+h1.features {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .section {
   width: 100%;
   height: 30vh;
@@ -70,37 +76,4 @@ pre code {
   text-align: left;
   width: fit-content;
   margin: auto;
-}
-.cat {
-  width: 150px;
-  transition: 200ms all;
-  user-select: none;
-}
-
-.cat:hover {
-  transform: scale(1.3)
-}
-.cat:active {
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  transform: scale(1.3), translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-}
-
-@keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%, 60% {
-    transform:translate3d(4px, 0, 0);
-  }
 }
