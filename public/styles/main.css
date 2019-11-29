@@ -8,7 +8,6 @@ body, html {
 
 table {
   margin-top: 50px;
-  margin-left: 160px;
   width: calc(100% - 160px);
   height: calc(100vh - 50px - 18px);
 }
@@ -18,8 +17,7 @@ table {
 }
 #editor {
   margin-top: 50px;
-  margin-left: 160px;
-  width: calc(100% - 160px);
+  width: 100%;
   height: calc(100vh - 50px - 18px);
   font-size: 13px;
 }
@@ -55,7 +53,6 @@ table {
   position: fixed;
   top: 0;
   left: 0;
-  margin-left: 160px;
   text-align: left;
   background-color: #e8e8e8;
   width: 100%;

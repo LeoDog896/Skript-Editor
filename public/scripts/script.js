@@ -145,19 +145,6 @@ $("#fileElem").change(function(e){
   reader.readAsText(tempFile, "UTF-8");
   reader.onload = evt => editor.setValue(evt.target.result);
 });
-$("#file").click(function(){  
-  $(".sidenav").toggle();
-  if ($(".sidenav").is(":visible")){
-    $(".header").css("margin-left","160px");
-    $("#editor").css("margin-left","160px");
-    $("#editor").css("width",window.innerWidth - 160);
-  } else {
-    $("#editor").css("margin-left","0px");
-    $(".header").css("margin-left","0px");
-    $("#editor").css("width",window.innerWidth);
-  }
-})
-
 $("#link").click(() => {
   if (!isReadyShort) return;
   isReadyShort = false

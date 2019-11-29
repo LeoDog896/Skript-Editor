@@ -24,10 +24,6 @@
       <img id="home" class="button" alt="Add to Home Screen" src="images/home.svg" width="50" height="50">
       <img id="toggleMode" class="button" alt="Blockly/Text mode" src="images/blockly.svg" width="50" height="50">
     </div>
-    <div class="sidenav">
-      <div class="bubble active">file.sk</div>
-      <div class="bubble">docs.sk</div>
-    </div>
     <div class="main">
       <div class="compile-code">
         <pre name="code" id="editor" style="border: none;"></pre>
@@ -70,8 +66,8 @@
     <script src="/blocks/blocks_compressed.js"></script>
     <script src="/blocks/py.js"></script>
     <script src="/blocks/msg/js/en.js"></script>
+    <script src="/scripts/blockly.js"></script>
     <script src="/scripts/script.js" defer></script>
-    <script src="/scripts/blockly.js" defer></script>
     <script>if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js', {scope: '/'})</script>
     <script defer>window.loading_screen.finish()</script>
   </body>
