@@ -93,7 +93,7 @@ editor.getSession().on('change', function(e) {
 $(() => {
   window['isUpdateAvailable'].then(isAvailable => {
 		if (isAvailable) {
-			new Toast({message: "A new update is available! Refresh to update!"})
+			new Toast({message: "A new update is available! Refresh to update, or force refresh (CTRL + F5) for a forced update!"})
 		}
 	});
   $('body').on('dragover', function(e) {
@@ -194,8 +194,6 @@ $("#share").click(() => {
   });
 })
 
-var mode = "txt"
-
 $("#options").click(() => $(".options-modal").addClass("show-modal"))
 $("#blast-o").change(() => {
   $("#blast-o").is(':checked') ? editor.setOption('blastCode', { effect: 1 }) : editor._codeBlast.destroy()
@@ -208,4 +206,3 @@ $("#autocomplete-o").change(() => {
 })
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
-$("#discord").click(() => window.open("https://discord.gg/nRQBqgr"))
