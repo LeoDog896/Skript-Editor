@@ -1,4 +1,5 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast, io, swal */
+try {
 let isReadyShort = true;
 let tempSocket = 1;
 setInterval(() => isReadyShort = true, 5000)
@@ -205,3 +206,4 @@ window.addEventListener('beforeinstallprompt', (e) => {
     deferredPrompt.userChoice.then((choiceResult) => deferredPrompt = null);
   });
 });
+} catch (e) {alert(e)}

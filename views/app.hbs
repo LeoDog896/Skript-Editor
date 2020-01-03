@@ -22,23 +22,12 @@
       <img id="share" class="button" alt="Share" src="https://cdn.glitch.com/cbbe5c66-fe51-47a6-bbe2-3980fcee7aef%2Fbaseline-screen_share-24px.svg?v=1565795450778" width="50" height="50">
       <img id="discord" class="button" alt="Discord" src="images/discord.svg" width="50" height="50">
       <img id="home" class="button" alt="Add to Home Screen" src="images/home.svg" width="50" height="50">
-      <img id="toggleMode" class="button" alt="Blockly/Text mode" src="images/blockly.svg" width="50" height="50">
     </div>
     <div class="main">
       <div class="compile-code">
         <pre name="code" id="editor" style="border: none;"></pre>
       </div>
     </div>
-    <table>
-    <tr>
-      <td id="blocklyArea">
-      </td>
-    </tr>
-  </table>
-
-  <div id="blocklyDiv" style="position: absolute"></div>
-
-  {{> toolbox}}
     <div class="footer">
         {{> footer}}
     </div>
@@ -62,11 +51,6 @@
     <script src="ace/ext-split.js" async></script>
     <script src="ace/ext-language_tools.js" async></script>
     <script src="lib/toast.js" async></script>
-    <script src="/blocks/blockly_compressed.js"></script>
-    <script src="/blocks/blocks_compressed.js"></script>
-    <script src="/blocks/py.js"></script>
-    <script src="/blocks/msg/js/en.js"></script>
-    <script src="/scripts/blockly.js"></script>
     <script src="/scripts/script.js" defer></script>
     <script>if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js', {scope: '/'})</script>
     <script defer>window.loading_screen.finish()</script>

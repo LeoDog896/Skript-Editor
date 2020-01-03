@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-const CACHE_NAME = 'swSkript-1.2'              
+const CACHE_NAME = 'swSkript-1.2.2'              
 
 // Add a path you want to cache in this list.
 
@@ -26,23 +26,13 @@ const URLS = [
   '/images/share.svg',
   '/images/discord.svg',
   '/images/home.svg',
-  '/images/blockly.svg',
   '/images/loading.svg',
   '/images/icons/icon-144x144.png',
   '/ace/mode-skript.js',
   '/manifest.json',
   '/lib/toast.js',
-  '/blocks/blockly_compressed.js',
-  '/blocks/blocks_compressed.js',
-  '/blocks/py.js',
-  '/scripts/blockly.js',
   '/scripts/main.js',
   '/scripts/multi.js',
-  '/blocks/msg/js/en.js',
-  '/blocks/media/click.mp3',
-  '/blocks/media/delete.mp3',
-  '/blocks/media/disconnect.wav',
-  '/blocks/media/sprites.png',
   'https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css',
   'https://fonts.googleapis.com/css?family=Inconsolata',
