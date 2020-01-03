@@ -23,7 +23,6 @@ app.use(redirectToHTTPS());
 app.use(compression());
 app.use(express.static('public'));
 app.use(helmet());
-app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((err, req, res, next) => {
