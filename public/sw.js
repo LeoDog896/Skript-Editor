@@ -1,5 +1,5 @@
 // Version of the offline cache (change this value everytime you want to update cache)
-const CACHE_NAME = 'swSkript-1.2.3'              
+const CACHE_NAME = 'swSkript-1.2.4'              
 
 // Add a path you want to cache in this list.
 
