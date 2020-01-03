@@ -3,7 +3,6 @@ const compression     = require('compression')
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const helmet          = require('helmet')
 const bodyParser      = require('body-parser')
-const markdown        = require('./markdown.js')
 const app             = express();
 const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
@@ -68,46 +67,6 @@ app.post('/shareurl', (req, res) => {
     url: `share#${tim}`,
     data: req.body.data,
   });
-});
-
-app.get('/license', async (req, res) => {
-  res.send(await markdown.buildFile('LICENSE.md', {
-    title: 'skLicense',
-    desc: 'License for Skript Editor',
-    style: '/styles/markdown.css',
-  }));
-});
-
-app.get('/api', async (req, res) => {
-  res.send(await markdown.buildFile('API.md', {
-    title: 'skAPI',
-    desc: 'API for Skript Editor',
-    style: '/styles/markdown.css',
-  }));
-});
-
-app.get('/code_of_conduct', async (req, res) => {
-  res.send(await markdown.buildFile('CODE_OF_CONDUCT.md', {
-    title: 'skCOC',
-    desc: 'Code of Conduct for skript editor',
-    style: '/styles/markdown.css',
-  }));
-});
-
-app.get('/contributors', async (req, res) => {
-  res.send(await markdown.buildFile('CONTRIBUTION.md', {
-    title: 'Contribution',
-    desc: 'Users who contributed to skEditor',
-    style: '/styles/markdown.css',
-  }));
-});
-
-app.get('/contribution', async (req, res) => {
-  res.send(await markdown.buildFile('CONTRIBUTION.md', {
-    title: 'Contribution',
-    desc: 'Users who contributed to skEditor',
-    style: '/styles/markdown.css',
-  }));
 });
 
 var listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
