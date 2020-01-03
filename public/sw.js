@@ -33,8 +33,6 @@ const URLS = [
   '/lib/toast.js',
   '/scripts/main.js',
   '/scripts/multi.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.css',
   'https://fonts.googleapis.com/css?family=Inconsolata',
   'https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js',
