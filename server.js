@@ -42,7 +42,6 @@ app.get('/raw', (req, res) => res.render('raw'));
 app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
   while (tinyURL[tim]) {
-    console.log(tim)
     tim = tiny(6);
   }
   tinyURL.push(tim);
