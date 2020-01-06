@@ -56,6 +56,7 @@ editor.setOptions({
   useSoftTabs: false,
   enableLiveAutocompletion: true
 });
+
 var langTools = ace.require('ace/ext/language_tools');
 $('#export').click(() => create('skript.sk',editor.getValue()));
 $("#theme").change(() => {
