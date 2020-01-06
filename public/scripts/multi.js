@@ -186,24 +186,3 @@ $("#autocomplete-o").change(() => {
 })
 $("#soft-s").change(() => editor.setOption("tabSize", $("#soft-s").val()))
 $(".close-button").click(() => $(".modal").removeClass("show-modal"))
-$("#discord").click(() => window.open("https://discord.gg/nRQBqgr"))
-
-
-// Block stuff
-console.log("%cStop!", "color: #F00; font-size: 30px; -webkit-text-stroke: 1px black; font-weight:bold")
-console.log("If your going to put something inside here, only do it if you know what your doing!")
-
-
-let deferredPrompt;
-const addBtn = document.querySelector('#home');
-$("#home").hide()
-window.addEventListener('beforeinstallprompt', (e) => {
-  deferredPrompt = e;
-  $("#home").show()
-  addBtn.addEventListener('click', e => {
-    addBtn.style.display = 'none';
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => deferredPrompt = null);
-  });
-});
-} catch (e) {alert(e)}
