@@ -12,9 +12,6 @@ table {
   height: calc(100vh - 50px - 18px);
 }
 
-.blocklyWorkspace {
-  width: 200px;
-}
 #editor {
   margin-top: 50px;
   width: 100%;
@@ -118,23 +115,4 @@ table {
   transform: scale(1);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
   font-family: 'Inconsolata', monospace;
-}
-
-#blocklyArea {
-  height: 99%;  
-}
-
-.bubble {
-  padding: 10px;
-  text-align: center;
-  width: 160px;
-  border-bottom: 2px solid lightgray;
-}
-
-.bubble:hover {
-  background-color: darkgray;
-}
-
-.bubble.active {
-  background-color: lightgray;
 }
