@@ -23,7 +23,7 @@
   "repository": {
     "url": "https://glitch.com/edit/#!/skript-editor"
   },
-  "license": "Apache-2.0",
+  "license": "GPL-3.0",
   "keywords": [
     "node",
     "glitch",
