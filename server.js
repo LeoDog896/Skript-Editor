@@ -38,7 +38,7 @@ app.get('/share', (req, res) => res.render('share'));
 app.get('/embed', (req, res) => res.render('embed'));
 app.get('/alone', (req, res) => res.render('alone'));
 app.get('/raw', (req, res) => res.render('raw'));
-
+app.get(`/u/:code`, (req, res) => res.redirect(`/app#${tinyURLfetch[req.params.code]}`));
 app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
   while (tinyURL[tim]) {
@@ -46,7 +46,7 @@ app.post('/shorturl', (req, res) => {
   }
   tinyURL.push(tim);
   tinyURLfetch[tim] = req.body.data;
-  app.get(`u/${tim}`, (req, res) => res.redirect(`/app#${tinyURLfetch[req.url.substring(3)]}`));
+  console.log(tim)
   res.json({
     url: `u/${tim}`,
     data: req.body.data,
