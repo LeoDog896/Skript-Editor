@@ -8,7 +8,6 @@ const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
 const hbs             = require('hbs');
 const ace             = require('./ace')
-const lzString        = require('lz-string')
 
 let tinyURL = [];
 let tinyURLfetch = [];

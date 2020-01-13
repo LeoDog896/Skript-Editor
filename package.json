@@ -10,12 +10,10 @@
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
     "express-http-to-https": "^1.1.4",
     "hbs": "^4.0.6",
     "helmet": "^3.21.2",
-    "socket.io": "^2.3.0",
-    "lz-string": "^1.4.4"
+    "socket.io": "^2.3.0"
   },
   "engines": {
     "node": "12.x"
