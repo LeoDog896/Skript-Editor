@@ -1,4 +1,7 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast */
+
+const link = "http://localhost:3000/"
+
 let isReadyShort = true;
 setInterval(() => (isReadyShort = true), 5000);
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
@@ -6,7 +9,9 @@ let errorRegs = [
   {
     reg: /^{_\w+}/g,
     msg: "You cant use temp variables unless its in an event/command!"
-  }
+  },
+  {reg: /^{_\w+}/g, msg: "You cant use temp variables unless its in an event/command!"},
+  {reg: /^(\s|)+format slot \d+ of [\w\s]+/g, msg: "We reccomend using TuSKe instead of skQuery GUI", type: "warning"}
 ];
 
 function create(filename, text) {
@@ -185,14 +190,14 @@ $("#link").click(() => {
     data: { data: LZString.compressToBase64(editor.getValue()) },
     success: function(data) {
       let toaster = new Toast({
-        message: "Link: https://skript-editor.glitch.me/" + data.url,
+        message: `Link: ${link + data.url}`,
         type: "success",
         customButtons: [
           {
             text: "Copy",
             onClick: function() {
               copyTextToClipboard(
-                "https://skript-editor.glitch.me/" + data.url
+                `${link + data.url}`
               );
               toaster._close();
             }
@@ -212,14 +217,14 @@ $("#share").click(() => {
     data: { data: LZString.compressToBase64(editor.getValue()) },
     success: function(data) {
       let toaster = new Toast({
-        message: "Link: https://skript-editor.glitch.me/" + data.url,
+        message: `Link: ${link + data.url}`,
         type: "success",
         customButtons: [
           {
             text: "Copy",
             onClick: function() {
               copyTextToClipboard(
-                "https://skript-editor.glitch.me/" + data.url
+                `${link + data.url}` + data.url
               );
               toaster._close();
             }

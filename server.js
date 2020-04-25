@@ -8,6 +8,8 @@ const tiny            = require('./tiny.js');
 const http            = require('http').createServer(app);
 const hbs             = require('hbs');
 const ace             = require('./ace')
+const lzString        = require("./lzstring")
+const port            = process.env.port || 3000;
 
 let tinyURL = [];
 let tinyURLfetch = [];
@@ -18,7 +20,7 @@ let shareURLfetch = [];
 hbs.registerPartials(__dirname + '/modules/partials');
 app.set('view engine', 'hbs');
 
-app.use(redirectToHTTPS());
+app.use(redirectToHTTPS([/localhost:(\d{4})/]));
 app.use(compression());
 app.use(express.static('public'));
 app.use(helmet());
@@ -37,6 +39,7 @@ app.get('/share', (req, res) => res.render('share'));
 app.get('/embed', (req, res) => res.render('embed'));
 app.get('/alone', (req, res) => res.render('alone'));
 app.get('/raw', (req, res) => res.render('raw'));
+
 app.get(`/u/:code`, (req, res) => res.redirect(`/app#${tinyURLfetch[req.params.code]}`));
 app.post('/shorturl', (req, res) => {
   let tim = tiny(6);
@@ -66,7 +69,7 @@ app.post('/shareurl', (req, res) => {
   });
 });
 
-var listener = app.listen(process.env.PORT, () => console.log('Your app is listening on port ' + listener.address().port));
+var listener = app.listen(port, () => console.log('Your app is listening on port ' + listener.address().port));
 
 const io = require('socket.io').listen(listener);
 
