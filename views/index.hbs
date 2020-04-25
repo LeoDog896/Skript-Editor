@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="icon" type="image/ico" href="/favicon.ico">
-    <title>skEditor</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/index.css">
-    <link rel="manifest" href="/manifest.json">
-  </head>
+  {{> header}}
   <body>
     <div class="main">
       <div class="wrapper">
@@ -41,7 +33,6 @@
         Yes! <a href="https://glitch.com/~skript-editor">here</a> is the code.
       </p>
     </div>
-    <script src="scripts/main.js" defer></script>
     <script>if (navigator.serviceWorker) navigator.serviceWorker.register('/sw.js', {scope: '/'})</script>
   </body>
 </html>

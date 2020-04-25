@@ -26,7 +26,6 @@ const URLS = [
   '/images/share.svg',
   '/images/discord.svg',
   '/images/home.svg',
-  '/images/loading.svg',
   '/images/icons/icon-144x144.png',
   '/ace/mode-skript.js',
   '/manifest.json',

@@ -5,13 +5,19 @@ const link = "http://localhost:3000/"
 let isReadyShort = true;
 setInterval(() => (isReadyShort = true), 5000);
 let byteCount = s => encodeURI(s).split(/%..|./).length - 1;
-let errorRegs = [
+let errorRegs = [{
+    reg: /^{_\w+}/g,
+    msg: "You cant use temp variables unless its in an event/command!"
+  },
   {
     reg: /^{_\w+}/g,
     msg: "You cant use temp variables unless its in an event/command!"
   },
-  {reg: /^{_\w+}/g, msg: "You cant use temp variables unless its in an event/command!"},
-  {reg: /^(\s|)+format slot \d+ of [\w\s]+/g, msg: "We reccomend using TuSKe instead of skQuery GUI", type: "warning"}
+  {
+    reg: /^(\s|)+format slot \d+ of [\w\s]+/g,
+    msg: "We reccomend using TuSKe instead of skQuery GUI",
+    type: "warning"
+  }
 ];
 
 function create(filename, text) {
@@ -32,7 +38,7 @@ function copyTextToClipboard(text) {
   navigator.clipboard.writeText(text);
 }
 
-window.isUpdateAvailable = new Promise(function(resolve, reject) {
+window.isUpdateAvailable = new Promise(function (resolve, reject) {
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("/sw.js")
@@ -79,7 +85,7 @@ $("#theme").change(() => {
 });
 var temp;
 setTimeout(() => (window.parseReady = true), 2000);
-editor.getSession().on("change", function(e) {
+editor.getSession().on("change", function (e) {
   temp = e;
   $("#bytes").html(byteCount(editor.getValue()));
   $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
@@ -87,14 +93,12 @@ editor.getSession().on("change", function(e) {
   if (window.parseReady) {
     editor.getSession().setAnnotations([]);
     if (editor.getValue() == "") {
-      editor.getSession().setAnnotations([
-        {
-          row: 0,
-          column: 0,
-          text: "File is empty",
-          type: "warning"
-        }
-      ]);
+      editor.getSession().setAnnotations([{
+        row: 0,
+        column: 0,
+        text: "File is empty",
+        type: "warning"
+      }]);
     } else {
       let annData = [];
       editor
@@ -119,24 +123,23 @@ editor.getSession().on("change", function(e) {
 window["isUpdateAvailable"].then(isAvailable => {
   if (isAvailable) {
     new Toast({
-      message:
-        "A new update is available! Refresh to update, or force refresh (CTRL + F5) for a forced update!"
+      message: "A new update is available! Refresh to update, or force refresh (CTRL + F5) for a forced update!"
     });
   }
 });
-$("body").on("dragover", function(e) {
+$("body").on("dragover", function (e) {
   e.preventDefault();
   e.stopPropagation();
   $("#editor").css("filter", "blur(4px)");
 });
-$("body").on("dragenter", function(e) {
+$("body").on("dragenter", function (e) {
   e.preventDefault();
   e.stopPropagation();
 });
-$("body").on("dragleave", function() {
+$("body").on("dragleave", function () {
   $("#editor").css("filter", "blur(0px)");
 });
-$("body").on("drop", function(e) {
+$("body").on("drop", function (e) {
   if (
     e.originalEvent.dataTransfer &&
     e.originalEvent.dataTransfer.files.length
@@ -145,7 +148,7 @@ $("body").on("drop", function(e) {
     e.preventDefault();
     e.stopPropagation();
     var reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       var text = e.target.result;
       editor.setValue(text);
     };
@@ -156,9 +159,11 @@ if (Cookies.get("data") && !location.hash) editor.setValue(Cookies.get("data"));
 if (Cookies.get("theme")) editor.setTheme("ace/theme/" + Cookies.get("theme"));
 setTimeout(() => {
   try {
-    Cookies.get("blastCode")
-      ? editor.setOption("blastCode", { effect: 1 })
-      : editor._codeBlast.destroy();
+    Cookies.get("blastCode") ?
+      editor.setOption("blastCode", {
+        effect: 1
+      }) :
+      editor._codeBlast.destroy();
   } catch (e) {}
 }, 200);
 if (Cookies.get("autocomplete"))
@@ -175,7 +180,7 @@ $(`[value=${editor.getTheme().replace("ace/theme/", "")}]`).prop(
 $("#bytes").html(byteCount(editor.getValue()));
 $("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
 $("#import").click(() => document.getElementById("fileElem").click());
-$("#fileElem").change(function(e) {
+$("#fileElem").change(function (e) {
   let tempFile = e.target.files[0];
   var reader = new FileReader();
   reader.readAsText(tempFile, "UTF-8");
@@ -187,22 +192,22 @@ $("#link").click(() => {
   $.ajax({
     type: "POST",
     url: "/shorturl",
-    data: { data: LZString.compressToBase64(editor.getValue()) },
-    success: function(data) {
+    data: {
+      data: LZString.compressToBase64(editor.getValue())
+    },
+    success: function (data) {
       let toaster = new Toast({
         message: `Link: ${link + data.url}`,
         type: "success",
-        customButtons: [
-          {
-            text: "Copy",
-            onClick: function() {
-              copyTextToClipboard(
-                `${link + data.url}`
-              );
-              toaster._close();
-            }
+        customButtons: [{
+          text: "Copy",
+          onClick: function () {
+            copyTextToClipboard(
+              `${link + data.url}`
+            );
+            toaster._close();
           }
-        ]
+        }]
       });
     }
   });
@@ -214,22 +219,22 @@ $("#share").click(() => {
   $.ajax({
     type: "POST",
     url: "/shareurl",
-    data: { data: LZString.compressToBase64(editor.getValue()) },
-    success: function(data) {
+    data: {
+      data: LZString.compressToBase64(editor.getValue())
+    },
+    success: function (data) {
       let toaster = new Toast({
         message: `Link: ${link + data.url}`,
         type: "success",
-        customButtons: [
-          {
-            text: "Copy",
-            onClick: function() {
-              copyTextToClipboard(
-                `${link + data.url}` + data.url
-              );
-              toaster._close();
-            }
+        customButtons: [{
+          text: "Copy",
+          onClick: function () {
+            copyTextToClipboard(
+              `${link + data.url}` + data.url
+            );
+            toaster._close();
           }
-        ]
+        }]
       });
     }
   });
@@ -237,15 +242,17 @@ $("#share").click(() => {
 
 $("#options").click(() => $(".options-modal").addClass("show-modal"));
 $("#blast-o").change(() => {
-  $("#blast-o").is(":checked")
-    ? editor.setOption("blastCode", { effect: 1 })
-    : editor._codeBlast.destroy();
+  $("#blast-o").is(":checked") ?
+    editor.setOption("blastCode", {
+      effect: 1
+    }) :
+    editor._codeBlast.destroy();
   Cookies.set("blastCode", $("#blast-o").is(":checked"));
 });
 $("#soft-o").change(() =>
-  $("#soft-o").is(":checked")
-    ? editor.setOption("useSoftTabs", true)
-    : editor.setOption("useSoftTabs", false)
+  $("#soft-o").is(":checked") ?
+  editor.setOption("useSoftTabs", true) :
+  editor.setOption("useSoftTabs", false)
 );
 $("#autocomplete-o").change(() => {
   editor.setOption(
