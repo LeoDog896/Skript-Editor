@@ -4,12 +4,23 @@ const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
 const helmet          = require('helmet')
 const bodyParser      = require('body-parser')
 const app             = express();
-const tiny            = require('./tiny.js');
-const http            = require('http').createServer(app);
+const tiny            = require('./utils/tiny.js');
 const hbs             = require('hbs');
-const ace             = require('./ace')
-const lzString        = require("./lzstring")
+const ace             = require('./utils/ace')
+const lzString        = require("./utils/lzstring")
+const fs              = require("fs");
+const path            = require("path");
 const port            = process.env.port || 3000;
+
+const files           = require("./routers/files")
+
+
+const options = {
+  key: fs.readFileSync(path.join(__dirname, '/privateKey.key')),
+  cert: fs.readFileSync(path.join(__dirname, '/certificate.crt'))
+}
+
+const http = require('http').createServer(app);
 
 let tinyURL = [];
 let tinyURLfetch = [];
@@ -17,12 +28,12 @@ let tinyURLfetch = [];
 let shareURL = [];
 let shareURLfetch = [];
 
-hbs.registerPartials(__dirname + '/modules/partials');
+hbs.registerPartials(__dirname + '/partials');
 app.set('view engine', 'hbs');
 
+app.use(express.static('public'))
 app.use(redirectToHTTPS([/localhost:(\d{4})/]));
 app.use(compression());
-app.use(express.static('public'));
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -31,14 +42,10 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
-app.use('/blocks', express.static(__dirname + '/modules/blocks/'));
+app.use("/lib", files)
 
 app.get('/', (req, res) => res.render('index'));
 app.get('/app', (req, res) => res.render('app'));
-app.get('/share', (req, res) => res.render('share'));
-app.get('/embed', (req, res) => res.render('embed'));
-app.get('/alone', (req, res) => res.render('alone'));
-app.get('/raw', (req, res) => res.render('raw'));
 
 app.get(`/u/:code`, (req, res) => res.redirect(`/app#${tinyURLfetch[req.params.code]}`));
 app.post('/shorturl', (req, res) => {
@@ -48,7 +55,6 @@ app.post('/shorturl', (req, res) => {
   }
   tinyURL.push(tim);
   tinyURLfetch[tim] = req.body.data;
-  console.log(tim)
   res.json({
     url: `u/${tim}`,
     data: req.body.data,

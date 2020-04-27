@@ -10,7 +10,7 @@ html, body {
     to { background-position: -400px 0; }
 }
 .main {
-  background: gray url(https://cdn.glitch.com/229e71ae-2fa8-4fb1-85ba-0b95a3b8d862%2Fgeometry2.png) repeat 0 0;
+  background: gray inline("./public/images/scrolling.png") repeat 0 0;
   margin: 0;
   text-align: center;
   box-sizing: border-box;

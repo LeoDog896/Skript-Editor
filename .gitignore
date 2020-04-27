@@ -117,3 +117,5 @@ dist
 # Certs
 *.key
 *.csr
+*.crt
+*.code-workspace

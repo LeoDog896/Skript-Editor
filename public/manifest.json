@@ -52,6 +52,6 @@
     "unlimitedStorage"
   ],
   "background_color": "#fff",
-  "theme_color": "#fff",
+  "theme_color": "#539ED9",
   "display": "standalone"
 }
