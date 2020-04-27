@@ -14,12 +14,6 @@ const port            = process.env.port || 3000;
 
 const files           = require("./routers/files")
 
-
-const options = {
-  key: fs.readFileSync(path.join(__dirname, '/privateKey.key')),
-  cert: fs.readFileSync(path.join(__dirname, '/certificate.crt'))
-}
-
 const http = require('http').createServer(app);
 
 let tinyURL = [];
