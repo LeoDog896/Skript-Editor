@@ -10,7 +10,7 @@ const ace             = require('./utils/ace')
 const lzString        = require("./utils/lzstring")
 const fs              = require("fs");
 const path            = require("path");
-const port            = process.env.port || 3000;
+const port            = process.env.port || 3040;
 
 const files           = require("./routers/files")
 
@@ -26,7 +26,6 @@ hbs.registerPartials(__dirname + '/partials');
 app.set('view engine', 'hbs');
 
 app.use(express.static('public'))
-app.use(redirectToHTTPS([/localhost:(\d{4})/]));
 app.use(compression());
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
