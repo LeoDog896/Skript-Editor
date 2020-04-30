@@ -60,15 +60,19 @@ table {
 }
 .button {
   transition: 200ms all;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  &:active {
+    transform: scale(1.2);
+  }
+
 }
-.button:hover {
-  transform: scale(1.1);
-  background-color: white;
-  border-radius: 10px;
-}
-.button:active {
-  transform: scale(1.2);
-}
+
 .files-header {
   font-size: 20px;
 }

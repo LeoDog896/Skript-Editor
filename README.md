@@ -6,4 +6,4 @@ Skript editor was created due to a lack of online editors for the language Skrip
 
 ## License
 
-We use a Apache License Version 2.0 for our project.
+We use the GNU GENERAL PUBLIC LICENSE for our project.
