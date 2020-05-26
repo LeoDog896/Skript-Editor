@@ -10,9 +10,6 @@ const cssnano       = require("cssnano");
 const pixelround    = require("postcss-round-subpixels")
 const assets        = require("postcss-assets")
 
-// eslint-disable-next-line no-unused-vars
-// const colorblind    = require("postcss-colorblind");
-
 module.exports = async function(data) {
 	return await postcss()
 		.use(stripcomments)
@@ -23,6 +20,5 @@ module.exports = async function(data) {
 		.use(cssnano({ preset: "default" }))
 		.use(pixelround)
 		.use(assets({loadPaths: ['images/']}))
-		// .use(colorblind({method: "deuteranopia"}))
 		.process(data);
 };
