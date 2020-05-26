@@ -1,6 +1,6 @@
 /* global ace, Mode, Cookies, define, LZString, codeBlastAce, Toast */
 
-const link = "http://localhost:3000/"
+const link = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/"
 
 let isReadyShort = true;
 setInterval(() => (isReadyShort = true), 5000);
@@ -85,13 +85,11 @@ $("#theme").change(() => {
 	Cookies.set("theme", $("#theme").val());
 });
 
-var temp;
 setTimeout(() => (window.parseReady = true), 2000);
 
 editor.getSession().on("change", function (e) {
-	temp = e;
 	$("#bytes").html(byteCount(editor.getValue()));
-	$("#lines").html(editor.getValue().split(/\r\n|\r|\n/).length);
+	$("#lines").html(editor.getValue().split(/[\r\n]/g).length);
 	Cookies.set("data", editor.getValue());
 	if (window.parseReady) {
 		editor.getSession().setAnnotations([]);
@@ -135,13 +133,16 @@ $("body").on("dragover", function (e) {
 	e.stopPropagation();
 	$("#editor").css("filter", "blur(2px)");
 });
+
 $("body").on("dragenter", function (e) {
 	e.preventDefault();
 	e.stopPropagation();
 });
+
 $("body").on("dragleave", function () {
 	$("#editor").css("filter", "blur(0px)");
 });
+
 $("body").on("drop", function (e) {
 	if (
 		e.originalEvent.dataTransfer &&

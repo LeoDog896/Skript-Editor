@@ -27,16 +27,12 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '/views'));
 
 app.use(compression());
-app.use(express.static(path.join(__dirname, '/public')))
 app.use(helmet());
+app.use(express.static(path.join(__dirname, '/public')))
+
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-
-app.use((err, req, res, next) => {
-	console.error(err.stack)
-	res.status(500).send('Something broke!')
-})
 
 app.use("/lib", files)
 
@@ -70,6 +66,11 @@ app.post('/shareurl', (req, res) => {
 		data: req.body.data,
 	});
 });
+
+app.use((err, req, res, next) => {
+	console.error(err.stack)
+	res.status(500).send('Something broke!')
+})
 
 var listener = app.listen(port, () => console.log('Your app is listening on port ' + listener.address().port));
 
