@@ -13,7 +13,7 @@
 		"compression": "^1.7.4",
 		"cssgrace": "^3.0.0",
 		"cssnano": "^4.1.10",
-		"express": "^4.17.1",
+		"express": "^4.17.3",
 		"express-http-to-https": "^1.1.4",
 		"hbs": "^4.0.6",
 		"helmet": "^3.21.2",
